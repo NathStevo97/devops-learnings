@@ -12,12 +12,12 @@
 - **Develop and Approve a Code of Conduct**
   - Demonstrate compliance with obligations
   - Must be a written policy
-  - Must comply with 
+  - Must comply with
 
-## 4.2 - Article 28: Data Processor Tasks
+##  4.2 - Article 28: Data Processor Tasks
 
-## 4.3 - Runbooks and Processes
+##  4.3 - Runbooks and Processes
 
-## 4.4 - PIAs and DPIAs
+##  4.4 - PIAs and DPIAs
 
 ## 4.5 - Trust: A Competitive Advantage

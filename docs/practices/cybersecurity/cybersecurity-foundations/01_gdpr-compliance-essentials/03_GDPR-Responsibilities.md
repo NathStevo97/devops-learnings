@@ -62,7 +62,7 @@
     - Staff to support duties
     - Authority to investigate issues / processes
     - A minimum term of 2 years (can be renewed for a maximum of 5 terms, so up to 10 years)
-- DPO Tasks:
+- **DPO Tasks:**
   - Inform data subjects about their rights and raise awareness of regulations
   - Advise their institution about the application of GDPR rules
   - Carry out prior risk assessments against a list of operations their organisation will take
