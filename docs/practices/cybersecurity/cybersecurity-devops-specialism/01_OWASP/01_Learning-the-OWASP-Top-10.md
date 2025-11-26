@@ -114,8 +114,44 @@ Scenario 2:
 
 ## 1.7 - Identification and Authentication Failures
 
+- Types of failure:
+  - An actor claims a given identity, but the software doesn't prove the claim is correct
+    - Could occur during a classic "forgotten password" scenario
+      - Typically an SMS or MFA verification step would trigger
+      - If any of the steps fail, that is identification and authentication failure
+  - Software communicates with hosts that provides a certificate, but doesn't ensure it's the expected certificate
+    - Could lead to users being sent to a fake website
+  - Web app establishes a new user session without closing the previous one.
+- Web applications should identify users and authenticate them properly - simple in concept, but often complex in execution.
+
 ## 1.8 - Software and Data Integrity Failures
+
+- An insecure CI/CD pipeline can introduce the potential for system compromise. Many applications now include auto-update functionality, where updates are downloaded without sufficient integrity verification.
+- This is technically a subset of `Vulnerability and Outdated Components`
+- Sometimes automated processes can take insecure components and put it into the software automatically, creating a security vulnerability
+- This category places additional emphasis on updates from third party vendors - if the updates aren't secure, neither is the application
+- Serialization: Taking an object and reformatting it for easy transport or storage
+- Deserialization: Transforming the reformatted object back to its original form
+
+- Be aware of automated processes in the software development lifecycle
+- Ensure automated processes are verified to be secure
 
 ## 1.9 - Security Logging and Monitoring Failures
 
-## 1.10 - Server-Side Request Forgery
+- Security Logging and Monitoring Failures:
+  - Security incidents are boudn to happen
+  - Breaches are not all-or-nothing; hackers often work incrementally
+- The last point emphasises the importance of logging and monitoring - having this in place at each point gives a chance of stopping an attack
+- Logging, monitoring, and alerting allows for security and technology teams to discover infiltrated systems
+- This identification allows teams to stop the attack before more damage can be done
+
+## 1.10 - Server-Side Request Forgery (SSRF)
+
+- Allows an attacker to coerce the application to send a request to an unexpected location
+- Attackers can send requests while pretending to be the victim's server
+- The server in this instance is a trusted entity, therefore the requests may result in access to sensitive and administrative functions
+- To prevent, an only-allowed or not-allowed list should be enforced
+- If legitimate external resources are needed, allow only that IP address or host name
+- A not-allowed list can also be used to ensure the server cannot request sensitive internal resources
+- Web apps are vulnerable to SSRF
+- Attackers can bypass regular access controls by masquerading as the target server
