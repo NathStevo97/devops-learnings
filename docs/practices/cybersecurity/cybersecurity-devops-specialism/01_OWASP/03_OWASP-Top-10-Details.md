@@ -2,7 +2,21 @@
 
 ## 3.1 - Broken Access Control
 
+### 3.1.1 - Introduction
+
+### 3.1.2 - Example 1: 2021 Facebook Broken Access Control Vulnerability
+
+### 3.1.3 - Example 2: 2021 Personal Data Travel Breach
+
+### 3.1.4 - Prevention Techniques: Principle of Least Privilege
+
+### 3.1.5 - Prevention Techniques: Record Ownership and Logging
+
+### 3.1.6 - Prevention Techniques: Functional Access Control Testing
+
 ## 3.2 - Cryptographic Failure
+
+### 
 
 ## 3.3 - Injection
 
