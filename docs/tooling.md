@@ -18,7 +18,6 @@
 
 - [Pluralsight: Kubernetes Package Administration with Helm](./tooling/helm/kubernetes-package-administration-with-helm.md)
 
-
 ## HashiCorp Packer
 
 - [Pluralsight: Getting Started with HashiCorp Packer](./tooling/packer/getting-started-with-hashicorp-packer.md)
