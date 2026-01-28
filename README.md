@@ -9,6 +9,17 @@ Repository to house personal notes developed during various technology certifica
 - `github actions`
 - `python` (Utility Scripts)
 
+## Getting Started
+
+### Linux
+
+- Initialise a venv: `python3 -m venv .venv`
+- Activate it: `source .venv/bin/activate`
+- Install requirements: `pip install -r requirements.txt`
+- Deactivate when Done: `deactivate`
+
+- Deploy: `mkdocs serve`
+
 ## Table of Contents
 
 ### Ansible

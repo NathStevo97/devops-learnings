@@ -6,3 +6,4 @@ repos:
     hooks:
     -   id: markdownlint
         args: [ --disable=MD013, --disable=MD002,--disable=MD032,--disable=MD005,--disable=MD009 ]
+        language_version: "20.11.0"
