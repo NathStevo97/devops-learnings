@@ -61,7 +61,7 @@
   - Applications displaying sensitive details e.g. tokens in URLs
   - Pemitting weak passwords
   - Misconfiguring token usage e.g JWT (JSON Web Tokens)
-- 
+-
 
 ### 2.2.3 - Excessive Data Exposure
 
