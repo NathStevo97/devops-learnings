@@ -1,5 +1,6 @@
 site_name: DevOps Learning and Research
 use_directory_urls: false
+dev_addr: 127.0.0.1:8001
 theme:
   name: material
 
