@@ -51,4 +51,40 @@
 
 ## 5.3 - Technical Measures
 
+- 4 components outlined for implementing technical controls to ensure a level of security appropriate to the risk.
+
+1. Anonymize and Encrypt Personal Data
+   1. Data in transit and at rest should be considered - utilse TLS and AES for the respective data states
+2. Confidentiality, Integrity, and Availability (CIA)
+   1. Resilience of processing systems and services
+   2. Can review [CIS Controls](https://cisecurity.org/controls)
+   3. Controls considered for the likes of inventory, vulnerability assessment, malware, data protection, monitoring, and training
+3. Ability to Restore
+   1. In the event of physical or technical incident, availability and access must be restored
+   2. Processes must be tested and results logged regularly
+4. Regular Testing and Evaluation
+   1. Ensure the security of the processing measures
+
 ## 5.4 - Notification
+
+- In the event of a breach, relevant parties must be notified
+- If a breach is likely to result in a risk to the rights and freedoms of natural persons, you must notify, including the supervisory authority.
+- Personal data breach:
+  - A breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of, or access to, personal data transmitted, stored, or otherwise processed.
+- Once a processor becomes aware of a breach, notification is expected within a particular timeframe, including if the processor is separate to the controller.
+- Supervisory authorities must be made aware within 72 hours of the data processor noticing and verifying a breach
+  - The only exception is when the breach is unlikely to result in a risk to subject's rights
+  - If no notification is received within 72 hours, an explanation is required.
+- When notifying, the following requirements or information must be outlined:
+  - Nature of the breach: Number of people involved and what records
+  - DPO contact information
+  - Likely consequences
+  - Proposed mitigation efforts
+- The information can be provided in phases
+- Regarding data subjects:
+  - Notification must be sent without undue delay
+  - Clear and plain language must be used, as well as outlining
+    - The nature of the breach
+    - DPO contact information
+    - Likely consequences
+    - Proposed mitigations
