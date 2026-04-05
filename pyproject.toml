@@ -1,0 +1,15 @@
+[project]
+name = "devops-learnings"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "mkdocs>=1.6.1",
+    "mkdocs-exclude>=1.0.2",
+    "mkdocs-glightbox>=0.5.2",
+    "mkdocs-literate-nav>=0.6.3",
+    "mkdocs-material>=9.7.6",
+    "mkdocs-section-index>=0.3.11",
+    "pymdown-extensions>=10.21.2",
+]

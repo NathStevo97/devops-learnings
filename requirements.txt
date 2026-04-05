@@ -1,7 +1,0 @@
-mkdocs
-mkdocs-material
-pymdown-extensions
-mkdocs-glightbox
-mkdocs-section-index
-mkdocs-literate-nav
-mkdocs-exclude
