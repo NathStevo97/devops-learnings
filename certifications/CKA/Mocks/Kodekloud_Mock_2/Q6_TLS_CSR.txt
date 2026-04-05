@@ -1,0 +1,25 @@
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: john-developer
+spec:
+  groups:
+  - system:authenticated
+  request: <INSERT .CSR FILE ONCE ENCODED IN BASE 64 FORMAT>
+  signerName: kubernetes.io/kube-apiserver-client
+  usages:
+  - client auth
+EOF
+
+kubectl get csr
+
+kubectl certificate approve john-developer
+
+#ENSURE NAMESPACE CREATED
+kubectl create role developer --verb=create --verb=get --verb=list --verb=update --verb=delete --resource=pods --namespace=development
+
+kubectl create rolebinding developer-binding-john --role=developer --user=john --namespace=development
+
+#check capabilities
+kubectl auth can-i <verb> pods --namespace=development --as=john

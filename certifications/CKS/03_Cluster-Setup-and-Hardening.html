@@ -1,0 +1,7701 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="02_The-Kubernetes-Attack-Surface.html">
+      
+      
+        <link rel="next" href="04_System-Hardening.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>3.0 - Cluster Setup and Hardening - DevOps Learning and Research</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#30-cluster-setup-and-hardening" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="DevOps Learning and Research" class="md-header__button md-logo" aria-label="DevOps Learning and Research" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Learning and Research
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.0 - Cluster Setup and Hardening
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="DevOps Learning and Research" class="md-nav__button md-logo" aria-label="DevOps Learning and Research" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DevOps Learning and Research
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../certifications.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certifications
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../aws-cloud-practitioner.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certified Cloud Practitioner
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS Certified Cloud Practitioner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/01_Fundamental-Cloud-Concepts/Fundamental%20Cloud%20Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Fundamental Cloud Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/02_Understanding-Core-AWS-Services/Understanding%20AWS%20Core%20Services.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Understanding Core AWS Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/03_Introduction-to-Security-and-Architecture/Introduction%20to%20Security%20and%20architecture%20on%20AWS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Introduction to Security and Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../aws-cloud-practitioner/course-notes/04_Exam_Preparation/Exam%20Prep%201.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Exam Preparation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/04_Exam_Preparation/Exam%20Prep%202.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 - Exam Prep 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKAD.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Application Developer (CKAD)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Application Developer (CKAD)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/02_Core-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/03_Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/04_Multi-Container-Pods.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Multi-Container Pods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/05_Observability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/06_Pod-Design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Pod Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/07_Services-and-Networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Services and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/08_Persistent-Volumes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Persistent Volumes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/09_2021-Updates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - 2021 Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_10">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKAD/13_Mock-Exams/01_Mock-Exam-1.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Mock Exams
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_10" id="__nav_3_2_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    13 Mock Exams
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/13_Mock-Exams/02_Mock-Exam-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 - Mock Exam 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/13_Mock-Exams/03_Mock-Exam-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 - Mock Exam 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKA.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Administrator (CKA)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Administrator (CKA)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/01_Course-Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/02_Core-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/03_Scheduling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/04_Logging-and-Monitoring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Logging and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/05_Application-Lifecycle-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Application Lifecycle Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/06_Cluster-Maintenance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Cluster Maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/07_Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/08_Storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/09_Networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/10_Design-a-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.0 - Design a Kubernetes Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/11_Install-Kubernetes-the-kubeadm-way.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.0 - Install Kubernetes the Kubeadm Way
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/13_Troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.0 - Troubleshooting Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/14_JSONpath-introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 - Introduction to JSONPath
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_14">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_14" id="__nav_3_3_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mocks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/Mocks/KodeKloud_Mock_3/02_Mock-Exam-Notes-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KodeKloud Mock 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/Mocks/Kodekloud_Mock_2/01_Mock-Exam-Notes-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kodekloud Mock 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKS.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Security Specialist (CKS)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Security Specialist (CKS)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_The-Kubernetes-Attack-Surface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Understanding the Kubernetes Attack Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Cluster Setup and Hardening
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03_Cluster-Setup-and-Hardening.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Cluster Setup and Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#31-cis-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 - CIS Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 - CIS Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lab-run-cis-benchmark-assessment-tool-on-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab - Run CIS Benchmark Assessment Tool on Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-cis-benchmarks-in-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 - CIS Benchmarks in Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-kube-bench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 - Kube-Bench
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 - Kube-Bench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lab-kube-bench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab - Kube-Bench
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-kubernetes-security-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 - Kubernetes Security Primitives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 - Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 - Service Accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-tls-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7- TLS Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-tls-in-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 - TLS In Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-tls-in-kubernets-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 - TLS In Kubernets: Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-view-certtificate-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 - View Certtificate Details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311-certificates-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 - Certificates API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312-kubeconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.12 - KubeConfig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#313-api-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.13 - API Groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#314-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.14 - Authorization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#315-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.15 - RBAC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#316-cluster-roles-and-rolebindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.16 - Cluster Roles and Rolebindings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#317-kubelet-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.17 - Kubelet Security
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_System-Hardening.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - System Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_Minimize-Microservice-Vulnerabilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Minimize Microservice Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_Supply-Chain-Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Supply Chain Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_Monitoring-Logging-and-Runtime-Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Monitoring, Logging, and Runtime Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="Mocks/01_Mock-Exam-1.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mocks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4_8" id="__nav_3_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Mocks/02_Mock-Exam-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 - Mock Exam 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Mocks/03_Mock-Exam-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 - Mock Exam 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../green-software-for-practitioners.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Green Software for Practitioners
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Green Software for Practitioners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/02_Carbon-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Carbon Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/03_Energy-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Energy Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/04_Carbon-Awareness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Carbon Awareness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/05_Hardware-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Hardware Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/06_Measurement.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/07_Climate-Commitments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Climate Commitments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../terraform-associate.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HashiCorp Certified - Terraform Associate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HashiCorp Certified - Terraform Associate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/03_Deploying-Infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Deploying Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/04_Working-With-Configurations.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Working with Configurations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/05_Provisioners.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Provisioners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/06_Modules-and-Workspaces.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Modules and Workspaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/07_Remote-State-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Remote State Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/08_Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/09_Terraform-Cloud-and-Enterprise.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Terraform Cloud and Enterprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-associate/11_Exam-Preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vault-associate.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HashiCorp Certified - Vault Associate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HashiCorp Certified - Vault Associate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/02_Getting-Started-with-Vault.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Getting Started with Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/03_Authentication-and-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Authentication and Authorization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/04_Vault-Tokens.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Vault Tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/05_Vault-Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Vault Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/06_Exam-Preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware Application Modernization Professional
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VMware Application Modernization Professional
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware Tanzu Kubernetes Grid
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VMware Tanzu Kubernetes Grid
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/00_Introduction/01_Course-Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/01_VMWare-Tanzu-Portfolio.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 VMware Tanzu Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_2" id="__nav_3_8_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 VMware Tanzu Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/02_Tanzu-Kubernetes-Grid-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 - Tanzu Kubernetes Grid Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/03_The-Tanzu-CLI.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 - The Tanzu CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/04_%20Lab-1-Setting-Up-a-Bootstrap-Machine.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 - Lab 1 - Setting Up a Bootstrap Machine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/05_Cluster-API.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 - Cluster API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/06_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/01_Overview-of-Management-Clusters.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_3" id="__nav_3_8_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Management Clusters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/02_Lab-2-TKG_Container-Images.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 - Lab 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/03_Lab-3-Create-VM-Templates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 - Lab 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/04_NSX-Advanced-Load-Balancer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 - NSX Advanced Load Balancer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/05_Cluster-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 - Cluster Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/06_Creating-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 - Creating Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/07_Lab-4-Create-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 - Lab 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/08_Managing-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 - Managing Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/09_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/01_Building-Custom-Cluster-Machine-Images.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Tanzu Kubernetes Clusters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_4" id="__nav_3_8_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 Tanzu Kubernetes Clusters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/02_Deploying-Tanzu-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 - Deploying Tanzu Kubernetes Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/03_Lab-5-Create-Tanzu-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 - Lab 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/04_Managing-Tanzu-Kubernetes-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 - Managing Tanzu Kubernetes Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/05_Lab-6-Scale-Tanzu-Kubernetes-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 - Lab 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/06_Lab-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 - Lab 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/07_Managing-Cluster-Lifecycles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 - Managing Cluster Lifecycles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/08_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/01_Tanzu-Kubernetes-Grid-Extensions.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Tanzu Kubernetes Grid Extensions
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_5" id="__nav_3_8_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Tanzu Kubernetes Grid Extensions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/02_Lab-8_Working-with-Extensions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.02 - Lab 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/03_Lab-9_Deploy-Cert-Manager.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.03 - Lab 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/04_Image-Registry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.04 - Image Registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/05_Logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.05 - Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/06_Lab-10_Deploy-Fluentbit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.06 - Lab 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/07_Ingress.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.07 - Ingress
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/08_Lab-11_Deploy-Contour.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.08 - Lab 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/09_Service-Discovery.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.09 - Service Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/10_Lab-12_Deploy-External-DNS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 - Lab 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/11_Cluster-Monitoring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11 - Cluster Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/12_Lab-13_Deploy-Prometheus-and-Grafana.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12 - Lab 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/13_Lab-14_Accessing-the-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.13 - Lab 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/14_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.14 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/01_Tanzu-Kubernetes-Grid-Logs.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_6" id="__nav_3_8_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/02_Using-Crash-Diagnostics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 - Using Crash Diagnostics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/03_Lab-15_Using-Crash-Diagnostics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 - Lab 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/04_Troubleshooting-Commands.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 - Troubleshooting Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/05_Lab-16_Connection-to-Nodes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 - Lab 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/06_Run-Image-Builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 - Lab 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/07_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tooling
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tooling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/helm/kubernetes-package-administration-with-helm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2">
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/ansible-for-beginners.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible for Beginners
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible for Beginners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/02_Configuration-and-Basic-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Configuration and Basic Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/03_Ansible-Inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Ansible Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/04_Ansible-Variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Ansible Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/05_Ansible-Playbooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Ansible Playbooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/06_Ansible-Modules.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Ansible Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/07_Ansible-Handlers-Roles-and-Collections.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Ansible Handlers: Roles and Collections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/08_Advanced-Topics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/09_Appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/ansible-advanced.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/02_Web_Application.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Web Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/03_File_Separation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - File Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/04_Roles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/05_Asynchronous_Actions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Asynchronous Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/06_Strategy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/07_Error_Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/08_Templating_Jinja2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Templating - Jinja2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/09_Lookup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Lookups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/10_Vault.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.0 - Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/11_Dynamic_Inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.0 - Dynamic Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/12_Custom_Modules/01_Custom_Modules.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 Custom Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/13_Plugins/01_Plugins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/14_Assignment/01_Assignment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 Assignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/automating-ec2-deployment.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating EC2 Deployments
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Automating EC2 Deployments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/01_introduction-to-cloud-automation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - About AWS EC2 and Ansible Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/02_planning-and-preparing-for-automation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Planning and Preparing for Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/03_deploying-into-ec2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Deploying into EC2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/04_generating-an-inventory-of-ec2-instances.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Generating an Inventory of EC2 Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/05_building-custom-amis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Building Custom AMIs with Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/06_cleanup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Cleaning up Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/packer/getting-started-with-hashicorp-packer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/argocd/getting-started-with-argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ArgoCD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/grafana-loki/using-centralized-logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grafana Loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#31-cis-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 - CIS Benchmarks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 - CIS Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lab-run-cis-benchmark-assessment-tool-on-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab - Run CIS Benchmark Assessment Tool on Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-cis-benchmarks-in-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 - CIS Benchmarks in Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-kube-bench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 - Kube-Bench
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 - Kube-Bench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lab-kube-bench" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab - Kube-Bench
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-kubernetes-security-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 - Kubernetes Security Primitives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 - Authentication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 - Service Accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-tls-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7- TLS Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-tls-in-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 - TLS In Kubernetes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-tls-in-kubernets-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 - TLS In Kubernets: Certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-view-certtificate-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 - View Certtificate Details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#311-certificates-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 - Certificates API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#312-kubeconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.12 - KubeConfig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#313-api-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.13 - API Groups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#314-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.14 - Authorization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#315-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.15 - RBAC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#316-cluster-roles-and-rolebindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.16 - Cluster Roles and Rolebindings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#317-kubelet-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.17 - Kubelet Security
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="30-cluster-setup-and-hardening">3.0 - Cluster Setup and Hardening<a class="headerlink" href="#30-cluster-setup-and-hardening" title="Permanent link">¶</a></h1>
+<h2 id="31-cis-benchmarks">3.1 - CIS Benchmarks<a class="headerlink" href="#31-cis-benchmarks" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Security Benchmark</strong> - Predefined standards and best practices that should be
+implemented for server (or other appropriate device) security.</li>
+<li><strong>Areas of consideration include:</strong></li>
+<li>Physical device configuration and limitation - USB ports that aren't expected to be used frequently / at all must have their access managed appropriately</li>
+<li>Access configurations - What user accounts need to be configured? Can users log in as root?<ul>
+<li>Recommended that root is disabled by default and admins use sudo where required</li>
+<li>Leads into only certain users having access to sudo, amongst other configurations</li>
+</ul>
+</li>
+<li>Network configuration<ul>
+<li>Firewall &amp; IP Tables</li>
+<li>Port Security</li>
+</ul>
+</li>
+<li>Service configuration<ul>
+<li>Ensure only certain services are allowed</li>
+</ul>
+</li>
+<li>Filesystem Configuration<ul>
+<li>All required permissions are set to the desired files</li>
+</ul>
+</li>
+<li>Auditing<ul>
+<li>Make sure all changes are logged for auditing purposes</li>
+</ul>
+</li>
+<li>Logging</li>
+<li><strong>CIS</strong> - Centre for Internet Security</li>
+<li>Commonly used tool to check if security best practices are implemented</li>
+<li>Available on Linux, Windows, Cloud platforms, Mobile and many other platforms as well as Kubernetes.</li>
+<li>Can be downloaded from <code>https://www.cisecurity.org/cis-benchmarks/</code></li>
+<li>Guides come with predefined instructions for your associated platform(s) best practices and how to implement them (commands included)</li>
+<li>CIS Provide tools such as the CIS-CAT tool to automate the assessment of best
+practices implementation</li>
+<li>If any best practices aren't implemented, they are logged in the resultant HTML output report in a detailed manner.</li>
+</ul>
+<h3 id="lab-run-cis-benchmark-assessment-tool-on-ubuntu">Lab - Run CIS Benchmark Assessment Tool on Ubuntu<a class="headerlink" href="#lab-run-cis-benchmark-assessment-tool-on-ubuntu" title="Permanent link">¶</a></h3>
+<p>Q1: What is full form of CIS?
+A: Center for Internet Security</p>
+<p>Q2: What is not a function of CIS?
+A: Monitor Global Internet Traffic</p>
+<p>Q3: We have installed the CIS-CAT Pro Assessor tool called Assessor-CLI, under /root.</p>
+<p>Please run the assessment with the Assessor-CLI.sh script inside Assessor-CLI directory and generate a report called index.html in the output directory <code>/var/www/html/</code>.</p>
+<p>Once done, the report can be viewed using the Assessment Report tab located above the terminal.</p>
+<p>Run the test in interactive mode and use below settings:</p>
+<p>Benchmarks/Data-Stream Collections: : CIS Ubuntu Linux 18.04 LTS Benchmark
+v2.1.0
+Profile : Level 1 - Server</p>
+<p>A:</p>
+<ul>
+<li>Run Assessor-CLI.sh</li>
+<li>Note options:</li>
+<li><code>-i (interactive)</code></li>
+<li><code>--rd &lt;reports dir&gt;</code></li>
+<li><code>--rp &lt;report prefix&gt;</code></li>
+<li>Run Assessor-CLI.sh with options for <code>/var/www/html/</code> and
+index.html respectively (and <code>--nts</code>) and <code>-i</code></li>
+<li><strong>Note:</strong> Run options in order that they are displayed</li>
+<li>Apply conditions for benchmark setting and profiles</li>
+</ul>
+<p><strong>Q4:</strong> How many tests failed for 1.1.1 Disable unused filesystems?</p>
+<p><strong>A:</strong> View report via tab and note - 6</p>
+<p><strong>Q5:</strong> How many tests passed for 2.1 Special Purpose Services?</p>
+<p><strong>A:</strong> ditto - 18</p>
+<p><strong>Q6:</strong> What parameters should we set to fix the failed test 5.3.10 Ensure SSH
+root login is disabled?</p>
+<p><strong>A:</strong> PermitRootLogin no</p>
+<p><strong>Q7:</strong> Fix the failed test - 1.7.6 Ensure local login warning banner is
+configured properly?</p>
+<p><strong>A:</strong> Find in CIS Report, run the associated command</p>
+<p><strong>Q8:</strong> Fix the failed test - 4.2.1.1 Ensure rsyslog is installed</p>
+<p><strong>A:</strong> Find area in report and run command</p>
+<p><strong>Q9:</strong> Fix the failed test - 5.1.2 Ensure permissions on /etc/crontab
+are configured</p>
+<p><strong>A:</strong> Find area in report and run command</p>
+<p><strong>Q10:</strong> In the previous questions we fixed the below 3 failed tests. Now run
+CIS-CAT tool test again and verify that all the below tests pass.</p>
+<ul>
+<li>1.7.6 Ensure local login warning banner is configured properly</li>
+<li>4.2.1.1 Ensure rsyslog is installed</li>
+<li>5.1.2 Ensure permissions on /etc/crontab are configured</li>
+</ul>
+<p>Run below command again to confirm that tests are passing now
+<code>sh ./Assessor-CLI.sh -i -rd /var/www/html/ -nts -rp index</code></p>
+<p>Use below setting while running tests
+Benchmarks/Data-Stream Collections: : CIS Ubuntu Linux 18.04 LTS
+Benchmark v2.1.0
+Profile : Level 1 - Server
+A: Copy command and check associated tests pass - revisit questions
+if failed</p>
+<h2 id="32-cis-benchmarks-in-kubernetes">3.2 - CIS Benchmarks in Kubernetes<a class="headerlink" href="#32-cis-benchmarks-in-kubernetes" title="Permanent link">¶</a></h2>
+<ul>
+<li>Kubernetes CIS benchmarks are readily available for download</li>
+<li>At the time of writing, the best practices are defined for versions 1.16-1.18</li>
+<li>The benchmarks are specifically aimed at system and application administrators, security specialists, auditors, help desk and platform deployment personnel who plan to develop, deploy, assess or secure solutions involving Kubernetes.</li>
+<li>Covers various security practices for master/control plane and worker nodes, such as permissions and configurations for API Server pods.</li>
+<li>Additional details provided to check recommended settings are in place and how to
+rectify any errors.</li>
+<li>CIS CAT Lite only supports certain OS's and benchmarks like Windows, Ubuntu,
+Kubernetes not included.</li>
+<li>CIS-CAT Pro includes Kubernetes support.</li>
+<li>CIS Benchmarks Link: <a href="https://www.cisecurity.org/cis-benchmarks/#kubernetes">https://www.cisecurity.org/cis-benchmarks/#kubernetes</a></li>
+<li>CIS CAT Tool:
+<a href="https://www.cisecurity.org/cybersecurity-tools/cis-cat-pro/cis-benchmarks-supported-by-cis-cat-pro/">https://www.cisecurity.org/cybersecurity-tools/cis-cat-pro/cis-benchmarks-supported-by-cis-cat-pro/</a></li>
+</ul>
+<h2 id="33-kube-bench">3.3 - Kube-Bench<a class="headerlink" href="#33-kube-bench" title="Permanent link">¶</a></h2>
+<ul>
+<li>An open-source tool from Acqua security that can automate assessment of
+Kubernetes deployments in line with best practices</li>
+<li>The assessment occurs against the CIS Benchmarks</li>
+<li>To get started can either:</li>
+<li>Deploy via Docker Container</li>
+<li>Deploy as a pod in Kubernetes</li>
+<li>Install the associated binaries</li>
+<li>Compile from source</li>
+</ul>
+<h3 id="lab-kube-bench">Lab - Kube-Bench<a class="headerlink" href="#lab-kube-bench" title="Permanent link">¶</a></h3>
+<p>Q1: Kube-Bench is a product of which company?
+A: Aqua Security</p>
+<p>Q2: What should Kube-Bench be used for?
+A: To check whether Kubernetes is deployed in line with best practices for security</p>
+<p>Q3: Install Kube Bench in /root - version 0.4.0, Download file:
+kube-bench_0.4.0_linux_amd64.tar.gz</p>
+<p>A:
+<code>curl -L https://github.com/aquasecurity/kube-bench/releases/download/v0.4.0/kube-bench_0.4.0_l
+inux_amd64.tar.gz -o kube-bench_0.4.0_linux_amd64.tar.gz
+tar -xvf kube-bench_0.4.0_linux_amd64.tar.gz</code></p>
+<p>Q4: Run a kube-bench test now and see the results Run below command to run kube bench</p>
+<p><code>./kube-bench --config-dir &lt;pwd&gt;/cfg --config &lt;pwd&gt;/cfg/config.yaml</code></p>
+<p>A: Follow instructions</p>
+<p>Q5: How many tests passed forEtcd Node Configuration?</p>
+<p>A: Review and report back - Section 2 and 7 pass</p>
+<p>Q6: How many tests failed for Control Plane Configuration?
+A: Review and report back - Section 3 and 0 failed</p>
+<p>Q7: Fix this failed test 1.3.1 Ensure that the <code>--terminated-pod-gc-threshold</code>
+argument is set as appropriate
+Follow exact commands given in Remediation of given test</p>
+<p>A: Find section in output and follow command</p>
+<p>Edit the Controller Manager pod specification file
+<code>/etc/kubernetes/manifests/kube-controller-manager.yaml</code>
+on the master node and set the <code>--terminated-pod-gc-threshold</code> to an appropriate
+threshold,
+for example:
+<code>--terminated-pod-gc-threshold=10</code></p>
+<p>Q8: Fix this failed test 1.3.6 Ensure that the RotateKubeletServerCertificate
+argument is set to true
+Follow exact commands given in Remediation of given test</p>
+<p>A: Find section and follow instructions: Edit the Controller Manager pod specification file <code>/etc/kubernetes/manifests/kube-controller-manager.yaml</code>
+on the master node and set the <code>--feature-gates</code> parameter to include
+RotateKubeletServerCertificate=true.</p>
+<p><code>--feature-gates=RotateKubeletServerCertificate=true</code></p>
+<p>Q9: Fix this failed test 1.4.1: Ensure that the --profiling argument is set
+to false</p>
+<p>A: Follow exact commands given in Remediation of given test</p>
+<p>Q10:
+Run the kube-bench test again and ensure that all tests for the fixes we
+implemented now pass</p>
+<ul>
+<li>1.3.1 Ensure that the --terminated-pod-gc-threshold argument
+is set as appropriate</li>
+<li>1.3.6 Ensure that the RotateKubeletServerCertificate
+argument is set to true</li>
+<li>1.4.1: Ensure that the --profiling argument is set to false</li>
+</ul>
+<p>A: Run command - ./kube-bench --config-dir <code>pwd</code>/cfg --config <code>pwd</code>/cfg/config.yaml</p>
+<p>And verify</p>
+<h2 id="34-kubernetes-security-primitives">3.4 - Kubernetes Security Primitives<a class="headerlink" href="#34-kubernetes-security-primitives" title="Permanent link">¶</a></h2>
+<ul>
+<li>Securing the hosts can be handled via methods such as disabling password
+authentication and allowing only SSH Key authentication</li>
+<li>Controlling access to API Server is the top priority - All Kubernetes operations
+depend upon this.</li>
+<li>Need to define:</li>
+<li>Who can access the API Server?</li>
+<li>What can they do with the API Server?</li>
+<li>For access, could use any of:</li>
+<li>Files</li>
+<li>Certificates</li>
+<li>External authentication providers</li>
+<li>Service Accounts</li>
+<li>For Authorization:</li>
+<li>RBAC - Role-based access control</li>
+<li>ABAC - Attribute-based access control</li>
+<li>Node Authorization</li>
+<li>By default, all pods within a cluster can access one another</li>
+<li>This can be restricted via the introduction of network policies</li>
+</ul>
+<h2 id="35-authentication">3.5 - Authentication<a class="headerlink" href="#35-authentication" title="Permanent link">¶</a></h2>
+<ul>
+<li>In general, there are two types of accounts available:</li>
+<li>User accounts - Admins, developers, etc</li>
+<li>Service accounts - machine-based accounts</li>
+<li>All access to Kubernetes is handled via the Kube-API Server</li>
+<li>Authentication Mechanisms Available in Kubernetes for the API Server:</li>
+<li>Static Password File - Not recommended</li>
+<li>Static Token File</li>
+<li>Certificates</li>
+<li>Identity Services (3rd Party services e.g. LDAT)</li>
+<li>Suppose you have the user details in a file, you can pass this file as an option for authentication in the kube-apiserver.service file adding the flag: <code>--basic-auth-file=user-details.csv</code></li>
+</ul>
+<pre><code class="language-shell">ExecStart=/usr/local/bin/kube-apiserver \\
+  --advertise-address=${INTERNAL_IP} \\
+  --allow-privileged=true \\
+  --apiserver-count=3 \\
+  --authorization-mode=Node,RBAC \\
+  --bind-address=0.0.0.0 \\
+  --enable-swagger-ui=true \\
+  --etcd-servers=https://127.0.0.1:2379 \\
+  --event-ttl=1h \\
+  --runtime-configmap=api/all \\
+  --service-cluster-ip-range=10.32.0.0/24 \\
+  --service-node-port-range=30000-32767 \\
+  --v=2
+</code></pre>
+<ul>
+<li>Restart the service / the server after the change is done.</li>
+<li>If the cluster is setup using Kubeadm, edit the yaml file and add the same options in a similar manner to:</li>
+</ul>
+<pre><code class="language-yaml">## /etc/kubernetes/manifests/kube-apiserver.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --authorization-mode=Node,RBAC
+    - --advertise-address=172.17.0.107
+    - --allow-privileged=true
+    - --enabke-admission-plugins=NodeRestriction
+    - --enable-bootstrap-token-auth=true
+    image: k8s.gcr.io/kube-apiserver-amd64:v1.11.3
+    name: kube-apiserver
+</code></pre>
+<ul>
+<li>Kubernetes will automatically update the apiserver once the change is made</li>
+<li>To authenticate using the credentials specified in this manner run a curl command similar to: <code>curl -v -k https://master-node-ip:6443/api/v1/pods -u "username:password"</code></li>
+<li>Could also have a token file, specify using --token-auth-file=user-details.csv in the
+api server .service or yaml file as appropriate</li>
+<li><strong>Note:</strong> the token can also be included in the curl request via --header
+<code>"Authorization: Bearer &lt;TOKEN&gt;"</code></li>
+<li><strong>Note:</strong> These are not recommended authentication mechanisms</li>
+<li>Should consider a volume mount when providing the auth file in a kubeadm
+setup</li>
+<li>Setup RBAC for new users</li>
+<li>Could also setup RBAC using YAML files to create rolebindings for each user</li>
+</ul>
+<h2 id="36-service-accounts">3.6 - Service Accounts<a class="headerlink" href="#36-service-accounts" title="Permanent link">¶</a></h2>
+<ul>
+<li>In Kubernetes there are two types of accounts:</li>
+<li>User - Used by Humans e.g. Administrators</li>
+<li>Service - Used by application services for various tasks e.g. Monitoring, CI/CD
+tools like Jenkins</li>
+<li>For an application to query the Kubernetes API, a service account is required</li>
+<li>Creation: <code>kubectl create serviceaccount &lt;serviceaccount name&gt;</code></li>
+<li>View: kubectl get serviceaccount</li>
+<li>For detailed information: <code>kubectl describe serviceaccount &lt;name&gt;</code></li>
+<li>When a serviceaccount is created, an authentication token is automatically created
+for it and stored in a Kubernetes secret.</li>
+<li>Serviceaccount token used for application authentication to the kube-api server</li>
+<li>The secret can be viewed via <code>kubectl describe secret &lt;secret name&gt;</code></li>
+<li>This token can then be passed as an Authorization Bearer token when
+making a curl request.</li>
+<li>E.g <code>curl https://&lt;IP-ADDRESS&gt; -insecure --header "Authorization: Bearer &lt;token&gt;"</code></li>
+<li>For 3rd party applications hosted on your own Kubernetes cluster:</li>
+<li>The exporting of the service account token is not required</li>
+<li>The service account secret can be mounted as a volume inside the pod hosting the application</li>
+<li>For every namespace, a default service account and its token are automatically assigned to a pod unless specified otherwise.</li>
+<li>Secret mounted as a volume for each pod - secret location viewable via <code>kubectl describe pod</code></li>
+<li><strong>Note:</strong> The default service account can only run basic Kubernetes API queries</li>
+<li>To specify a particular service account for a pod, add in the pod's spec field: <code>serviceAccount: name</code></li>
+<li>You must delete and recreate a pod if you wish to edit the service account on a pod.</li>
+</ul>
+<h2 id="37-tls-basics">3.7- TLS Basics<a class="headerlink" href="#37-tls-basics" title="Permanent link">¶</a></h2>
+<ul>
+<li>Certificates used to guarantee trust between two parties communicating with one
+another, leading to a secure and encrypted connection</li>
+<li>Data involved in transmission should be encrypted via the use of encryption keys</li>
+<li><strong>Encryption Methods:</strong></li>
+<li><strong>Symmetric:</strong> Same key used for encryption and decryption - insecure</li>
+<li><strong>Asymmetric encryption:</strong> A public and private key are used for encryption and decryption specifically<ul>
+<li>Private key can only be used for decryption</li>
+</ul>
+</li>
+<li>SSH Assymetric Encryption: run ssh-keygen</li>
+<li>Creates <code>id_rsa</code> and <code>id_rsa.pub</code> (public and private keys)</li>
+<li>Servers can be secured by adding public key to authorized key file at <code>~/.ssh/authorized_keys</code></li>
+<li>Access to the server is then allowed via <code>ssh -i id_rsa username@server</code></li>
+<li>For the same user, can copy the public key to any other servers</li>
+<li>To securely transfer the key to the server, use asymmetric encryption</li>
+<li>Can generate keys with: <code>openssl genrsa -out &lt;name&gt;.key 1024</code></li>
+<li>Can create public variant with: <code>openssl rsa -in &lt;name&gt;.key -pubout &gt; &lt;name&gt;.pem</code></li>
+<li>When the user first accesses the web server via HTTPS, they get the public key from the server</li>
+<li>Hacker also gets a copy of it</li>
+<li>The users browser encrypts the servers symmetric key using their public key - securing the symmetric public key from the server</li>
+<li>Hacker gets copy</li>
+<li>Server uses private key to decrypt user's private key - allows user to access server securely</li>
+<li>Hackers don't have access to the servers private key, and therefore cannot encrypt it.</li>
+<li>For the hacker to gain access, they would have to create a similar website and route
+your requests</li>
+<li>As part of this, the hacker would have to create a certificate</li>
+<li>In general, certificates must be signed by a proper authority</li>
+<li>Any fake certificates made by hackers must be self-signed<ul>
+<li>Web browsers have built-in functionalities to verify if a connection is secure i.e. is certified</li>
+</ul>
+</li>
+<li>To ensure certificates are valid, the Certificate Authorities (CAs) must sign and validate the certs.</li>
+<li><strong>Examples: Symanteg, Digicert, GlobalSign</strong></li>
+<li>To validate a certificate, one must first generate a certificate signing request to be
+sent to the CA: <code>openssl req -new -key &lt;name&gt;.key -out &lt;name&gt;.csr -subj "/C=US/ST=CA/O=MyOrg, Inc./CN=mybank.com"</code></li>
+<li>CAs have a variety of techniques to ensure that the domain is owned by you</li>
+<li>How does the browser know what certificates are valid? E.g. if the certificate was assigned by a fake CA?</li>
+<li>CAs have a series of public and private keys built in to the web browser(s) used by the user,</li>
+<li>The public key is then used for communication between the browser and CA to validate the certificates</li>
+<li><strong>Note:</strong> The above are described for public domain websites</li>
+<li>For private websites, such as internal organisation websites, private CAs are generally required and can be installed on all instances of the web browser within the organisation. Organizations previously outlined generally offer enterprise
+solutions.</li>
+<li><strong>Note:</strong></li>
+<li>Certificates with a public key are named with the extension .crt or .pem, with the prefix of whatever it is being communicated with</li>
+<li>Private keys will have the extension of either .key or -key.pem</li>
+<li><strong>Summary:</strong></li>
+<li>Public key used for encryption only</li>
+<li>Private keys used for decryption only</li>
+</ul>
+<h2 id="38-tls-in-kubernetes">3.8 - TLS In Kubernetes<a class="headerlink" href="#38-tls-in-kubernetes" title="Permanent link">¶</a></h2>
+<ul>
+<li>In the previous section, three types of certificates were discussed, for the purposes of discussing them in Kubernetes, how they're referred to will change:</li>
+<li>Public and Private Keys used to secure connectivity between the likes of web browsers and servers: Server Certificates</li>
+<li>Certificate Authority Public and Private Keys for signing and validating certificates: Root Certificates</li>
+<li>Servers can request a client to verify themselves: Client Certificates</li>
+<li><strong>Note:</strong></li>
+<li>Certificates with a public key are named with the extension .crt or .pem, with the prefix of whatever it is being communicated with</li>
+<li>Private keys will have the extension of either <code>.key</code> or <code>-key.pem</code></li>
+<li>All communication within a Kubernetes cluster must be secure, be it:</li>
+<li>Pods interacting with one another</li>
+<li>Services with their associated clients</li>
+<li>Accessing the APIServer using the Kubectl utility</li>
+<li>Secure TLS communication is a requirement</li>
+<li>Therefore, it is required that the following are implemented:</li>
+<li>Server Certificates for Servers</li>
+<li>Client Certificates for Clients</li>
+<li><strong>Server Components:</strong></li>
+<li>Kube-API Server<ul>
+<li>Exposes an HTTPS service that other components and external users use to manage the Kubernetes cluster</li>
+<li>Requires certificates and a key pair to be generated</li>
+<li><code>apiserver.crt</code> (public) and <code>apiserver.key</code> (private key)</li>
+</ul>
+</li>
+<li>ETCD Server:<ul>
+<li>Stores all information about the cluster</li>
+<li>Requires a certificate and key pair</li>
+<li><code>etcdserver.crt</code> and <code>apiserver.key</code></li>
+</ul>
+</li>
+<li>Kubelet server:<ul>
+<li>Exposes HTTPS API Endpoint that the Kube-API Server uses to interact with the worker nodes</li>
+<li><code>kubelet.crt</code> and <code>kubelet.key</code></li>
+</ul>
+</li>
+<li><strong>Client Certificates:</strong></li>
+<li>All of the following require access to the Kube-API Server</li>
+<li>Admin user<ul>
+<li>Requires certificate and key pair to authenticate to the API Server</li>
+<li><code>admin.crt</code> and <code>admin.key</code></li>
+</ul>
+</li>
+<li>Scheduler<ul>
+<li>Client to the Kube-APIServer for object scheduling pods etc</li>
+<li><code>scheduler.crt</code> and <code>scheduler.key</code></li>
+</ul>
+</li>
+<li>Kube-Controller:<ul>
+<li><code>controller-manager.crt</code> and <code>controller-manager.key</code></li>
+</ul>
+</li>
+<li>Kube-Proxy<ul>
+<li>kube-proxy.crt and kube-proxy.key</li>
+</ul>
+</li>
+<li><strong>Note:</strong> The API Server is the only component that communicates with the ETCD server, which views the API server as a client</li>
+<li>The API server can use the same keys as before for serving itself as a service OR a new pair of certificates can be generated specifically for ETCD Server Authentication</li>
+<li>The same principle applies for the API Server connecting to the Kubelet service</li>
+<li>To verify the certificates, a CA is required. Kubernetes requires at least 1 CA to be present; which has its own certificate and key (<code>ca.crt</code> and <code>ca.key</code>)</li>
+</ul>
+<h2 id="39-tls-in-kubernets-certificates">3.9 - TLS In Kubernets: Certificates<a class="headerlink" href="#39-tls-in-kubernets-certificates" title="Permanent link">¶</a></h2>
+<ul>
+<li>Tools available for certificate creation include:</li>
+<li>EASYRSA</li>
+<li>OPENSSL - The more common one (used in this example)</li>
+<li>CFSSL</li>
+<li><strong>Steps - Server Certificates: CA Example</strong></li>
+<li>Generate the private key: openssl genrsa -out ca.key 2048<ul>
+<li>The number "2048" in the above command indicates the size of the private key. You can choose one of five sizes: 512, 758, 1024, 1536 or 2048 (these numbers represent bits).
+The larger sizes offer greater security, but this is offset by a penalty in CPU performance. We recommend the best practice size of 1024.</li>
+</ul>
+</li>
+<li>Generate certificate signing request: <code>openssl req -new -key ca.key -subj "/CN=KUBERNETES-CA" -out ca.csr</code></li>
+<li><strong>Note:</strong> <code>"/CN=&lt;NAME&gt;"</code> outlines the name of the component the certificate is for.</li>
+<li>Sign certificates, this is self-signed via the ca key pair: <code>openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt</code><ul>
+<li>Results in CA having a private key and root certificate file</li>
+</ul>
+</li>
+<li><strong>Client Certificate Generation Steps: Admin User Example</strong></li>
+<li>Generate the keys: <code>openssl genrsa -out admin.key 2048</code></li>
+<li>Generate certificate signing request: <code>openssl req -new -key admin.key -subj "/CN=kube-admin" -out admin.csr</code></li>
+<li>Sign the certificate: <code>openssl x509 -req -in admin.csr -CAkey ca.key -out admin.crt</code><ul>
+<li>The CA key pair is used for signing the new certificate, thus proving its validity</li>
+</ul>
+</li>
+<li>When the admin user attempts to authenticate to the cluster, it is the certificate <strong>admin.crt</strong> that will be used for this</li>
+<li>For <strong>non-admin users</strong>, need to add group details to the certificate signing request to signal this.</li>
+<li>Group called SYSTEM:MASTERS has administrative privileges, to specify this for an admin user, the signing request should be like: <code>openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr</code></li>
+<li>The same procedure would be followed for client certificates for the <strong>Scheduler</strong>, <strong>Controller-Manager</strong> and <strong>Kubelet</strong> - prefix with SYSTEM</li>
+<li>The certificates generated could be applied in different scenarios:</li>
+<li>Could use the certificate instead of usernames and password in a REST API call to the api server (via a <strong>curl</strong> request)<ul>
+<li>To do so, specify the key and the certs involved as options following the request e.g. <code>--key admin.key</code>, <code>--cert admin.crt</code>, and <code>--cacert ca.crt</code></li>
+</ul>
+</li>
+<li>Alternatively, all the parameters could be moved to the kube config yaml file, which acts as a centralized location to reference the certificates</li>
+<li><strong>Note:</strong> For each of the Kubernetes components to verify one another, they need a copy of the CA's root certificate</li>
+<li><strong>Server Certificate Example: ETCD Server</strong></li>
+<li>As ETCD server can be deployed as a cluster across multiple servers, you must secure communication between the cluster members, or peers as they're commonly known as</li>
+<li>Once generated, specify the certificates when starting the server</li>
+<li>In the etcd yaml file, there are options to specify the peer certificates</li>
+</ul>
+<pre><code class="language-yaml">- etcd
+  - --advertise-client-urls=https://127.0.0.1:2379
+  - --key-file=/path-to-certs/etcdserver.key
+  - --cert-file=/path-to-certs/etcdserver.crt
+  - --client-cert-auth=true
+  - --data-dir=/var/lib/etcd
+  - --initial-advertise-peer-urls=https://127.0.0.1:2380
+  - --initial-cluster=master=https://127.0.0.1:2380
+  - --listen-client-urls=https://127.0.0.1:2379
+  - --listen-peer-urls=https://127.0.0.1:2380
+  - --name=master
+  - --peer-cert-file=/path-to-certs/etcdpeer1.crt
+  - --peer-client-cert-auth=true
+  - --peer-key-file=/etc/kubernetes/pki/etc/peer.key
+  - --peer-truster-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+  - --snapshot-count=10000
+  - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+</code></pre>
+<ul>
+<li><strong>Server Certificate Example: API Server</strong></li>
+<li>Same procedure involved, but due to the nature of the API Server, with essentially every operation running via it, and it being referred to by multiple names, requires a lot more information included; requiring an <strong>openssl config file</strong><ul>
+<li>Using the config file, specify DNS and IP aliases for the components</li>
+<li>Acceptable names:<ul>
+<li><code>kubernetes</code></li>
+<li><code>kubernetes.default</code></li>
+<li><code>kubernetes.default.svc</code></li>
+<li><code>kubernetes.default.svc.cluster.local</code></li>
+</ul>
+</li>
+<li>When generating the signing request, you can reference the config file by appending: <code>--config &lt;config name&gt;.cnf</code> to the signing request command</li>
+<li>From this, the certificate can be signed using the ca.crt and ca.key file as normal</li>
+</ul>
+</li>
+<li>
+<p>The location of all certificates are passed into the exec start file for the api server or the service's configuration file, specifically:</p>
+<p><code>shell
+ExecStart=/usr/local/bin/kube-apiserver \\
+  --advertise-address=${INTERNAL_IP} \\
+  --allow-privileged=true \\
+  --apiserver-count=3 \\
+  --authorization-mode=Node,RBAC \\
+  --bind-address=0.0.0.0 \\
+  --enable-swagger-ui=true \\
+  --etcd-cafile=/var/lib/kubernetes/ca.pem \\
+  --etcd-certfile=/var/lib/kubernetes/apiserver-etcd-client.crt \\
+  --etcd-keyfile=/var/lib/kubernetes/apiserver-etcd-client.key \\
+  --etcd-servers=https://127.0.0.1:2379 \\
+  --event-ttl=1h \\
+  --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \\
+  --kubelet-client-certificate=/var/lib/kubernetes/apiserver-kubelet-client.crt  \\
+  --kubelet-client-key=/var/lib/kubernetes/apiserver-kubelet-client.key
+  --kubelet-https=true \\
+  --runtime-configmap=api/all \\
+  --service-account-key-file=/var/lib/kubernetes/service-account.pem
+  --service-cluster-ip-range=10.32.0.0/24 \\
+  --service-node-port-range=30000-32767 \\
+  --client-ca-file=/var/lib/kubernetes/ca.pem \\
+  --tls-cert-file=/var/lib/kubernetes/apiserver.crt \\
+  --tls-private-key-file=/var/lib/kubernetes/apiserver.key \\
+  --v=2</code></p>
+<ul>
+<li><strong>etcd:</strong>:</li>
+<li>CA File = <code>--etcd-cafile</code></li>
+<li>ETCD Certificate = <code>--etchd-certfile</code></li>
+<li>ETCD Private Key File = <code>--etcd-keyfile</code></li>
+<li><strong>kubelet:</strong></li>
+<li>CA File = <code>--kubelet-certificate-authority</code></li>
+<li>Client Certificate = <code>--kubelet-client-certificate</code></li>
+<li>Client Key = <code>--kubelet-client-key</code></li>
+<li>Client CA = <code>--client-ca-file</code></li>
+<li>API Server Cert and Private Key = <code>--tls-cert-file</code>, <code>--tls-private-key-file</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Kubelet Server:</strong></p>
+</li>
+<li>A HTTPS API server on each worker node to help manage the nodes</li>
+<li>Key-Certificate pair required for each worker node in the cluster</li>
+<li>Named after each node</li>
+<li>Must be referenced in the kubelet config file for each node, specifically:<ul>
+<li><strong>Client CA file</strong></li>
+<li><strong>TLS Certificate file</strong> (kubelet-node01.crt for example)</li>
+<li><strong>TLS Private Key File</strong> (kubelet-node01.key for example)</li>
+</ul>
+</li>
+<li>Client certificates used to authenticated to the Kube API Server<ul>
+<li>Naming convention should be <code>system:node:nodename</code></li>
+</ul>
+</li>
+<li>Nodes must also be added to <code>system:nodes</code> group for associated privileges</li>
+</ul>
+<h2 id="310-view-certtificate-details">3.10 - View Certtificate Details<a class="headerlink" href="#310-view-certtificate-details" title="Permanent link">¶</a></h2>
+<ul>
+<li>The generation of certificates depends on the cluster setup</li>
+<li>If setup manually, all certificates would have to be generated manually in a similar manner to that of the previous sections<ul>
+<li>Components deployed as native services in this manner</li>
+</ul>
+</li>
+<li>If setup using a tool such as kubeadm, this is all pre-generated<ul>
+<li>Components deployed as pods in this manner</li>
+</ul>
+</li>
+<li>For <strong>Kubeadm clusters:</strong></li>
+<li>Component found in <code>/etc/kubernetes/pki/</code> folder<ul>
+<li>Certificate file paths located within component's yaml files</li>
+<li>Example: <code>apiserver.crt</code></li>
+<li>Use <code>openssl x509 -in /path/to/.crt file -text -noout</code></li>
+</ul>
+</li>
+<li>Can check the certificate details such as name, alternate names, issuer and expiration dates</li>
+<li><strong>Note:</strong> Additional details available in the documentation for certificates</li>
+<li>Use <code>kubectl logs &lt;podname&gt;</code> on kubeadm if any issues are found with the components</li>
+<li>If <code>kubectl</code> is unavailable, use Docker to get the logs of the associated container:</li>
+<li>Run <code>docker ps - a</code> to identify the container ID</li>
+<li>View the logs via <code>docker logs &lt;container ID&gt;</code></li>
+<li>A sample health check spreadsheet can be found here:
+<a href="https://github.com/mmumshad/kubernetes-the-hard-way/tree/master/tools">https://github.com/mmumshad/kubernetes-the-hard-way/tree/master/tools</a></li>
+</ul>
+<h2 id="311-certificates-api">3.11 - Certificates API<a class="headerlink" href="#311-certificates-api" title="Permanent link">¶</a></h2>
+<ul>
+<li>All certificates have an expiration date, whenever the expiry happens, keys and
+certificates must be re-generated</li>
+<li>As discussed, the signing of the certificates is handled by the CA Server</li>
+<li>The CA server in reality is just a pair of key and certificate files generated</li>
+<li>Whoever has access to these files can sign any certificate for the Kubernetes
+environment, create as many users they want and set their permissions</li>
+<li>Based on the previous point, it goes without saying these files need to be protected</li>
+<li>Place the files on a fully secure server</li>
+<li>The server that securely hosts these files becomes the "CA Server"</li>
+<li>Any time you want to sign a certificate, it is the CA server that must be logged
+onto/communicated with</li>
+<li>For smaller clusters, it's common for the CA server to actually be the master node</li>
+<li>The same applies for a kubeadm cluster, which creates a CA pair of files and
+stores that on the master node</li>
+<li>As clusters grow in users, it becomes important to automate the signing of
+certificate requests and renewing expired certificates; this is handled via the
+Certificates API</li>
+<li>When a certificate needs signing, a Certificate Signing Request is sent to
+Kubernetes directly via an API call</li>
+<li>Instead of an admin logging onto the master node and manually signing the
+certificate, they create a Kubernetes API object called
+CertificateSigningRequest</li>
+<li>Once the API object is created, any requests like this can be seen by
+administrators across the cluster</li>
+<li>From here, the request can be reviewed and approved using kubectl, the
+resultant certificate can then be extracted and shared with the user</li>
+<li>Steps:</li>
+<li>User generates key: <code>openssl genrsa -out &lt;keyname&gt;.key 2048</code></li>
+<li>User generates certificate signing request and sends to administrator:
+<code>openssl req -new -key &lt;key&gt;.name -subk "/CN=name" -out name.csr</code></li>
+<li>Admin receives request and creates the API object using a manifest file,
+where the spec file includes the following:<ul>
+<li>Groups - To set the permissions for the user</li>
+<li>Usages - What is the user able to do with keys with this certificate to
+be signed?</li>
+<li>Request - The certificate signing request associated with the user,
+which must be encoded in base64 language first i.e. cat cert.crt |
+base64</li>
+<li>Admins across the cluster can view certificate requests via:
+<code>kubectl get csr</code></li>
+<li>If all's right with the csr, any admin can approve the request with:
+<code>kubectl certificate approve &lt;name&gt;</code></li>
+<li>You can view the CSR in a YAML form, like any Kubernetes object by
+appending -o yaml to the kubectl get command i.e.
+<code>kubectl get csr &lt;user&gt; -o yaml</code></li>
+</ul>
+</li>
+<li>Note: The certificate will still be in base64 code, so run: <code>echo "CODED CERTIFICATE" | base64 --decode</code></li>
+<li>Note: The controller manager is responsible for all operations associated with
+approval and management of CSR</li>
+<li>The controller manager's YAML file has options where you can specify the key and
+certificate to be used when signing certificate</li>
+<li><code>--cluster-signing-key-file</code></li>
+</ul>
+<pre><code class="language-yaml">spec:
+  containers:
+  - command:
+  - kube-controller-manager
+  - --address=127.0.0.1
+  - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+  - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+  - --controllers=*,bootstrapsigner,tokencleaner
+  - --kubeconfig=/etc/kubernetes/controller-manager.conf
+  - --leader-elect=true
+  - --root-ca-file=/etc/kubernetes/pki/ca.crt
+  - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
+  - --use-service-account-credentials=true
+</code></pre>
+<h2 id="312-kubeconfig">3.12 - KubeConfig<a class="headerlink" href="#312-kubeconfig" title="Permanent link">¶</a></h2>
+<ul>
+<li>Files containing information for different cluster configurations, such as:</li>
+<li><code>--server</code></li>
+<li><code>--client-key</code></li>
+<li><code>--client-certificate</code></li>
+<li><code>--certificate-authority</code></li>
+<li>The existence of this file removes the need to specify the option in the CLI</li>
+<li>File located at <code>$HOME/.kube/config</code></li>
+<li>KubeConfig Files contain 3 sections:</li>
+<li><strong>Clusters</strong> - Any cluster that the user has access to, local or cloud-based</li>
+<li><strong>Users</strong> - User accounts that have access to the clusters defined in the previous section, each with their own privileges</li>
+<li><strong>Contexts</strong> - A merging of clusters and users, they define which user account can access which cluster</li>
+<li>These config files do not involve creating new users, it's simply configuring what existing users, given their current privileges, can access what cluster</li>
+<li>This removes the need to specify the user certificates and server addresses in each kubectl command</li>
+<li><code>--server</code> spec listed under clusters</li>
+<li>User keys and certificates listed in Users section</li>
+<li>Context created to specify that the user "MyKubeAdmin" is the user that is used to access the cluster "MyKubeCluster"</li>
+<li><strong>Config file defined in YAML file</strong></li>
+<li>ApiVersion = v1</li>
+<li>Kind = Config</li>
+<li>Spec includes the three sections defined previously, all of which are arrays</li>
+<li>Under clusters: specify the cluster name, the certificate authority associated and the server address</li>
+<li>Under users, specify username and associated key(s) and certificate(s)</li>
+<li>Under contexts:<ul>
+<li>Name format: <code>username@clustername</code></li>
+<li>Under context specify cluster name and users</li>
+</ul>
+</li>
+<li>Repeat for all clusters and users associated</li>
+<li>The file is automatically read by the kubectl utility</li>
+<li>Use current-context field in the yaml file to set the current context</li>
+<li><strong>CLI Commands:</strong></li>
+<li>View current config file being used: <code>kubectl config view</code><ul>
+<li>Default file automatically used if not specified</li>
+<li>To view non-default config files, append: <code>--kubeconfig=/path/to/file</code></li>
+</ul>
+</li>
+<li>To update current context: <code>kubectl config use-context &lt;context-name&gt;</code></li>
+<li>Other commands available via <code>kubectl config -h</code></li>
+<li>Default namespaces for particular contexts can be added also under the context area in the Config file</li>
+<li><strong>Note:</strong> for certificates in the config file, use the full/absolute path to specify the location</li>
+<li>Alternatively use certificate-authority-data to list certificate in base64 format</li>
+</ul>
+<h2 id="313-api-groups">3.13 - API Groups<a class="headerlink" href="#313-api-groups" title="Permanent link">¶</a></h2>
+<ul>
+<li>API Server accessible at master node IP address at port 6443:
+<code>curl https://kube-master:6443/</code></li>
+<li>To get the version, append /version to a curl request to the above IP address</li>
+<li>To get a list of pods, append <code>/api/v1/pods</code></li>
+<li>Kubernetes' API is split into multiple groups depending on the group's purpose such as</li>
+<li><code>/api</code> - core functionalities e.g. pods, namespaces, secrets</li>
+<li><code>/version</code> - viewing the version of the cluster</li>
+<li><code>/metrics</code> - used for monitoring cluster health</li>
+<li><code>/logs</code> - for integration with 3rd-party logging applications</li>
+<li><code>/apis</code> - named functionalities added to kubernetes over time such as deployments, replicasets, extensions<ul>
+<li>Each group has a version, resources, and actions associated with them</li>
+</ul>
+</li>
+<li><code>/healthz</code> - used for monitoring cluster health</li>
+<li>Use <code>curl http://localhost:6443 -k</code> to view the api groups, then append the group and grep name to see the subgroups within</li>
+<li><strong>Note:</strong> Need to provide certificates to access the api server or use kubectl proxy to view</li>
+<li><strong>Note:</strong> kubectl proxy is not the same as kube proxy, the former is an http proxy service to access the api server. <br> Kube proxy is used to allow connectivity between kubernetes pods and services across nodes in a cluster.</li>
+</ul>
+<h2 id="314-authorization">3.14 - Authorization<a class="headerlink" href="#314-authorization" title="Permanent link">¶</a></h2>
+<ul>
+<li>When adding users, need to ensure their access levels are sufficiently configured, so they cannot make any unwanted changes to the cluster</li>
+<li>This applies to any physical users, like developers, or virtual users like applications e.g. Jenkins</li>
+<li>Additional measures must be taken when sharing clusters with organizations or teams, so that they are restricted to their specific namespaces</li>
+<li>Authorization mechanisms available are:</li>
+<li>Node-based</li>
+<li>Attribute-Based</li>
+<li>Rule-Based</li>
+<li>WebHook-based</li>
+<li><strong>Node-Based:</strong></li>
+<li>Requests to the kube-apiserver via users and the kubelet are handled  via the Node Authorizer</li>
+<li>Kubelets should be part of the system:nodes group i.e. <code>system:node:nodename</code></li>
+<li>Any requests coming from a user with the name system-node and is part of the system nodes group is authorized and granted access to the apiserver</li>
+<li><strong>ABAC - Attribute-Based:</strong></li>
+<li>For users wanting to access the cluster, you should create a policy in a JSON format to determine what privileges the user gets, such as namespace access, resource management and access, etc - this can then be passed to the API server for authorization</li>
+<li>Repeat for each users</li>
+<li>Each policy must be edited manually for changes to be made, the <strong>kube apiserver</strong> must be restarted to make the changes take effect</li>
+<li>Not generally used as difficult to manage</li>
+<li><strong>RBAC:</strong></li>
+<li>Instead of associating each user with a set of permissions, can create a role which outlines a particular set of permissions</li>
+<li>Assign users to the role</li>
+<li>If any changes are to be made, it is just the role configuration that needs to be changed, rather than restarting the entire api server again.</li>
+<li><strong>Webhook:</strong></li>
+<li>Use of third-party tools to help with authorization e.g. Open Policy Agent</li>
+<li>If any requests are made to say the APIserver, the third party can verify if the request is valid or not</li>
+<li><strong>Note:</strong> Additional authorization methods are available:</li>
+<li>AlwaysAllow - Allows all requests without checks</li>
+<li>AlwaysDeny - Denies all requests without checks</li>
+<li>Authorizations set by <code>--authorization</code> option in the apiserver's <code>.service</code> or <code>.yaml</code>
+file</li>
+<li>Can set modes for multiple-phase authorization, use <code>--authorization-mode</code> and list the authorization methods</li>
+<li>Authorization will be done in the order of listing in this option</li>
+</ul>
+<h2 id="315-rbac">3.15 - RBAC<a class="headerlink" href="#315-rbac" title="Permanent link">¶</a></h2>
+<ul>
+<li>To create a role, create a YAML file</li>
+<li><code>apiVersion: rbac.authorization.k8s.io/v1</code></li>
+<li>Spec replaced with rules</li>
+<li>Covers apiGroups, resources and verbs</li>
+<li>Multiple rules added by <code>- apiGroups</code> for each</li>
+<li>Create the role using <code>kubectl create -f</code></li>
+<li>To link the user to the role, need to create a Role Binding</li>
+<li>Under metadata:</li>
+<li><strong>Specify subjects</strong> - Users to be affected by the rolebinding, their associated apiGroup for authorization</li>
+<li><strong>RoleRef</strong> - The role to be linked to the subject</li>
+<li>To view roles: <code>kubectl get roles</code></li>
+<li>To view rolebindings: kubectl get rolebindings</li>
+<li>To get additional details: <code>kubectl describe role/rolebinding &lt;name&gt;</code></li>
+<li>To check access level: <code>kubectl auth can-i &lt;command/activity&gt;</code></li>
+<li>To check if a particular user can do an activity, append <code>--as &lt;username&gt;</code></li>
+<li>To check if an activity can be done via a user in a particular namespace, append <code>--namespace &lt;namespace&gt;</code></li>
+<li><strong>Note:</strong> Can restrict access to particular resources by adding <code>resourceNames: ["resource1", "resource2", ...]</code> to the role yaml file</li>
+</ul>
+<h2 id="316-cluster-roles-and-rolebindings">3.16 - Cluster Roles and Rolebindings<a class="headerlink" href="#316-cluster-roles-and-rolebindings" title="Permanent link">¶</a></h2>
+<ul>
+<li>Roles and role bindings are created for particular namespaces and control access to resources in that particular namespace</li>
+<li>By default, roles and role bindings are applied to the default namespace</li>
+<li>In general, resources such as pods, replicasets are namespaced</li>
+<li>Cluster-scoped resources are resources that cannot be associated to any particular namespace, such as:</li>
+<li>PersistentVolumes</li>
+<li>Nodes</li>
+<li>To switch view namespaced/cluster-scoped resources: <code>kubectl api-resources --namespaced=TRUE/FALSE</code></li>
+<li>To authorize users to cluster-scoped resources, use <strong>cluster-roles</strong> and <strong>cluster-rolebindings</strong></li>
+<li>Could be used to configure node management across a cluster, such as cluster or cluster storage administrator(s).</li>
+<li>Cluster roles and role bindings are configured in the exact same manner as roles and rolebindings; the only difference is the kind (ClusterRole and ClusterRoleBinding)</li>
+<li><strong>Note:</strong> Cluster roles and role bindings can be applied to namespaced resources, this will allow users to have access to particular resources for anywhere in the cluster.</li>
+<li>Many cluster roles are created via Kubernetes by default.</li>
+</ul>
+<h2 id="317-kubelet-security">3.17 - Kubelet Security<a class="headerlink" href="#317-kubelet-security" title="Permanent link">¶</a></h2>
+<ul>
+<li>Kubelet leads all the activities on a node to manage and maintain the node, carrying out actions such as:</li>
+<li>Loading or unloading containers based on the kube-schedulers demands</li>
+<li>Sending regular reports on worker node status to the api server</li>
+<li>Due to the importance of the kubelet, it's highly important to secure it and the communications between the kubernetes master node, api server, and worker nodes are secure.</li>
+<li>To refresh, the Kubelet, in worker nodes:</li>
+<li>Registers the node with the cluster</li>
+<li>Carries out instructions to run containers and container runtime</li>
+<li>Monitor node and pod status on a regular basis</li>
+<li>The kubelet can be installed as a binary file via a wget<ul>
+<li>Via kubeadm, it is automatically downloaded but not automatically deployed</li>
+</ul>
+</li>
+<li>The kubelet configuration file varies in appearance. Previously, it was viewable as a .service file:</li>
+</ul>
+<pre><code class="language-shell">ExecStart=/usr/local/bin/kubelet \\
+  --container-runtime=remote \\
+  --image-pull-progress-deadline=2m \\
+  --kubeconfig=/var/lib/kubelet/kubeconfig \\
+  --network-plugin=cni \\
+  --register-node=true \\
+  --v=2 \\
+  --cluster-domain=cluster.local \\
+  --file-check-frequency=0s \\
+  --healthz-port=10248 \\
+  --cluster-dns=10.96.0.10 \\
+  --http-check-frequency=0s \\
+  --sync-frequency=0s
+</code></pre>
+<ul>
+<li>Since kubernetes v1.10, options from --cluster-domain were moved to
+kubelet-config.yaml for ease of configuration and management</li>
+<li>In the kubelet.service file, the kubelet-config file path is passed via the --config flag.</li>
+<li>Note: any flags at CLI-level will override the .service file's value</li>
+<li>The kubeadm tool does not download or install the kubelet, but it can help manage
+the kubelet configuration</li>
+<li>Suppose there is a large number of worker nodes, rather than manually
+creating the config file in each of the nodes, the kubeadm tool can help
+automatically configure the kublet-config file associated with those nodes
+when joining them to the master node.</li>
+<li>Once kubelet is configured, there a number of frequent commands that can be
+used, including:</li>
+<li>View the kubelet options:<ul>
+<li><code>ps -aux | grep kubelet</code>
+Views the associated options for the kubelet</li>
+<li><code>cat /var/lib/kublet/config.yaml</code>
+View the config yaml for the kubelet</li>
+</ul>
+</li>
+<li>Securing the kubelet, at a high level, involves taking actions to ensure the kubelet
+responds only to the kube-apiserver's requests</li>
+<li>Kubelet serves on 2 ports:</li>
+<li>10250 - Serves API allowing full access</li>
+<li>10255 - Serves an API that allows unauthenticated read-only access</li>
+<li>By default, kubelet allows anonymous access to the api, e.g.</li>
+<li>Running <code>curl -sk htpps://localhost:10250/pods/</code> reproduces a list of all the
+pods</li>
+<li>Running <code>curl -sk https://localhost:10250/logs/syslogs</code> returns the system
+logs of the node that kubelet is running on</li>
+<li>For the service at 10255 - this provides access read-only access to metrics to any
+unauthorized clients</li>
+<li>The above two services pose significant security risks, as anyone knowing the host IP
+address for the node can identify information regarding the node and cause
+damage if desired based on the various API calls available.</li>
+<li>Securing the kubelet boils down to authentication and authorization</li>
+<li>Authentication determines whether the user can access the kubelet API</li>
+<li>Authorization determines whether the user has sufficient permissions to
+perform a particular task with the API</li>
+<li><strong>Authentication:</strong></li>
+<li>By default, the kubelet permits all requests without authentication</li>
+<li>Any requests are labelled to be from user groups "anonymous" part of an
+unauthenticated group.</li>
+<li>This can be disabled in either the kubelet.service file or the yaml file by
+setting <code>--anonymous-auth</code> to false, as shown below:</li>
+</ul>
+<pre><code class="language-shell">## kubelet.service
+
+ExecStart=/usr/local/bin/kubelet \\
+    ...
+    --anonymous-auth=false \\
+    ...
+</code></pre>
+<pre><code class="language-yaml">## kubelet-config.yaml
+
+apiVersion: kubelet.config.k8s.io/v1beta1
+kinds: KubeletConfiguration
+authentication:
+  anonymous:
+    enabled: false
+</code></pre>
+<ul>
+<li>Following the disabling of anonymous access, a recommended authentication
+method needs to be enabled. Generally there are two to choose from:</li>
+<li>Certificates (X509)</li>
+<li>API Bearer Tokens</li>
+<li>Following the creation of a pair of certificates, the ca file should be provided via the following option in the kubelet service file: <code>--client-ca-file=/path/to/ca.crt</code> <br> Or to the <code>kubelet-config.yaml</code> file as shown below:</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: kubelet.config.k8s.io/v1beta1
+kinds: KubeletConfiguration
+authentication:
+  x509:
+    clientCAFile: /path/to/ca.crt
+</code></pre>
+<ul>
+<li>Now that the certificate is configured, the client certificates must be supplied in any
+curl commands made to the API i.e.: <code>curl -sk htpps://localhost:10250/pods/ -key kubelet-key.pem -cert kubelet-cert.pem</code></li>
+<li>As far as the kubelet is concerned, the kube-apiserver is a client, therefore the apiserver should also have the kubelet client certificate and key configured in the apiserver's service configuration, as shown below:</li>
+</ul>
+<pre><code class="language-shell">## /etc/systemd/system/kube-apiserver.service
+
+[Service]
+ExecStart=/usr/local/bin/kube-apiserver \\
+  ...
+  --kubelet-client-certificate=/path/to/kubelet-cert.pem \\
+  --kubelet-client-key=/path/to/kubelet-key.pem \\
+</code></pre>
+<ul>
+<li><strong>Remember:</strong> the kube-apiserver is itself a server and therefore has its own set of certificates, all other kubernetes certificates will also require sufficient configurations</li>
+<li><strong>Note:</strong> Kubeadm also uses this approach when trying to secure the kubelet</li>
+<li><strong>Note:</strong> If neither of the above authentication mechanisms explicitly reject a request, the default behaviour of kubelet is to allow the request under the username
+<code>system:anonymous</code> and group <code>system:unauthenticated</code></li>
+<li><strong>Authorization:</strong></li>
+<li>Once the user has access to the kubelet, what can they do with it?</li>
+<li>
+<p>By default, the mode AlwaysAllow is set, allowing all access to the API</p>
+<p>```shell</p>
+<h1 id="kubeletservice">kubelet.service<a class="headerlink" href="#kubeletservice" title="Permanent link">¶</a></h1>
+<p>ExecStart=/usr/local/bin/kubelet \
+    ...
+    --authorization-mode=AlwaysAllow \
+    ...
+```</p>
+<p><code>yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kinds: KubeletConfiguration
+authorization:
+mode: AlwaysAllow</code></p>
+</li>
+<li>
+<p>To change / rectify this, the authorization mode can be set to Webhook - the kubelet makes a call to the API server to determine if the request can be granted or not.</p>
+</li>
+<li>Considering the metrics service running on 10255/metrics:</li>
+<li>By default, this runs due to the kubelet config or service file having the <code>--read-only-port</code> set to 10255</li>
+<li>If set to 0, the service is disabled and users cannot access it</li>
+<li><strong>Summary:</strong></li>
+<li>By default, the kubelet allows anonymous authentication</li>
+<li>To prevent this, you can set the <code>anonymous</code> flag to false - this can be done
+either in the <code>kubelet.service</code> or <code>kubelet-config.yaml</code> files</li>
+<li>Kubelet supports two authentication methods:<ul>
+<li>Certification-based authentication</li>
+<li>API Bearer Tokens</li>
+</ul>
+</li>
+<li>By default, the authorization mode is set to "always allow" - this can be prevented by changing the mode to webhook to authorize via webhook calls to the kube-api server</li>
+<li>By default, the readonly port is set to 10255, allowing unauthorized access to
+critical kubernetes metrics, this can be disabled by setting the <code>--read-only-port</code> to 0.</li>
+</ul>
+<h2 id="318-kubectl-proxy-and-port-forward">3.18 - Kubectl Proxy and Port-Forward<a class="headerlink" href="#318-kubectl-proxy-and-port-forward" title="Permanent link">¶</a></h2>
+<ul>
+<li>In the CKA Course, it was learned that the kubectl tool can be used to interact with the Kubernetes API server</li>
+<li>No API authentication required as it was applied in the kube config file</li>
+<li>Kubectl can be found anywhere e.g. master node, a personal laptop (with a cluster
+in a VM)</li>
+<li>No matter where the cluster is, so long as the kubeconfig is appropriately
+configured with the security credentials, the kubectl tool can be used to manage it.</li>
+<li>Note: the api server could also be accessed via a curl command to the IP address
+and port 6443</li>
+<li>If done via this method, would also need to supply the certificate and key files, such that the curl command would be similar to: <br> <code>curl http://&lt;kube-api-server-ip&gt;:6443 -k --key admin.key --cert admin.crt --cacert car.crt</code></li>
+<li>Alternatively, one can start a proxy client using kubectl
+Kubectl proxy -&gt; starts to serve on <code>localhost:8001</code></li>
+<li>Launches a proxy service and uses the credentials from the config file to access the API server</li>
+<li>Proxy only runs on laptop and is only accessible from this device</li>
+<li>By default, accepts traffic from the loopback address localhost -&gt; not accessible from outside of the laptop.</li>
+<li>Can use kubectl proxy to make ANY request to the API server and services running within it.</li>
+<li>Consider an nginx pod exposed as a service only accessible within the cluster (if
+clusterIP service):</li>
+<li>Use kubectl proxy as part of a curl command: <code>curl http://localhost:8001/api/v1/namespaces/default/services/nginx/proxy/</code></li>
+<li>Allows access to remote clusters as if they were running locally</li>
+<li>Alternative: Port-Forward</li>
+<li>Takes a resource (pod, deployment, etc) as an argument and specifies a port on the host that you would like traffic to be forwarded to (and the service port)</li>
+<li>Example: <code>kubectl port-forward service/nginx 28080:80</code></li>
+<li>The service can then be accessed via curl <a href="http://localhost:28080/">http://localhost:28080/</a></li>
+<li>Allows remote access to any cluster service you have access to.</li>
+</ul>
+<h2 id="319-kubernetes-dashboard">3.19 - Kubernetes Dashboard<a class="headerlink" href="#319-kubernetes-dashboard" title="Permanent link">¶</a></h2>
+<ul>
+<li>A kubernetes sub-project used for a variety of functions including:</li>
+<li>Get a graphical representation of your cluster</li>
+<li>Monitor resource performance</li>
+<li>Provision resources</li>
+<li>View and manage secrets or not easily viewable resources.</li>
+<li>Due to these functionalities, it's important to ensure that the dashboard is secured appropriately.</li>
+<li>In earlier releases, access control was limited - led to many dashboard cyberattacks e.g. Tesla and Cryptocurrency mining.</li>
+<li>Deployment:</li>
+<li>Can deploy by applying the recommended configuration from <code>https//&lt;path-to-kubernetes-dashboard&gt;/recommended.yaml</code></li>
+<li><strong>Deploys:</strong><ul>
+<li><strong>Namespace</strong> - kubernetes-dashboard</li>
+<li><strong>Service</strong> - kubernetes-dashboard</li>
+<li><strong>Secrets</strong> - Certificates associated with the dashboard</li>
+</ul>
+</li>
+<li><strong>Note:</strong> The service is not set to LoadBalancer by default, instead ClusterIP - this is in line with best practices so it is only accessible within the cluster VMs.</li>
+<li><strong>Accessing the Dashboard:</strong></li>
+<li>Would typically want to access from the users laptop / device separate to the
+cluster.</li>
+<li>Access will require the kubectl utility and kubeconfig file, as well as kube
+proxy.</li>
+<li>Run <code>kubectl proxy</code> - proxies all the requests to the api server on the cluster to the machine running the proxy<ul>
+<li>Can then access the dashboard via <code>localhost:8001/&lt;URL to Dashboard&gt;</code> e.g.: <code>https://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/htpps:kubernetes-dashboard:/proxy</code></li>
+</ul>
+</li>
+<li>Accessing the dashboard via a proxy is not applicable for teams requesting access to the dashboard.<ul>
+<li>Allowing access requires additional configuration to ensure only users of sufficient permissions have access - this is due to the ClusterIP service type.</li>
+<li><strong>Possible solution:</strong> set service type to LoadBalancer - not recommended as would make the dashboard public.</li>
+<li><strong>Possible solution:</strong> set service type to NodePort</li>
+<li>This allows the dashboard to be accessible via the ports on the node, more advised than the previous suggestion assuming a sufficiently secure network.</li>
+<li>Possible solution: Configure an Authentication Proxy e.g. OAuth2</li>
+<li>Out of scope for the course, but a highly recommended option.</li>
+<li>If users authenticate appropriately, traffic routed to Dashboard.</li>
+</ul>
+</li>
+</ul>
+<h2 id="320-securing-the-kubernetes-dashboard">3.20 - Securing the Kubernetes Dashboard<a class="headerlink" href="#320-securing-the-kubernetes-dashboard" title="Permanent link">¶</a></h2>
+<ul>
+<li>Various authentication methods available:</li>
+<li><strong>Token:</strong><ul>
+<li>Requires user creation with sufficient permissions via RBAC</li>
+<li>Kubernetes dashboard documentation provides instructions for this, but this is particularly geared towards cluster admins only.</li>
+<li>In general, requires creation of user service accounts, roles and role bindings.</li>
+<li>Once created, the token can be found by viewing the secret created relating to the service account.</li>
+</ul>
+</li>
+<li><strong>Kubeconfig:</strong><ul>
+<li>Requires passing of appropriate kubeconfig file that has the sufficient credentials to authenticate.</li>
+</ul>
+</li>
+</ul>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/</a></li>
+<li><a href="https://redlock.io/blog/cryptojacking-tesla">https://redlock.io/blog/cryptojacking-tesla</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/">https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/</a></li>
+<li><a href="https://github.com/kubernetes/dashboardhttps://www.youtube.com/watch?v=od8TnIvuADg">https://github.com/kubernetes/dashboardhttps://www.youtube.com/watch?v=od8TnIvuADg</a></li>
+<li><a href="https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca">https://blog.heptio.com/on-securing-the-kubernetes-dashboard-16b09b1b7aca</a></li>
+<li><a href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md">https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md</a></li>
+</ul>
+<h2 id="321-verify-platform-binaries-pre-deployment">3.21 - Verify Platform Binaries Pre-Deployment<a class="headerlink" href="#321-verify-platform-binaries-pre-deployment" title="Permanent link">¶</a></h2>
+<ul>
+<li>Kubernetes platform binaries are available via the Kubernetes Github repo's release</li>
+<li>As part of security best practices, it's important to ensure said binaries are safe for use</li>
+<li>This can be done by comparing the binary checksum with the checksum
+listed on the website.</li>
+<li>The reason for this check needing to occur is due to the possibility of the download being intercepted by attackers.</li>
+<li>Even the smallest of changes can cause a complete change to the hash</li>
+<li>Binaries downloaded by curl command i.e. <code>curl &lt;url&gt; -L -o &lt;filename&gt;</code></li>
+<li>Checksum can be viewed by using the shasum utility (Mac): <code>shasum -a 512 &lt;filename&gt;</code> or <code>sha512sum &lt;filename&gt;</code> (Linux)</li>
+<li>Checksum can then be compared against the release page checksum</li>
+<li><strong>Reference Links:</strong></li>
+<li><a href="https://kubernetes.io/docs/setup/release/notes">https://kubernetes.io/docs/setup/release/notes</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG</a></li>
+</ul>
+<h2 id="322-kubernetes-software-versions">3.22 - Kubernetes Software Versions<a class="headerlink" href="#322-kubernetes-software-versions" title="Permanent link">¶</a></h2>
+<ul>
+<li>API Versions</li>
+<li>When installing a Kubernetes cluster, a particular version of Kubernetes is
+installed</li>
+<li>Viewable via Kubectl get nodes</li>
+<li>Kubernetes versions are done via <code>&lt;Major&gt;.&lt;Minor&gt;.&lt;Patches&gt;</code></li>
+<li>This is the standard software release pattern.</li>
+<li>Alpha and Beta versions used to test and integrate features into main stable
+releases.</li>
+<li>View Kubernetes GitHub repo's release page for details.</li>
+<li>Packages contain all the required components of the same version.</li>
+<li>
+<p>For components like CoreDNS and ETCD, details on supported versions are
+provided as they are separate projects.</p>
+</li>
+<li>
+<p><strong>Reference Links</strong></p>
+</li>
+<li><a href="https://github.com/kubernetes/kubernetes/releases">https://github.com/kubernetes/kubernetes/releases</a></li>
+<li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md</a></li>
+<li><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md</a></li>
+<li><a href="https://blog.risingstack.com/the-history-of-kubernetes/">https://blog.risingstack.com/the-history-of-kubernetes/</a></li>
+<li><a href="https://kubernetes.io/docs/setup/version-skew-policy">https://kubernetes.io/docs/setup/version-skew-policy</a></li>
+</ul>
+<h2 id="323-cluster-upgrade-process">3.23 - Cluster Upgrade Process<a class="headerlink" href="#323-cluster-upgrade-process" title="Permanent link">¶</a></h2>
+<ul>
+<li>The kubernetes components don't all have to be at the same versions</li>
+<li>No component should be at a version higher than the kube-api server</li>
+<li>If Kube-API Server is version X (a minor release), then the following ranges apply for the other components for support level:<ul>
+<li><strong>Controller manager:</strong> X-1</li>
+<li><strong>Kube-Scheduler:</strong> X-1</li>
+<li><strong>Kubelet:</strong> X-2</li>
+<li><strong>Kube-Proxy:</strong> X-2</li>
+<li><strong>Kubectl:</strong> X-1 - X+1</li>
+</ul>
+</li>
+<li>At any point, Kubernetes only supports the 3 most recent minor releases e.g. 1.19 - 1.17</li>
+<li>It's better to <strong>upgrade iteratively</strong> over minor releases e.g. 1.17 - 1.18 and so on</li>
+<li>Upgrade process = <strong>Cluster-Dependent</strong></li>
+<li>If on a cloud provider, built-in functionality available</li>
+<li>If on kubeadm/manually created cluster, must use commands:</li>
+<li><code>kubeadm upgrade plan</code></li>
+<li><code>kubeadm upgrade apply</code></li>
+<li>Cluster upgrades involve two steps:</li>
+<li><strong>Upgrade the master node</strong><ul>
+<li>All management components go down temporarily during the processes</li>
+<li>Doesn't impact the current node workloads (only if you try to do anything with them)</li>
+</ul>
+</li>
+<li><strong>Upgrade the worker nodes</strong><ul>
+<li>Can be done all at once - Results in downtime</li>
+<li>Can be done iteratively - Minimal downtime by draining nodes as they get upgraded one after another</li>
+<li>Could also add new nodes with the most recent software versions</li>
+<li>Proves especially inconvenient when on a cloud provider</li>
+</ul>
+</li>
+<li><strong>Upgrading via Kubeadm:</strong></li>
+<li><code>kubeadm upgrade plan</code><ul>
+<li>Lists latest versions available</li>
+<li>Components that must be upgraded manually</li>
+<li>Command to upgrade kubeadm</li>
+</ul>
+</li>
+<li><strong>Note:</strong> kubeadm itself must be upgraded first: <code>apt-get upgrade -y kubeadm=major.minor.patch_min-patch_max</code></li>
+<li>Check upgrade success based on CLI output and kubectl get nodes</li>
+<li>If Kubelet is running on Master node, this must be upgraded next the master node and restart the service:</li>
+<li><code>apt-get upgrade -y kubelet=1.12.0-00</code></li>
+<li><code>systemctl restart kubelet</code></li>
+<li>Upgrading the worker nodes:</li>
+<li>Use the drain command to stop and transfer the current workloads to other nodes: <code>kubectl drain &lt;node&gt;</code>, then upgrade the following for each node (ssh into each one):<ul>
+<li><strong>Kubeadm</strong> - <code>apt-get upgrade -y kubeadm=major.minor.patch_min-patch_max</code></li>
+<li><strong>Kubelet</strong> - <code>apt-get upgrade -y kubelet=major.minor.patch_min-patch_max</code></li>
+<li><strong>Node config:</strong> - <code>kubeadm upgrade node config --kubelet-version major.minor.patch</code></li>
+</ul>
+</li>
+<li><strong>Restart the service:</strong> <code>systemctl restart kubelet</code></li>
+<li>Make sure to uncordon each node after each upgrade! <code>kubectl uncordon &lt;node&gt;</code></li>
+<li>Instructions Available Here: <a href="https://kubernetes.io/docs/tasks/administer-cluster/cluster-upgrade/">Upgrade A Cluster | Kubernetes</a></li>
+</ul>
+<h2 id="324-network-policies">3.24 - Network Policies<a class="headerlink" href="#324-network-policies" title="Permanent link">¶</a></h2>
+<h3 id="traffic-example">Traffic Example<a class="headerlink" href="#traffic-example" title="Permanent link">¶</a></h3>
+<ul>
+<li>Suppose we have the following setup of servers:</li>
+<li>Web</li>
+<li>API</li>
+<li>Database</li>
+<li>Network traffic will be flowing through each of these servers across particular ports, for example:</li>
+<li>Web user requests and receives content from the web server on port 80 for HTTP</li>
+<li>Web server makes a request to the API over port 5000</li>
+<li>
+<p>API requests for information from the database over port 3306 (e.g. if MySQL)</p>
+</li>
+<li>
+<p>2 Types of Network Traffic in this setup:</p>
+</li>
+<li><strong>Ingress:</strong> Traffic to a resource</li>
+<li>
+<p><strong>Egress:</strong> Traffic sent out from a resource</p>
+</li>
+<li>
+<p>For the setup above, we could control traffic by allowing ONLY the following traffic to and from each resource across particular ports:</p>
+</li>
+<li>Web Server:<ul>
+<li>Ingress: 80 (HTTP)</li>
+<li>Egress: 5000 (API port)</li>
+</ul>
+</li>
+<li>API Server:<ul>
+<li>Ingress: 5000</li>
+<li>Egress: 3306 (MySQL Database Port)</li>
+</ul>
+</li>
+<li>
+<p>Database Server:</p>
+<ul>
+<li>Ingress: 3306</li>
+</ul>
+</li>
+<li>
+<p>Considering this from a Kubernetes perspective:</p>
+</li>
+<li>Each node, pod and service within the cluster has its own IP address</li>
+<li>When working with networks in Kubernetes, it's expected that the pods should be able to communicate with one another, regardless of the olution to the project<ul>
+<li>No additional configuration required</li>
+</ul>
+</li>
+<li>By default, Kubernetes has an "All-Allow" rule, allowing communication between any pod in the cluster.</li>
+<li>This isn't best practice, particularly if working with resources that store very sensitive information e.g. databases.</li>
+<li>To restrict the traffic, one can implement a network policy.</li>
+</ul>
+<hr>
+<ul>
+<li>A network policy is a Kubernetes object allowing only certain methods of network traffic to and from resources. An example follows:</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+</code></pre>
+<ul>
+<li>
+<p>The policy can then be created via <code>kubectl create -f ....</code></p>
+</li>
+<li>
+<p>Network policies are enforced and supported by the network solution implemented on the cluster.</p>
+</li>
+<li>Solutions that support network policies include:</li>
+<li>kube-router</li>
+<li>calico</li>
+<li>romana</li>
+<li>
+<p>weave-net</p>
+</li>
+<li>
+<p>Flannel doesn't support Network Policies, they can still be created, but will not be enforced.</p>
+</li>
+<li>
+<p>Selectors available:</p>
+</li>
+<li>podSelector</li>
+<li>namespaceSelector</li>
+<li>ipBlock</li>
+</ul>
+<h2 id="324-ingress">3.24 - Ingress<a class="headerlink" href="#324-ingress" title="Permanent link">¶</a></h2>
+<ul>
+<li>To understand the importance of Ingress, consider the following example:</li>
+<li>Suppose you build an application into a Docker image and deploy it as a pod via Kubernetes.</li>
+<li>Due to the application's nature, set up a MySQL database and deploy a clusterIP service -&gt; allows app-database communications.</li>
+<li>To expose the app or external access, one needs to create a NodePort service.</li>
+<li>App can then be accessed via the Node's IP and the port defined.</li>
+<li>To access the URL, users need to go to <code>http://&lt;node ip&gt;:&lt;node port&gt;</code></li>
+<li>
+<p>This is fine for small non-production apps, it should be noted that as demand increases, the replicaSet and service configuration can be altered to support load balancing.</p>
+</li>
+<li>
+<p>For production, users wouldn't want to have to enter an IP and port number every time, typically a DNS entry would be created to map to the port and IP.</p>
+</li>
+<li>As service node ports can only allocate high numbered ports (<code>&gt; 30000</code>):</li>
+<li>
+<p>Introduce a proxy server between DNS cluster and point it to the DNS server.</p>
+</li>
+<li>
+<p>The above steps are applicable if hosting an app in an on-premise datacenter.</p>
+</li>
+<li>If working with a public cloud application, NodePort can be replaced by <code>LoadBalancer</code></li>
+<li>
+<p>Kubernetes still performs NodePort's functionality AND sends an additional request to the platform to provision a network load balancer.</p>
+</li>
+<li>
+<p>The cloud platform automatically deploys a load balancer configured to route traffic to the service ports of all the nodes.</p>
+</li>
+<li>
+<p>The cloud provider's load balancer would have its own external IP</p>
+</li>
+<li>
+<p>User request access via this IP.</p>
+</li>
+<li>
+<p>Suppose as the application grows and a new service is to be added, it's to be accessed via a new URL.</p>
+</li>
+<li>For the new application to share the cluster resource, release it as a separate deployment.</li>
+<li>
+<p>Engineers could create a new load balancer for this app, monitoring a new port</p>
+<ul>
+<li>Kubernetes automatically configures a new load balancer on the cloud platform of a new IP.</li>
+</ul>
+</li>
+<li>
+<p>To map the URLs between the 2 new services, one would have to implement a new proxy server on top of those associated with the service.</p>
+</li>
+<li>
+<p>This proxy service would have to be configured and SSL communications would have to be enabled.</p>
+</li>
+<li>
+<p>This final proxy could be configured on a team-by-team basis, however would likely lead to issues.</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>The whole process outlined above has issues, on top of having additional proxies to manage per service, one must also consider:</li>
+<li><strong>Cost:</strong> Each additional Load Balancer adds more expense.</li>
+<li>
+<p><strong>Difficulty of Management:</strong> For each service introduced, additional configuration is required for both firewalls and proxies</p>
+<ul>
+<li>Different teams required as well as time and "person" power.</li>
+</ul>
+</li>
+<li>
+<p>To work around this and collectively manage all these aspects within the cluster, one can use Kubernetes Ingress:</p>
+</li>
+<li>Allows users access via a single URL</li>
+<li>URL can be configured to route different services depending on the URL paths.</li>
+<li>SSL security may automatically be implemented via Ingress</li>
+<li>
+<p>Ingress can act as a layer 7 load balancer built-in to Kubernetes clusters</p>
+<ul>
+<li>Can be configured to act like a normal Kubernetes Object.</li>
+</ul>
+</li>
+<li>
+<p><strong>Note:</strong> Even with Ingress in place, one still needs to expose the application via a NodePort or Load Balancer -&gt; this would be a 1-time configuration.</p>
+</li>
+<li>
+<p>Once exposed, all load balancing authenticaiton, SSL and URL routing configrations are manageable and viewable via an Ingress Cotnroller.</p>
+</li>
+<li>
+<p>Ingress controllers aren't set up by default in Kubernetes, example solutions that can be deployed include:</p>
+</li>
+<li>GCE</li>
+<li>NGINX</li>
+<li>
+<p>Traefik</p>
+</li>
+<li>
+<p>Load balancers aren't the only component of an Ingress controller, additionaly functionalities are available for monitoring the cluster for new Ingress resources or definitions.</p>
+</li>
+<li>
+<p>To create, write a definition file:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-ingress-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-ingress
+  template:
+    metadata:
+      labels:
+        name: nginx-ingress
+    spec:
+      containers:
+      - name: nginx-ingress-controller
+        image: &lt;nginx ingress controller url&gt;
+        args:
+        - /nginx-ingress-controller
+        - --configmap=$(POD_NAMESPACE)/nginx-configuration
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
+</code></pre>
+<ul>
+<li><strong>Note:</strong> As working with Nginx, need to configure options such as log paths, SSL settings, etc.</li>
+<li>
+<p>To decouple this from the controller image, write a separate config map definition file to be referenced:</p>
+<ul>
+<li>Allows easier modification rather than editing one huge file.</li>
+</ul>
+</li>
+<li>
+<p>An ingress service definition file is also required to support external communicationL</p>
+</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    name: nginx-ingress
+</code></pre>
+<ul>
+<li>
+<p>The service NodePort definition above links the service to the deployment.</p>
+</li>
+<li>
+<p>As mentioned, Ingress controllers have additional functionality available for monitoring the cluster for ingress resources, and apply configurations when changes are made</p>
+</li>
+<li>
+<p>For the controller to do this, a service account must be associated with it:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nginx-ingress-serviceaccount
+</code></pre>
+<ul>
+<li>
+<p>The service account must have the correct roles and role-bindings to work.</p>
+</li>
+<li>
+<p>To summarise, for an ingress controller, the following resources are needed:</p>
+</li>
+<li>Deployment</li>
+<li>Service</li>
+<li>ConfigMap</li>
+<li>
+<p>ServiceAccount</p>
+</li>
+<li>
+<p>Once an ingress controller is in place, one can create ingress resources:</p>
+</li>
+<li>
+<p>Ingress resources are a set of rules and configurations applied to an ingress controller, linking it to other Kubernetes objects.</p>
+</li>
+<li>
+<p>For example, one could configure a rule to forward all traffic to one application, or to a different set of applications based on a URL.</p>
+</li>
+<li>Alternatively, could route based on DNS.</li>
+<li>As per, ingress resources are configured via a destination file</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-cluster
+spec:
+  backend:
+    serviceName: wear-service
+    servicePort: 80
+</code></pre>
+<ul>
+<li><strong>Note:</strong> For a single backend like above, no additional rules are required.</li>
+<li>
+<p>The ingress resource can be created via standard means i.e. <code>kubectl create -f ....</code></p>
+</li>
+<li>
+<p>To view ingress resource: <code>kubectl get ingress</code></p>
+</li>
+<li>To route traffic in a conditional form, use ingress rules e.g. routing based on DNS</li>
+<li>
+<p>Within each rule, can configure additional paths to route to additional services or applications.</p>
+</li>
+<li>
+<p>To implement, adhere to the principles outlined in the following 2-service example:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-cluster
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /wear
+        backend:
+            serviceName: wear-service
+            servicePort: 80
+      - path: /watch
+        backend:
+            serviceName: watch-service
+            servicePort: 80
+</code></pre>
+<ul>
+<li>
+<p>Create the ingress resource using <code>kubectl create -f ...</code> as per usual.</p>
+</li>
+<li>
+<p>To view the ingress's detailed information: <code>kubectl describe ingress &lt;ingress name&gt;</code></p>
+</li>
+<li>
+<p><strong>Note:</strong> In the description, a default backend is described. <br> In the event a user enters a path not matching any of the rules, they will be redirected to that backend service (which must exist!).</p>
+</li>
+<li>
+<p>If wanting to split traffic via domain name, a definition file can be filled out as normal, but in the spec, the rules can be updated to point to specific hosts instead of paths:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">...
+rules:
+- host: &lt;url 1&gt;
+  http:
+    paths:
+    - backend:
+        serviceName: &lt;service name 1&gt;
+        servicePort: &lt;port 1&gt;
+- host: &lt;url 2&gt;
+  http:
+    paths:
+    - backend:
+        serviceName: &lt;service name 2&gt;
+        servicePort: &lt;port 2&gt;
+...
+</code></pre>
+<ul>
+<li>When splitting by URL, had 1 rule and split the traffic by 2 paths</li>
+<li>
+<p>When splitting by hostname, used 2 rules with a path for each.</p>
+</li>
+<li>
+<p><strong>Note:</strong> If not specifying the host field, it'll assume it to be a <code>*</code> and / or accept all incoming traffic without matching the hostname</p>
+</li>
+<li>Acceptable for a single backend</li>
+</ul>
+<h3 id="additional-reading-latest-kubernetes-versions">Additional Reading - Latest Kubernetes Versions<a class="headerlink" href="#additional-reading-latest-kubernetes-versions" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/ingress.png" data-desc-position="bottom"><img alt="ingress architecture" src="img/ingress.png"></a></p>
+<ul>
+<li>in k8s version 1.20+ we can create an Ingress resource from the imperative way like this:-</li>
+<li>Format - <code>kubectl create ingress &lt;ingress-name&gt; --rule="host/path=service:port"</code></li>
+<li>Example - <code>kubectl create ingress ingress-test --rule="wear.my-online-store.com/wear*=wear-service:80"</code></li>
+<li>Find more information and examples in the below reference link:<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-ingress-em-">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-ingress-em-</a></li>
+</ul>
+</li>
+<li><strong>References:</strong></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress">https://kubernetes.io/docs/concepts/services-networking/ingress</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#path-type">https://kubernetes.io/docs/concepts/services-networking/ingress/#path-type</a></li>
+</ul>
+<h4 id="ingress-annotations-and-rewrite-target">Ingress - Annotations and Rewrite-Target<a class="headerlink" href="#ingress-annotations-and-rewrite-target" title="Permanent link">¶</a></h4>
+<ul>
+<li>Different ingress controllers have different options that can be used to customise the way it works. NGINX Ingress controller has many options that can be seen <a href="https://kubernetes.github.io/ingress-nginx/examples/">here</a>.</li>
+<li>
+<p>I would like to explain one such option that we will use in
+our labs. The<a href="https://kubernetes.github.io/ingress-nginx/examples/rewrite/">Rewrite target</a> option.</p>
+</li>
+<li>
+<p>Our watch app displays the video streaming webpage at <code>http://&lt;watch-service&gt;:&lt;port&gt;/</code></p>
+</li>
+<li>Our wear app displays the apparel webpage at <code>http://&lt;wear-service&gt;:&lt;port&gt;/</code></li>
+<li>We must configure Ingress to achieve the below. When user visits the URL on the left, his request should be forwarded internally to the URL on the right.</li>
+<li>Note that the <code>/watch</code> and <code>/wear</code> URL path are what we configure on the ingress controller so we can forwarded users to the appropriate application in the backend.</li>
+<li>
+<p>The applications don't have this URL/Path configured on them: <br> <code>http://&lt;ingress-service&gt;:&lt;ingress-port&gt;/watch -&gt; http://&lt;watch-service&gt;:&lt;port&gt;/</code> <br> <code>http://&lt;ingress-service&gt;:&lt;ingress-port&gt;/wear -&gt; http://&lt;wear-service&gt;:&lt;port&gt;/</code></p>
+</li>
+<li>
+<p>Without the rewrite-target option, this is what would happen:</p>
+</li>
+<li><code>http://&lt;ingress-service&gt;:&lt;ingress-port&gt;/watch</code> -&gt; <code>http://&lt;watch-service&gt;:&lt;port&gt;/watch</code></li>
+<li><code>http://&lt;ingress-service&gt;:&lt;ingress-port&gt;/wear -&gt; http://&lt;wear-service&gt;:&lt;port&gt;/wear</code></li>
+<li>Notice watch and wear at the end of the target URLs. The target applications are not configured with /watch or /wear paths.</li>
+<li>They are different applications built specifically for their purpose, so they don't expect <code>/watch</code> or <code>/wear</code> in the URLs.<ul>
+<li>As such the requests would fail and throw a 404 not found error.</li>
+</ul>
+</li>
+<li>To fix that we want to <strong>"ReWrite"</strong> the URL when the request is passed on to the watch or wear applications.</li>
+<li>We don't want to pass in the same path that user typed in. So we specify the <code>rewrite-target</code> option.</li>
+<li>This rewrites the URL by replacing whatever is under <code>rules-&gt;http-&gt;paths-&gt;path</code> which happens to be <code>/pay</code> in this case with the value in rewrite-target. This works just like a search and replace function.</li>
+<li>For example: replace(path, rewrite-target)</li>
+<li>In our case: replace(<code>"/path"</code>,<code>"/"</code>)</li>
+</ul>
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  namespace: critical-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+    paths:
+    - path: /pay
+      backend:
+        serviceName: pay-service
+        servicePort: 8282
+</code></pre>
+<p>In another example given here, this could also be:
+<code>replace("/something(/|$)(.*)", "/$2")</code></p>
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: rewrite
+  namespace: default
+spec:
+  rules:
+  - host: rewrite.bar.com
+    http:
+      paths:
+      - backend:
+          serviceName: http-svc
+          servicePort: 80
+        path: /something(/|$)(.*)
+</code></pre>
+<h2 id="326-docker-service-configuration">3.26 - Docker Service Configuration<a class="headerlink" href="#326-docker-service-configuration" title="Permanent link">¶</a></h2>
+<ul>
+<li>Docker service can be managed via the systemctl command:</li>
+<li><strong>Start</strong> - start the service</li>
+<li><strong>Status</strong> - check the service status</li>
+<li><strong>Stop</strong> - stop the service</li>
+<li>The Docker Daemon can be started manually via running dockerd</li>
+<li>Usually done for troubleshooting or debugging purposes</li>
+<li>Prints dockerd logs</li>
+<li>Additional logs printable via the <code>--debug</code> flag</li>
+<li>The docker daemon starts and listens on an internal unix socket at <code>/var/run/docker.sock</code></li>
+<li>Unix Socket = Inter-Process Communication (IPC) mechanism used for
+communication between different processes on the same host</li>
+<li>Implies the docker daemon is only intractable within the same host and docker CLI is only configured to interact with the docker daemon on this host.</li>
+<li>In the event you want to establish connection to the docker daemon from another host running the Docker CLI e.g. a Cloud VM running docker daemon.</li>
+<li>Not set up by default.</li>
+<li>One can instruct the daemon to listen on a TCP interface by adding a flag to the dockerd command: <code>--host=tcp://&lt;IP&gt;:2375</code></li>
+<li>The host at IP can now interact with the Docker Daemon using the Docker CLI, first by setting the environment variable <code>DOCKER_HOST="tcp://&lt;IP&gt;:2375"</code></li>
+<li><strong>Note:</strong> This is disabled by default - For good reason! This is because by making the API server available on the internet, anyone can create and manage containers on the Daemon host - no security is set up by default.</li>
+<li>Docker Daemon sets unencrypted communication by default, to set:<ul>
+<li>Create a pair of TLS certificates</li>
+<li>Add the following flags to the dockerd command:</li>
+<li><code>--tls=true</code></li>
+<li><code>--tlscert=/var/docker/server.pem</code> (path to certificate)</li>
+<li><code>--tlskey=/var/docker/serverkey.pem</code>(path to private key)</li>
+</ul>
+</li>
+<li>With TLS enabled, the standard port becomes 2376 - encrypted traffic; 2375 remains for unencrypted traffic.</li>
+<li>All the options specified in this section can be added to a configuration file for ease of use; typically located at <code>/etc/docker/daemon.json</code></li>
+<li>This must be created if it doesn't already exist; it's not included by default</li>
+<li>Note: Hosts is an array i.e. <code>["host 1", "host 2", .... ]</code></li>
+<li>This configuration can be referenced when using the systemctl utility to start the Docker server.</li>
+</ul>
+<h2 id="327-securing-the-docker-daemon">3.27 - Securing the Docker Daemon<a class="headerlink" href="#327-securing-the-docker-daemon" title="Permanent link">¶</a></h2>
+<ul>
+<li>The Docker Daemon / Engine / API Service needs to be secured appropriately, otherwise unauthorized users could:</li>
+<li>Delete existing containers hosting applications</li>
+<li>Delete volumes storing data</li>
+<li>Run containers of their own e.g. bitcoin mining</li>
+<li>Gain root access to the host system via a privileged container<ul>
+<li>Can lead to targeting of other systems in the infrastructure</li>
+</ul>
+</li>
+<li><strong>Reminder:</strong></li>
+<li>The Docker Daemon is by default exposed on the host only on a UNIX socket at <code>/var/run/docker.sock</code></li>
+<li>No one outside of the host can access the docker daemon by default</li>
+<li><strong>Note:</strong> The applications can still be accessed so long as the ports are published</li>
+<li>First Area of Security Consideration - Host:</li>
+<li>Actions that can be taken include:<ul>
+<li>Disable Password-based authentication</li>
+<li>Enable SSH key-based authentication</li>
+<li>Determine which users need access to the servers</li>
+<li>Disabling unused ports</li>
+</ul>
+</li>
+<li>External access needs to be configured only if absolutely necessary - achievable by adding to the "hosts" array in the docker daemon json configuration file.<ul>
+<li>Any hosts added must be private and only accessible within your organisation</li>
+<li>TLS Certificates must also be configured for the server in this scenario, requiring:</li>
+<li>A certificate authority</li>
+<li>A TLS certificate</li>
+<li>A TLS Key</li>
+<li>TLS Configuration requires setting the port value for hosts in the config file to 2376 for encrypted TLS communication; as well as tls = true.</li>
+<li>On the host accessing the docker daemon, the following must also be set as environment variables:</li>
+<li><code>DOCKER_TLS=true</code></li>
+<li><code>DOCKER_HOST="tcp://&lt;IP&gt;:2376"</code></li>
+</ul>
+</li>
+<li>The configurations so far are acceptable but no authentication is enforced. To do so, certificate-based authentication can be enabled by copying the certificate authority to the docker daemon server.</li>
+<li>The docker daemon config file can have the following added:<ul>
+<li><code>tlsverify = true</code> - enforces the need for clients to authenticate</li>
+<li><code>tlsecacert = "path/to/cacert.pem"</code></li>
+</ul>
+</li>
+<li>To authenticate, clients need to have their own certificates signed by the CA, generated to give client.pem and clientkey.pem</li>
+<li>Sharing these with the cacert on the host</li>
+<li>On the client side, these can be passed via <code>--tlscert</code>, <code>--tlskey</code>, <code>--tlscacert</code> flags or added to the <code>./docker</code> folder on the system.</li>
+<li><strong>Summary:</strong></li>
+<li>TLS alone only enforces encryption, TLS verify enforces authentication</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/docker-tls.png" data-desc-position="bottom"><img alt="Docker TLS Comparison" src="img/docker-tls.png"></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

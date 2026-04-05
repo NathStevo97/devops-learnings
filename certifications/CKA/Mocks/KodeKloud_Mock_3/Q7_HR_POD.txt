@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  namespace: hr
+  labels:
+    run: hr-pod
+    environment: production
+    tier: frontend
+  name: hr-pod
+spec:
+  containers:
+  - image: redis:alpine
+    name: hr-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

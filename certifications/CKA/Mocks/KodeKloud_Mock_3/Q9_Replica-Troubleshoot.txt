@@ -1,0 +1,4 @@
+Check deployment after running scale command
+Check kube-system pods
+Inspect kube-controller
+Edit manifest and associated typos

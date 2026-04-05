@@ -1,0 +1,7998 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="09_Terraform-Cloud-and-Enterprise.html">
+      
+      
+        <link rel="next" href="../vault-associate.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>8.0 - Exam Preparation - DevOps Learning and Research</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#80-exam-preparation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="DevOps Learning and Research" class="md-header__button md-logo" aria-label="DevOps Learning and Research" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DevOps Learning and Research
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.0 - Exam Preparation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="DevOps Learning and Research" class="md-nav__button md-logo" aria-label="DevOps Learning and Research" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    DevOps Learning and Research
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../certifications.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certifications
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certifications
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../aws-cloud-practitioner.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Certified Cloud Practitioner
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AWS Certified Cloud Practitioner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/01_Fundamental-Cloud-Concepts/Fundamental%20Cloud%20Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Fundamental Cloud Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/02_Understanding-Core-AWS-Services/Understanding%20AWS%20Core%20Services.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Understanding Core AWS Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/03_Introduction-to-Security-and-Architecture/Introduction%20to%20Security%20and%20architecture%20on%20AWS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Introduction to Security and Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../aws-cloud-practitioner/course-notes/04_Exam_Preparation/Exam%20Prep%201.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Exam Preparation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloud-practitioner/course-notes/04_Exam_Preparation/Exam%20Prep%202.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 - Exam Prep 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKAD.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Application Developer (CKAD)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Application Developer (CKAD)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/02_Core-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/03_Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/04_Multi-Container-Pods.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Multi-Container Pods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/05_Observability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/06_Pod-Design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Pod Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/07_Services-and-Networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Services and Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/08_Persistent-Volumes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Persistent Volumes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/09_2021-Updates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - 2021 Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_10">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKAD/13_Mock-Exams/01_Mock-Exam-1.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Mock Exams
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_10" id="__nav_3_2_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    13 Mock Exams
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/13_Mock-Exams/02_Mock-Exam-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.2 - Mock Exam 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKAD/13_Mock-Exams/03_Mock-Exam-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.3 - Mock Exam 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKA.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Administrator (CKA)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Administrator (CKA)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/01_Course-Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/02_Core-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/03_Scheduling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/04_Logging-and-Monitoring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Logging and Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/05_Application-Lifecycle-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Application Lifecycle Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/06_Cluster-Maintenance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Cluster Maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/07_Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/08_Storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/09_Networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/10_Design-a-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.0 - Design a Kubernetes Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/11_Install-Kubernetes-the-kubeadm-way.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.0 - Install Kubernetes the Kubeadm Way
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/13_Troubleshooting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13.0 - Troubleshooting Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/14_JSONpath-introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14.1 - Introduction to JSONPath
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_14">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_14" id="__nav_3_3_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mocks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/Mocks/KodeKloud_Mock_3/02_Mock-Exam-Notes-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KodeKloud Mock 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKA/Mocks/Kodekloud_Mock_2/01_Mock-Exam-Notes-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kodekloud Mock 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKS.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certified Kubernetes Security Specialist (CKS)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certified Kubernetes Security Specialist (CKS)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/02_The-Kubernetes-Attack-Surface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Understanding the Kubernetes Attack Surface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/03_Cluster-Setup-and-Hardening.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Cluster Setup and Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/04_System-Hardening.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - System Hardening
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/05_Minimize-Microservice-Vulnerabilities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Minimize Microservice Vulnerabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/06_Supply-Chain-Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Supply Chain Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/07_Monitoring-Logging-and-Runtime-Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Monitoring, Logging, and Runtime Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../CKS/Mocks/01_Mock-Exam-1.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mocks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4_8" id="__nav_3_4_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mocks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/Mocks/02_Mock-Exam-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 - Mock Exam 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CKS/Mocks/03_Mock-Exam-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.3 - Mock Exam 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../green-software-for-practitioners.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Green Software for Practitioners
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Green Software for Practitioners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/02_Carbon-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Carbon Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/03_Energy-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Energy Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/04_Carbon-Awareness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Carbon Awareness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/05_Hardware-Efficiency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Hardware Efficiency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/06_Measurement.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../green-software-for-practitioners/07_Climate-Commitments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Climate Commitments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../terraform-associate.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HashiCorp Certified - Terraform Associate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HashiCorp Certified - Terraform Associate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_Deploying-Infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Deploying Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_Working-With-Configurations.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Working with Configurations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_Provisioners.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Provisioners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_Modules-and-Workspaces.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Modules and Workspaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_Remote-State-Management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Remote State Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_Security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_Terraform-Cloud-and-Enterprise.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Terraform Cloud and Enterprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11_Exam-Preparation.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#81-important-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 - Important Pointers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 - Important Pointers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.1 - Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812-question-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.2 - Question Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813-example-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.3 - Example Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#814-important-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.4 - Important Pointers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1.4 - Important Pointers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Refresh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-provisioners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Provisioners
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Import
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terraform Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform-modules-root-and-child" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Modules - Root and Child
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules-accessing-output-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules - Accessing Output Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suppressing-values-in-cli-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suppressing Values in CLI Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry-for-module-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private Registry for Module Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-and-count-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Count and Count Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-find-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case: Find the Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Lock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-resources-deleted-out-of-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case: Resources Deleted Out of Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentinel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sentinel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensitive-data-in-state-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensitive Data in State File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-credentials-in-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Credentials in Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-backend-terraform-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Backend - Terraform Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splat-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Splat Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-unlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Unlock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 01
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 02
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 03
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-enterprise-and-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Enterprise and Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-with-undefined-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables with Undefined Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-configuration-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Configuration Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-taint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Taint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-provisioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Provisioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-exec-provisioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote-Exec Provisioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioner-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provisioner Failure Behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioner-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provisioner Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-definition-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable Definition Precedence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-values-from-a-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetching Values from a Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform and GIT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-types-implicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Types - Implicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-types-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Types - Explicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-plan-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Plan Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-module-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Module Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larger-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Larger Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vault-associate.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HashiCorp Certified - Vault Associate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HashiCorp Certified - Vault Associate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/02_Getting-Started-with-Vault.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Getting Started with Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/03_Authentication-and-Authorization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Authentication and Authorization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/04_Vault-Tokens.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Vault Tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/05_Vault-Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Vault Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault-associate/06_Exam-Preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Exam Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware Application Modernization Professional
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VMware Application Modernization Professional
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_1" id="__nav_3_8_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VMware Tanzu Kubernetes Grid
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    VMware Tanzu Kubernetes Grid
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/00_Introduction/01_Course-Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/01_VMWare-Tanzu-Portfolio.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 VMware Tanzu Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_2" id="__nav_3_8_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    01 VMware Tanzu Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/02_Tanzu-Kubernetes-Grid-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 - Tanzu Kubernetes Grid Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/03_The-Tanzu-CLI.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 - The Tanzu CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/04_%20Lab-1-Setting-Up-a-Bootstrap-Machine.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 - Lab 1 - Setting Up a Bootstrap Machine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/05_Cluster-API.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 - Cluster API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/01_VMware_Tanzu_Portfolio/06_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/01_Overview-of-Management-Clusters.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_3" id="__nav_3_8_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    02 Management Clusters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/02_Lab-2-TKG_Container-Images.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 - Lab 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/03_Lab-3-Create-VM-Templates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 - Lab 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/04_NSX-Advanced-Load-Balancer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 - NSX Advanced Load Balancer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/05_Cluster-Authentication.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 - Cluster Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/06_Creating-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 - Creating Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/07_Lab-4-Create-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 - Lab 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/08_Managing-Management-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 - Managing Management Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/02_Management_Clusters/09_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/01_Building-Custom-Cluster-Machine-Images.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Tanzu Kubernetes Clusters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_4" id="__nav_3_8_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    03 Tanzu Kubernetes Clusters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/02_Deploying-Tanzu-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 - Deploying Tanzu Kubernetes Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/03_Lab-5-Create-Tanzu-Kubernetes-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 - Lab 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/04_Managing-Tanzu-Kubernetes-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 - Managing Tanzu Kubernetes Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/05_Lab-6-Scale-Tanzu-Kubernetes-Clusters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 - Lab 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/06_Lab-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 - Lab 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/07_Managing-Cluster-Lifecycles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 - Managing Cluster Lifecycles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/03_Tanzu_Kubernetes_Clusters/08_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/01_Tanzu-Kubernetes-Grid-Extensions.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Tanzu Kubernetes Grid Extensions
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_5" id="__nav_3_8_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    04 Tanzu Kubernetes Grid Extensions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/02_Lab-8_Working-with-Extensions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.02 - Lab 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/03_Lab-9_Deploy-Cert-Manager.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.03 - Lab 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/04_Image-Registry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.04 - Image Registry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/05_Logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.05 - Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/06_Lab-10_Deploy-Fluentbit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.06 - Lab 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/07_Ingress.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.07 - Ingress
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/08_Lab-11_Deploy-Contour.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.08 - Lab 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/09_Service-Discovery.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.09 - Service Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/10_Lab-12_Deploy-External-DNS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 - Lab 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/11_Cluster-Monitoring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11 - Cluster Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/12_Lab-13_Deploy-Prometheus-and-Grafana.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12 - Lab 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/13_Lab-14_Accessing-the-Cluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.13 - Lab 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/04_Tanzu_Kubernetes_Grid_Extensions/14_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.14 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_1_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/01_Tanzu-Kubernetes-Grid-Logs.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8_1_6" id="__nav_3_8_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    05 Troubleshooting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/02_Using-Crash-Diagnostics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 - Using Crash Diagnostics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/03_Lab-15_Using-Crash-Diagnostics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 - Lab 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/04_Troubleshooting-Commands.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 - Troubleshooting Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/05_Lab-16_Connection-to-Nodes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 - Lab 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/06_Run-Image-Builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 - Lab 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware-application-modernization/vmware-tanzu-kubernetes-grid/05_Troubleshooting/07_End-of-Module-Assessment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 - End of Module Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tooling
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tooling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/helm/kubernetes-package-administration-with-helm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2">
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/ansible-for-beginners.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible for Beginners
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible for Beginners
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/02_Configuration-and-Basic-Concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Configuration and Basic Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/03_Ansible-Inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Ansible Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/04_Ansible-Variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Ansible Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/05_Ansible-Playbooks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Ansible Playbooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/06_Ansible-Modules.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Ansible Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/07_Ansible-Handlers-Roles-and-Collections.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Ansible Handlers: Roles and Collections
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/08_Advanced-Topics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Advanced Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-for-beginners/09_Appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/ansible-advanced.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ansible Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ansible Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/01_Introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/02_Web_Application.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Web Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/03_File_Separation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - File Separation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/04_Roles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Roles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/05_Asynchronous_Actions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Asynchronous Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/06_Strategy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/07_Error_Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.0 - Error Handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/08_Templating_Jinja2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.0 - Templating - Jinja2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/09_Lookup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.0 - Lookups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/10_Vault.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10.0 - Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/11_Dynamic_Inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11.0 - Dynamic Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/12_Custom_Modules/01_Custom_Modules.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 Custom Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/13_Plugins/01_Plugins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/ansible-advanced/14_Assignment/01_Assignment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 Assignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tooling/ansible/automating-ec2-deployment.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automating EC2 Deployments
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Automating EC2 Deployments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/01_introduction-to-cloud-automation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 - About AWS EC2 and Ansible Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/02_planning-and-preparing-for-automation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 - Planning and Preparing for Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/03_deploying-into-ec2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.0 - Deploying into EC2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/04_generating-an-inventory-of-ec2-instances.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.0 - Generating an Inventory of EC2 Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/05_building-custom-amis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.0 - Building Custom AMIs with Ansible
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/ansible/automating-ec2-deployment/06_cleanup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.0 - Cleaning up Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/packer/getting-started-with-hashicorp-packer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/argocd/getting-started-with-argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ArgoCD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tooling/grafana-loki/using-centralized-logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grafana Loki
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#81-important-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 - Important Pointers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 - Important Pointers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.1 - Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812-question-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.2 - Question Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813-example-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.3 - Example Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#814-important-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.4 - Important Pointers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1.4 - Important Pointers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Refresh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-provisioners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Provisioners
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Import
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terraform Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform-modules-root-and-child" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Modules - Root and Child
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules-accessing-output-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules - Accessing Output Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suppressing-values-in-cli-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suppressing Values in CLI Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry-for-module-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Private Registry for Module Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-and-count-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Count and Count Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-find-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case: Find the Issue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Lock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-resources-deleted-out-of-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case: Resources Deleted Out of Terraform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentinel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sentinel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensitive-data-in-state-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensitive Data in State File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-credentials-in-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dealing with Credentials in Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-backend-terraform-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote Backend - Terraform Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splat-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Splat Expressions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provider Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-unlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Unlock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 01
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 02
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers - 03
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-enterprise-and-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Enterprise and Cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-with-undefined-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables with Undefined Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structural-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backend Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-configuration-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backend Configuration Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-taint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Taint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-provisioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Provisioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-exec-provisioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote-Exec Provisioner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioner-failure-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provisioner Failure Behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioner-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provisioner Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-definition-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable Definition Precedence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Version
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-values-from-a-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetching Values from a Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-and-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform and GIT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-types-implicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Types - Implicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-types-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency Types - Explicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Source Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-plan-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Plan Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform-module-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraform Module Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larger-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Larger Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Miscellaneous Pointers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="80-exam-preparation">8.0 - Exam Preparation<a class="headerlink" href="#80-exam-preparation" title="Permanent link">¶</a></h1>
+<h2 id="81-important-pointers">8.1 - Important Pointers<a class="headerlink" href="#81-important-pointers" title="Permanent link">¶</a></h2>
+<h3 id="811-overview">8.1.1 - Overview<a class="headerlink" href="#811-overview" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Exam Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Multiple Choice</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Online Proctored</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>1 Hour</td>
+</tr>
+<tr>
+<td>Total Number of Questions</td>
+<td>57</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>$70.50</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>English</td>
+</tr>
+<tr>
+<td>Expiration Time</td>
+<td>2 Years</td>
+</tr>
+</tbody>
+</table>
+<h3 id="812-question-types">8.1.2 - Question Types<a class="headerlink" href="#812-question-types" title="Permanent link">¶</a></h3>
+<ul>
+<li>True/False: Based on statement provided.</li>
+<li>Multiple-Choice: Select correct answer(s) from options.</li>
+<li>Text-Match: Given a text box or code extract, what should be added?</li>
+</ul>
+<h3 id="813-example-questions">8.1.3 - Example Questions<a class="headerlink" href="#813-example-questions" title="Permanent link">¶</a></h3>
+<details>
+<summary>What is the Name of the file that stores state information?</summary>
+<br>
+terraform.tfstate
+</details>
+
+<details>
+<summary>When referencing a file, for terraform 0.11, it would follow a format similar to ${file("path/to/file")}, how does this translate to terraform v0.12?</summary>
+<br>
+file("path/to/file")
+</details>
+
+<details>
+<summary>What does the command `terraform init` do?</summary>
+<br>
+This would likely be a multiple-choice question, choose all applicable.
+</details>
+
+<h3 id="814-important-pointers">8.1.4 - Important Pointers<a class="headerlink" href="#814-important-pointers" title="Permanent link">¶</a></h3>
+<h4 id="providers">Providers<a class="headerlink" href="#providers" title="Permanent link">¶</a></h4>
+<ul>
+<li>Responsivle for understandign API interactions adn exposing resources</li>
+<li>Most providers correspond to one cloud or on-prem platform, offering resource types corresponding to each of the platform's features.</li>
+<li>Provider(s) used are specified by the <code>provider {}</code> block.</li>
+<li>One can automatically upgrade to the latest version of the designated provider by using <code>terraform init -upgrade</code></li>
+</ul>
+<h4 id="provider-architecture">Provider Architecture<a class="headerlink" href="#provider-architecture" title="Permanent link">¶</a></h4>
+<ul>
+<li>Providers act as the link between cloud providers and Terraform Configurations.</li>
+<li>They handle the underlying API interactions and authentication between host and provider.</li>
+<li>Multiple instances of the same provider can be used via the <code>alias</code> property.</li>
+</ul>
+<h4 id="terraform-init">Terraform Init<a class="headerlink" href="#terraform-init" title="Permanent link">¶</a></h4>
+<ul>
+<li>Run <code>terraform init</code> to initialize the working directory where the Terraform config files are stored.</li>
+<li>Configuration is searched for module blocks and the required source code is retrieved from the specified sources</li>
+<li>Any providers specified have to be initialised via Terraform before use.</li>
+<li>No additional files are created with <code>terraform init</code>.</li>
+</ul>
+<h4 id="terraform-plan">Terraform Plan<a class="headerlink" href="#terraform-plan" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform plan</code> creates an execution of the infrastructure described in the configuration files.</li>
+<li>Unless told otherwise, will perform a refresh of the terraform state to determine the exact changes required to meet the desired state.</li>
+<li>Typically used to check the changes match expectations without applying changes.</li>
+</ul>
+<h4 id="terraform-apply">Terraform Apply<a class="headerlink" href="#terraform-apply" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform apply</code> applies the changes specified to reach the desired state of the configuration</li>
+<li>Changes detailed in <code>terraform.tfstate</code> file</li>
+</ul>
+<h4 id="terraform-refresh">Terraform Refresh<a class="headerlink" href="#terraform-refresh" title="Permanent link">¶</a></h4>
+<ul>
+<li>Used to refresh the state file of the configuration to account for any changes made not via Terraform</li>
+<li>Only updates the state file, any configuration files are unchanged</li>
+<li><code>terraform refresh</code></li>
+</ul>
+<h4 id="terraform-destroy">Terraform Destroy<a class="headerlink" href="#terraform-destroy" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform destroy</code> will tear down all or specific parts of the infrastructure defined in the configuration.</li>
+<li>Not the only way of destruction, one could simply remove the configuration of the resource(s)</li>
+</ul>
+<h4 id="terraform-format">Terraform Format<a class="headerlink" href="#terraform-format" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform fmt</code> rewrites terraform configuration files in a canonical format and style.</li>
+<li>Recommended for use in projects to maintain readability</li>
+</ul>
+<h4 id="terraform-validate">Terraform Validate<a class="headerlink" href="#terraform-validate" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform validate</code> validates the configuration files in a directory</li>
+<li>Checks whether a configuration is syntactically valid or not.</li>
+<li>Useful for general verification of reusable modules, as well as attribute names and value types.</li>
+<li>Generally runs automatically as a test step or post-save check for a reusable module in a CI system prior to execution.</li>
+<li>Cannot be run until <code>terraform init</code> has been executed.</li>
+</ul>
+<h4 id="terraform-provisioners">Terraform Provisioners<a class="headerlink" href="#terraform-provisioners" title="Permanent link">¶</a></h4>
+<ul>
+<li>Used to specify model-specific actions on a local or remote machine to carry out configuration / setup tasks.</li>
+<li>Should only be used as a last resort, typically one would use Packer in conjunction with Terraform.</li>
+<li>Provisioners are added within resource blocks.</li>
+<li>For remote-exec, inline commands and connection method must be specified in a similar manner to the following:</li>
+</ul>
+<pre><code class="language-go">provisioner "remote-exec" {
+    inline = [
+        "sudo amazon-linux-extras install -y nginx1.12", #install nginx
+        "sudo systemctl start nginx" ## start nginx
+    ]
+    connection {
+        #connection method
+        type = "ssh"
+        user = "ec2-user"
+        #private key for authentication
+        private_key = file("./remote-exec-keypair.pem")
+        host = self.public_ip
+    }
+}
+</code></pre>
+<ul>
+<li>For local-exec, similar to the above, but without the <code>connection {}</code> block.</li>
+</ul>
+<h4 id="debugging-terraform">Debugging Terraform<a class="headerlink" href="#debugging-terraform" title="Permanent link">¶</a></h4>
+<ul>
+<li>Terraform has logs that can be enabled by setting the <code>TF_LOG</code> environment variable to one of the following, depending on desired verbosity:</li>
+<li>TRACE</li>
+<li>DEBUG</li>
+<li>INFO</li>
+<li>WARN</li>
+<li>ERROR</li>
+<li>To persist log output, set <code>TF_LOG_PATH="/path/to/file"</code></li>
+<li>Logs should be saved as a <code>.log</code> format.</li>
+</ul>
+<h4 id="terraform-import">Terraform Import<a class="headerlink" href="#terraform-import" title="Permanent link">¶</a></h4>
+<ul>
+<li><code>terraform import</code> allows one to import existing infrastructure and bring it under Terraform's management</li>
+<li>Current implementation can only import resources into the state, it doesn't generate the configuration, which must be written manually.</li>
+<li>Prior to command execution, write a resource configuration block for the resource, which the live resource will be mapped to.</li>
+<li>Usage Example: <code>terraform import aws_instance.myec2 &lt;instance ID&gt;</code></li>
+</ul>
+<h4 id="local-values">Local Values<a class="headerlink" href="#local-values" title="Permanent link">¶</a></h4>
+<ul>
+<li>Assigns a name to an expression, allowing easy reuse within a module without having to manually type it each time</li>
+<li>Locals can refer to other locals, but as standard practice, reference cycles aren't allowed i.e. a local cannot refer to itself or a variable that refers backt to it.</li>
+<li>It's advised to group together logically-related local values to a single block, particularly if the values are dependent upon one another.</li>
+</ul>
+<h4 id="data-types">Data Types<a class="headerlink" href="#data-types" title="Permanent link">¶</a></h4>
+<ul>
+<li>There are 4 maind ata types in Terraform:</li>
+<li><strong>String</strong> - Unicode characters representing text</li>
+<li><strong>List</strong> - Sequential list of values identified by their position, first value being position "0"</li>
+<li><strong>Map</strong> - A group of values identified by named labels/keys e.g. age=52</li>
+<li><strong>Number</strong> - Numerical values</li>
+</ul>
+<h4 id="terraform-modules">Terraform Modules<a class="headerlink" href="#terraform-modules" title="Permanent link">¶</a></h4>
+<ul>
+<li>Resources can be centralised and called out from TF modules when required.</li>
+</ul>
+<h5 id="terraform-modules-root-and-child">Terraform Modules - Root and Child<a class="headerlink" href="#terraform-modules-root-and-child" title="Permanent link">¶</a></h5>
+<ul>
+<li>Each terraform configuration has at least one module, the root module, which consists of the resources in <code>.tf</code> files in the main directory.</li>
+<li>Modules can call other modules, which allos the inclusion of the child module's resources into the configuration in a concise manner.</li>
+<li>A module that includes a module block in the following manner is a child module.</li>
+</ul>
+<pre><code class="language-go">module "ec2" {
+    source = "../../modules/ec2"
+}
+</code></pre>
+<h5 id="modules-accessing-output-values">Modules - Accessing Output Values<a class="headerlink" href="#modules-accessing-output-values" title="Permanent link">¶</a></h5>
+<ul>
+<li>Resources defined in a module are encapsulated, the calling module cannot access their attributes directly</li>
+<li>The child module can declare output values to selectively export certain values to be accessed by the calling module in a similar manner to</li>
+</ul>
+<pre><code class="language-go">output "mys3bucket" {
+    value = aws_s3_bucket.mys3.bucket_domain_name
+}
+</code></pre>
+<h4 id="suppressing-values-in-cli-output">Suppressing Values in CLI Output<a class="headerlink" href="#suppressing-values-in-cli-output" title="Permanent link">¶</a></h4>
+<ul>
+<li>An output can be marked as sensitive information using the <code>sensitive</code> argument in a similar manner to:</li>
+</ul>
+<pre><code class="language-go">output "db_password" {
+    value = aws_db_instance.db_password
+    Description = "The password for logging into the database"
+    Sensitive = true
+}
+</code></pre>
+<ul>
+<li>Setting an output value in the root module as sensitive prevents Terraform from showing its value when outputs are generated during <code>terraform apply</code>.</li>
+<li>Sensitive outputs are still recorded in the state as fully accessible values, anyone who can access the state file can therefore view the sensitive information.</li>
+</ul>
+<h4 id="module-versions">Module Versions<a class="headerlink" href="#module-versions" title="Permanent link">¶</a></h4>
+<ul>
+<li>It's recommended to constrain the acceptable version numbers for each external module to avoid unexpected changes.</li>
+<li>Version constraints are supported for modules installed from a module registry e.g. Terraform Registry in a similar manner to the following:</li>
+</ul>
+<pre><code class="language-go">module "ec2_cluster" {
+    source = "terraform-aws-modules/ec2-instance/aws"
+    version = "~&gt; 2.0"
+    name = "my-cluster"
+    instance_count = 1
+    ami = "ami-0a13d44dccf1f5cf6"
+    instance_type = "t2.micro"
+    subnet_id = "subnet-5fbf1013"
+    tags = {
+        Terraform = "true"
+        Environment = "dev"
+    }
+}
+</code></pre>
+<h4 id="terraform-registry">Terraform Registry<a class="headerlink" href="#terraform-registry" title="Permanent link">¶</a></h4>
+<ul>
+<li>A registry directly integrated into Terraform, containing modules submitted by the Terraform community, including third-party providers.</li>
+<li>General syntax for referencing a registry module: <code>&lt;NAMESPACE&gt;/&lt;NAME&gt;/&lt;PROVIDER&gt;</code></li>
+</ul>
+<h4 id="private-registry-for-module-sources">Private Registry for Module Sources<a class="headerlink" href="#private-registry-for-module-sources" title="Permanent link">¶</a></h4>
+<ul>
+<li>To use a module from a private registry, such as those provided by Terraform cloud, use the general syntax <code>&lt;HOSTNAME&gt;&lt;NAMESPACE&gt;/&lt;NAME&gt;/&lt;PROVIDER&gt;</code></li>
+<li>When fetching a private registry module, a version must be specified.</li>
+</ul>
+<h4 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">¶</a></h4>
+<ul>
+<li>Terraform includes a number of built-in functions to transform and combine values.</li>
+<li>No user-defined functions are supported.</li>
+<li>Examples of built-in functions include:</li>
+<li>Min</li>
+<li>Max</li>
+<li>Element</li>
+<li>Lookup</li>
+</ul>
+<h4 id="count-and-count-index">Count and Count Index<a class="headerlink" href="#count-and-count-index" title="Permanent link">¶</a></h4>
+<ul>
+<li>The count parameter on resources can simplify configurations and allow scaling resources by incremental values.</li>
+<li>In resource blolocks where the <code>count</code> value is set, an additional count object <code>count.index</code> is available in expressions to be applied to other parameters associated with the resource.</li>
+<li>Example:</li>
+</ul>
+<pre><code class="language-go">Resource 1 Configuration (Instance 1)
+resource "aws_instance" "instance-1" {
+    key_name = "machine_instance.${count.index}"
+    ami = "ami-0a13d44dccf1f5cf6"
+    instance_type = "t2.micro"
+    count = 3
+}
+</code></pre>
+<ul>
+<li>Alternatively:</li>
+</ul>
+<pre><code class="language-go">variable "elb_names" {
+    type = list
+    default = [
+        "dev-loadbalancer",
+        "stage-loadbalanacer",
+        "prod-loadbalancer"
+    ]
+}
+
+resource "aws_iam_user" "lb" {
+    name = var.elb_names[count.index]
+    count = 3
+    path = "/system/"
+}
+</code></pre>
+<h4 id="use-case-find-the-issue">Use Case: Find the Issue<a class="headerlink" href="#use-case-find-the-issue" title="Permanent link">¶</a></h4>
+<ul>
+<li>Some exam questions require one to find an issue with a sample piece of configuration to ensure it is aligned to best practice. An example follows:</li>
+</ul>
+<pre><code class="language-go">terraform {
+    backend "s3" {
+        bucket = "mybucket"
+        key = "path/to/key"
+        region = "us-east-1"
+        access_key = 1234
+        secret_key = 1234567890
+    }
+}
+</code></pre>
+<ul>
+<li>For the above, tje ossie jere os tjat <code>access_key</code> and <code>secret_key</code> are not required as <code>key</code> is already specified.</li>
+</ul>
+<h4 id="terraform-lock">Terraform Lock<a class="headerlink" href="#terraform-lock" title="Permanent link">¶</a></h4>
+<ul>
+<li>If supported by the backend, Terraform will lock the state file for all operations that affect it.</li>
+<li>There is a force-unlock command to manually unlock the state file in the event of any issues: <br> <code>terraform force-unlock &lt;lock id&gt;</code></li>
+</ul>
+<h4 id="use-case-resources-deleted-out-of-terraform">Use Case: Resources Deleted Out of Terraform<a class="headerlink" href="#use-case-resources-deleted-out-of-terraform" title="Permanent link">¶</a></h4>
+<ul>
+<li>Scenario-based questions are also a possibility.</li>
+<li>"You have created an EC2 instance. Someone has modified it manually, what
+happens when terraform plan is ran?"</li>
+<li>Possible scenarios here would be:</li>
+<li>If the instance type is changed, the resource is terminated and to be recreated.</li>
+<li>Terraform will attempt to rever the instance type to that of the desired type</li>
+<li>Terraform will look to create the resource once again.</li>
+</ul>
+<h4 id="resource-block">Resource Block<a class="headerlink" href="#resource-block" title="Permanent link">¶</a></h4>
+<ul>
+<li>Resource blocks describe one or more infrastructure objects, such as virtual networks, compute instances, etc.</li>
+<li>Each resource block declares a resource of a given type e.g. <code>aws_instance</code> along with a local identifiacation name e.g <code>web</code>.</li>
+</ul>
+<h4 id="sentinel">Sentinel<a class="headerlink" href="#sentinel" title="Permanent link">¶</a></h4>
+<ul>
+<li>An embedded policy-as-code framework integrated with the Hashicorp Enterprise products.</li>
+<li>Use cases include:</li>
+<li>Verification for tags on resources</li>
+<li>Verification of encryption methods.</li>
+<li>In general for Terraform Enterprise, the workload follows plan -&gt; sentinel checks -&gt; apply</li>
+</ul>
+<h4 id="sensitive-data-in-state-file">Sensitive Data in State File<a class="headerlink" href="#sensitive-data-in-state-file" title="Permanent link">¶</a></h4>
+<ul>
+<li>When managing any  sensitive data in Terraform, it's good practice to treat the state file as a whole, as sensitive data.</li>
+<li>Terraform Cloud always encrypts the state at rest and protects it with TLS in transit.</li>
+<li>Terraform Cloud is capable of tracking the identity of the user requesting the state file and logging any changes made to it.</li>
+<li>If using a backend like S3, encryption at rest is supported when encryption is active.</li>
+</ul>
+<h4 id="dealing-with-credentials-in-config">Dealing with Credentials in Config<a class="headerlink" href="#dealing-with-credentials-in-config" title="Permanent link">¶</a></h4>
+<ul>
+<li>Hardcoding credentials is never good practice as it poses significant security risks.</li>
+<li>Credentials can be stored outside of the terraform configuration.</li>
+<li>Storing credentials as environment variables is generally considered as best practice as they aren't committed.</li>
+<li>One could also use secret managers or external tools like Hashicorp Vault.</li>
+</ul>
+<h4 id="remote-backend-terraform-cloud">Remote Backend - Terraform Cloud<a class="headerlink" href="#remote-backend-terraform-cloud" title="Permanent link">¶</a></h4>
+<ul>
+<li>Stores Terraform state and may be used to run operations in Terraform Cloud</li>
+<li>When using for remote operations tasks, tasks like <code>terraform apply</code> can be executed in Terraform Cloud's runtime environment; output logs are then viewable on the local machine.</li>
+</ul>
+<h4 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">¶</a></h4>
+<ul>
+<li>Terraform doesn't require GO as a prerequisite.</li>
+<li>Terraform works well with Linux, Windows and MAC</li>
+<li>Windows Server isn't required for usage.</li>
+</ul>
+<h4 id="terraform-graph">Terraform Graph<a class="headerlink" href="#terraform-graph" title="Permanent link">¶</a></h4>
+<ul>
+<li>A command used to generate a visual representation of either a configuration or execution format.</li>
+<li>The output format of Terraform graph is in the DOT format, which can be converted to SVG, PNG, etc for visutalization.</li>
+</ul>
+<h4 id="splat-expressions">Splat Expressions<a class="headerlink" href="#splat-expressions" title="Permanent link">¶</a></h4>
+<ul>
+<li>Allows quick access to a list of all attributes</li>
+<li>Will output all possible values within the configuration where applicable.</li>
+<li>Referencing modules:</li>
+</ul>
+<pre><code class="language-go">resource "aws_instance" "example" {
+    ami = "ami-abc123"
+    instance_type = "t2.micro"
+
+    ebs_block_device {
+        device_name = "sda2"
+        volume_size = 16
+    }
+    ebs_block_device {
+        device_name = "sda3"
+        volume_size = 20
+    }
+}
+</code></pre>
+<ul>
+<li>The arguments on the <code>ebs_block_device</code> nested blocks can be accessed via a splat expression.</li>
+<li>Example usage to obtain all device name values: <code>aws_instance.example.ebs_block_device[*].device_name</code></li>
+<li>The nested blocks in this particular resource type don't have any exported attributes, but if <code>ebs_block device</code> were to have a documented <code>id</code> attribute, then a list of them could be accessed via <code>aws_instance.example.ebs_block_device[*].id</code></li>
+</ul>
+<h4 id="terraform-technologies">Terraform Technologies<a class="headerlink" href="#terraform-technologies" title="Permanent link">¶</a></h4>
+<ul>
+<li>In any given terraform resource block, there are 4 main term types used:</li>
+<li>Resource Type: Specifies what resource is being defined in the resource block</li>
+<li>Local Identification name for the resource</li>
+<li>Attributes e.g. <code>AMI</code>, <code>ACCESS_KEY</code>, etc.</li>
+<li>Attribute values.</li>
+</ul>
+<h4 id="provider-configuration">Provider Configuration<a class="headerlink" href="#provider-configuration" title="Permanent link">¶</a></h4>
+<ul>
+<li>A block for provider configuration isn't mandatory for all terraform configurations.</li>
+<li>When no resources are to be created, no provider needs to be specified.</li>
+</ul>
+<h4 id="terraform-unlock">Terraform Unlock<a class="headerlink" href="#terraform-unlock" title="Permanent link">¶</a></h4>
+<ul>
+<li>If supported by the backend, terraform will lock the state file for all the operations that could write to the state file</li>
+<li>Not all backends have locking unctionality</li>
+<li>Terraform has a <code>force-unlock</code> command if unlocking failed</li>
+<li>Example usage: <code>terraform force-unlock &lt;lock id&gt;</code></li>
+</ul>
+<h4 id="miscellaneous-pointers-01">Miscellaneous Pointers - 01<a class="headerlink" href="#miscellaneous-pointers-01" title="Permanent link">¶</a></h4>
+<ul>
+<li>Primary benefits of Infrastructure as Code tools:</li>
+<li>Automation</li>
+<li>Versioning</li>
+<li>Reusability</li>
+<li>There are various tools available for IaC:</li>
+<li>Terraform</li>
+<li>AWS CloudFormation</li>
+<li>Azure Resource Formation</li>
+<li>Google Cloud Deployment Manager</li>
+</ul>
+<h4 id="miscellaneous-pointers-02">Miscellaneous Pointers - 02<a class="headerlink" href="#miscellaneous-pointers-02" title="Permanent link">¶</a></h4>
+<ul>
+<li>Sentinel is a proactive service</li>
+<li>Terraform doesn't modify the infrastructure, only the state file</li>
+<li>Slice function is not a function to be used with strings, unlike join and split.</li>
+<li>It is not necessary to include the module version when pulling code from Terraform registry.</li>
+</ul>
+<h4 id="miscellaneous-pointers-03">Miscellaneous Pointers - 03<a class="headerlink" href="#miscellaneous-pointers-03" title="Permanent link">¶</a></h4>
+<ul>
+<li>Overuse of dynamic blocks can make configurations unreadable</li>
+<li>Terraform apply can change, destroy and provision resources, but not import configuration directly.</li>
+</ul>
+<h4 id="terraform-enterprise-and-cloud">Terraform Enterprise and Cloud<a class="headerlink" href="#terraform-enterprise-and-cloud" title="Permanent link">¶</a></h4>
+<ul>
+<li>Terraform Enterprise allows several additional features not included in cloud, such as:</li>
+<li>Single-Sign On (SSO)</li>
+<li>Auditing</li>
+<li>Private Data Center</li>
+<li>Clustering</li>
+<li>It should also be noted that Team and Governance features are not available for free on Terraform Cloud.</li>
+</ul>
+<h4 id="variables-with-undefined-values">Variables with Undefined Values<a class="headerlink" href="#variables-with-undefined-values" title="Permanent link">¶</a></h4>
+<ul>
+<li>If a variable is included with an undefined value, an error will not immediately occur.</li>
+<li>Terraform will ask for the user to supply a value to be associated with the undefined variable.</li>
+</ul>
+<h4 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">¶</a></h4>
+<ul>
+<li>Can be used to set variables</li>
+<li>Environment variables must be fof the format <code>TF_VAR_&lt;variable name&gt;</code> e.g.</li>
+<li><code>export TF_VAR_region=us-west-1</code></li>
+<li><code>export TF_VAR_alist='[1,2,3]'</code></li>
+</ul>
+<h4 id="structural-data-types">Structural Data Types<a class="headerlink" href="#structural-data-types" title="Permanent link">¶</a></h4>
+<ul>
+<li>A structural type allows multiple values of several distinct types to be grouped together as a single value.</li>
+<li>List contains multiple values of the same type while object can contain multiple values of different types:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Structural Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td>A collection of named attributes that each have their own type e.g. <br> <code>object({&lt;Attribute Name&gt; = &lt;Type&gt;, ... })</code></td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td><code>tuple ([&lt;TYPE&gt;, ... ])</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="backend-configuration">Backend Configuration<a class="headerlink" href="#backend-configuration" title="Permanent link">¶</a></h4>
+<ul>
+<li>Backends are configured directly in Terraform files via the <code>terraform {}</code> block.</li>
+<li>Once configured, any remote backends must be initialized.</li>
+<li>Example Usage - S3 Backend</li>
+</ul>
+<pre><code class="language-go">terraform {
+    backend "s3" {
+        bucket = "demoremotebackend"
+        key = "remotedemo.tfstate"
+        region = "eu-west-2"
+        access_key = "&lt;ACCESS KEY&gt;"
+        secret_key = "&lt;SECRET KEY&gt;"
+        #dynamodb_table = "s3-state-lock"
+    }
+}
+</code></pre>
+<h5 id="backend-configuration-types">Backend Configuration Types<a class="headerlink" href="#backend-configuration-types" title="Permanent link">¶</a></h5>
+<ul>
+<li>First-Time Configuration:</li>
+<li>When Cconfiguring a backend for the first time (moving from no defined backend to an explictly configured one), Terraform will give an option to migrate the currently-existing state to the new backend.</li>
+<li>Allows adoption of backends without losing data in the state file.</li>
+<li>Partial Configuration</li>
+<li>Not every required argument needs to be specified for a backend configuration</li>
+<li>It may be better to omit certain arguments to avoid storing secrets within the main configuration</li>
+<li>
+<p>With a partial configuration, the remaining arguments must be provided as part of the initialization process.</p>
+</li>
+<li>
+<p>Partial Configuration Example:</p>
+</li>
+</ul>
+<pre><code class="language-go">terraform {
+    backend "consul" {}
+}
+</code></pre>
+<ul>
+<li>The arguments are then supplied via the <code>terraform init</code> command i.e. <br>
+<code>terraform init -backend-config=&lt;parameter 1&gt;=&lt;value 1&gt; -backend-config=&lt;parameter 2&gt;=&lt;value 2&gt; ...</code></li>
+</ul>
+<h4 id="terraform-taint">Terraform Taint<a class="headerlink" href="#terraform-taint" title="Permanent link">¶</a></h4>
+<ul>
+<li>Manually marks a Terraform-managed resource as tainted, forcing it to be destroyed and recreated on the next execution of <code>apply</code>.</li>
+<li>
+<p>Once tainted, the next <code>plan</code> will show the resource tainted will be destroyed and recreated.</p>
+</li>
+<li>
+<p>Can be used to taint resources within a module</p>
+</li>
+<li>Usage: <code>terraform taint [options] &lt;resource type&gt;.&lt;resource id&gt;</code></li>
+<li>For multiple submodules, apply: <code>module.foo.module.bar.&lt;resource_type&gt;.&lt;resource_id&gt;</code></li>
+</ul>
+<h4 id="local-provisioner">Local Provisioner<a class="headerlink" href="#local-provisioner" title="Permanent link">¶</a></h4>
+<ul>
+<li>The local-exec provisioner invokes commands to be ran on your local machine after a resource is created.</li>
+<li>Defined in a similar manner to:</li>
+</ul>
+<pre><code class="language-go">resource "aws_instance" "myec2" {
+    ami = "ami-0a13d44dccf1f5cf6"
+    instance_type = "t2.micro"
+    provisioner "local-exec" {
+        command = "echo ${aws_instance.myec2.private_ip} &gt;&gt; privateips.txt"
+    }
+}
+</code></pre>
+<h4 id="remote-exec-provisioner">Remote-Exec Provisioner<a class="headerlink" href="#remote-exec-provisioner" title="Permanent link">¶</a></h4>
+<ul>
+<li>Invokes commands on a remote resource after it's created.</li>
+<li>Supports multiple connection types including SSH and WinRM</li>
+<li>Example Usage:</li>
+</ul>
+<pre><code class="language-go">resource "resource type" "local ID" {
+    .....
+    provisioner "remote-exec" {
+        inline = [
+            "sudo amazon-linux-extras install -y nginx1.12", #install nginx
+            "sudo systemctl start nginx" ## start nginx
+        ]
+        connection {
+            #connection method
+            type = "ssh"
+            user = "ec2-user"
+            #private key for authentication
+            private_key = file("./remote-exec-keypair.pem")
+            host = self.public_ip
+        }
+    }
+}
+</code></pre>
+<h4 id="provisioner-failure-behaviour">Provisioner Failure Behaviour<a class="headerlink" href="#provisioner-failure-behaviour" title="Permanent link">¶</a></h4>
+<ul>
+<li>By default, provisioners that fail will cause the <code>apply</code> command to fail.</li>
+<li>This behaviour can be altered by changing the <code>on_failure</code> setting to 1 of 2 values:</li>
+<li><strong>Continue:</strong> Ignore the error and continue with the resource creation</li>
+<li><strong>Fail:</strong> Raise an error and stop the apply (default behaviour).</li>
+</ul>
+<h4 id="provisioner-types">Provisioner Types<a class="headerlink" href="#provisioner-types" title="Permanent link">¶</a></h4>
+<ul>
+<li>Two types of provisioners:</li>
+<li><strong>Creation-Time</strong><ul>
+<li>Only run during creation, not during updating or any other lifecycle</li>
+<li>If a creation-time provisioner fails, the resource is marked as tainted</li>
+</ul>
+</li>
+<li><strong>Destroy-Time</strong><ul>
+<li>Ran before the resource is destroyed.</li>
+</ul>
+</li>
+</ul>
+<h4 id="input-variables">Input Variables<a class="headerlink" href="#input-variables" title="Permanent link">¶</a></h4>
+<ul>
+<li>The value associated with a variable can be assigned via multiple methods</li>
+<li>Value associated can be defined either by the CLI or TFVars file.</li>
+<li>To load a custom tfvars file: <code>terraform apply -var-file="filename.tfvars"</code></li>
+</ul>
+<h4 id="variable-definition-precedence">Variable Definition Precedence<a class="headerlink" href="#variable-definition-precedence" title="Permanent link">¶</a></h4>
+<ul>
+<li>Terraform loads variables in the following order, with the importance increasing as the list progresses:</li>
+<li>Environment Variables</li>
+<li>Terraform.tfvars</li>
+<li>Terraform.tfvars.json</li>
+<li>Any <code>*.auto.tfvars</code> or <code>*.auto.tfvars.json</code> files processed alphabetically</li>
+<li>Any <code>-var</code> or <code>-var-file</code> CLI arguments provided.</li>
+<li>If a variable is defined multiple times with different values, the last definition will be the applied value.</li>
+</ul>
+<h4 id="local-backend">Local Backend<a class="headerlink" href="#local-backend" title="Permanent link">¶</a></h4>
+<ul>
+<li>Stores the state on the local file system</li>
+<li>Locks the state using system APIs</li>
+<li>Performs operations locally</li>
+<li>The default backend used by Terraform</li>
+<li>Path should be specified where appropriate</li>
+</ul>
+<h4 id="required-providers">Required Providers<a class="headerlink" href="#required-providers" title="Permanent link">¶</a></h4>
+<ul>
+<li>Each Terraform module must declare which providers it needs so Terraform can install and use them</li>
+<li>Provider requirements are declared in a <code>required_providers</code> block in a similar manner to:</li>
+</ul>
+<pre><code class="language-go">terraform {
+    required_providers {
+        mycloud = {
+            source = "mycorp/mycloud"
+            version = "~&gt; 1.0"
+        }
+    }
+}
+</code></pre>
+<h4 id="required-version">Required Version<a class="headerlink" href="#required-version" title="Permanent link">¶</a></h4>
+<ul>
+<li>The <code>required_version</code> setting accepts a version constraint string, specifying the version of Terraform to be used with your configuration.</li>
+<li>If the running of Terraform doesn't match the specified constraints, Terraform will produce an error and exit without applying any more changes.</li>
+</ul>
+<h5 id="version-arguments">Version Arguments<a class="headerlink" href="#version-arguments" title="Permanent link">¶</a></h5>
+<table>
+<thead>
+<tr>
+<th>Version Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;= x.y</td>
+<td>Greater than or equal to x.y</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than or equal to x.y</td>
+</tr>
+<tr>
+<td>~&gt;x.y</td>
+<td>Any version in the range x.y</td>
+</tr>
+<tr>
+<td>&gt;=X.Y,&lt;=A.B</td>
+<td>Any version in the range X.Y - A.B</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fetching-values-from-a-map">Fetching Values from a Map<a class="headerlink" href="#fetching-values-from-a-map" title="Permanent link">¶</a></h4>
+<ul>
+<li>Reference a value from a map variable via <code>var.&lt;variable name&gt;["&lt;key&gt;"]</code></li>
+</ul>
+<h4 id="terraform-and-git">Terraform and GIT<a class="headerlink" href="#terraform-and-git" title="Permanent link">¶</a></h4>
+<ul>
+<li>In practice, careful consideration should be taken when committing Terraform code.</li>
+<li>The <code>.gitignore</code> should be configured to ignore files which may contain sensitive information such as:</li>
+<li><code>terraform.tfstate</code></li>
+<li><code>*.tfvars</code></li>
+<li>Arbirtrary git repositories can be used by prefixing the address with a special <code>git::</code> prefix</li>
+<li>Any valid git URL can be specified to select one of the protocols supported by GIT.</li>
+<li>By default, Terraform will clone and use the default branch (HEAD) in the selected repository</li>
+<li>This can be overwritten by adding the ref argument e.g.:</li>
+</ul>
+<pre><code class="language-go">module "vpc" {
+    source = "git:://https://example.com/repo.git?ref=v1.0"
+}
+</code></pre>
+<ul>
+<li>The value of the <code>ref</code> argument can be any reference that would be accepted by the <code>git checkout</code> command, including branch and tag names.</li>
+</ul>
+<h4 id="dependency-types-implicit">Dependency Types - Implicit<a class="headerlink" href="#dependency-types-implicit" title="Permanent link">¶</a></h4>
+<ul>
+<li>With implicity dependencies, terraform automatically finds references of the object and creates an implicit ordering requirement between the two resources.</li>
+<li>A common example is creating an Elastic IP address to be associated with an EC2 instance's Public IP, which can be specified as <code>aws_eip.my-eip.private_ip</code></li>
+<li>This defines an implicit dependency that will inform Terraform to create the EIP first before creating the EC2 instance.</li>
+</ul>
+<h4 id="dependency-types-explicit">Dependency Types - Explicit<a class="headerlink" href="#dependency-types-explicit" title="Permanent link">¶</a></h4>
+<ul>
+<li>Explicitly specifying a dependency is only required when a resource relies on another's behaviour but doesn't access any of that resource's data.</li>
+<li>One can add <code>depends_on = [&lt;resource_type.&lt;resource_id&gt;]</code> to specify an explicit dependency</li>
+</ul>
+<h4 id="state-command">State Command<a class="headerlink" href="#state-command" title="Permanent link">¶</a></h4>
+<ul>
+<li>List resources in the state: <code>terraform state list</code></li>
+<li>Move or rename items within the state: <code>terraform state mv</code></li>
+<li>Manually download and output the state from state file: <code>terraform state pull</code></li>
+<li>Remove items from the state file: <code>terraform state rm</code></li>
+<li>Show the attributes of a resource in the state file: <code>terraform state show</code></li>
+</ul>
+<h4 id="data-source-code">Data Source Code<a class="headerlink" href="#data-source-code" title="Permanent link">¶</a></h4>
+<ul>
+<li>Data sources allow data to be fetched or computed for use elswhere within the configuration.</li>
+<li>Reads from a specific data source and exports the results under a particular value.</li>
+<li>Common example is AWS AMIs as these vary from region to region.</li>
+</ul>
+<h4 id="terraform-plan-destroy">Terraform Plan Destroy<a class="headerlink" href="#terraform-plan-destroy" title="Permanent link">¶</a></h4>
+<ul>
+<li>The behaviour of <code>terraform destroy</code> can be previewed by <code>terraform plan -destroy</code></li>
+</ul>
+<h4 id="terraform-module-sources">Terraform Module Sources<a class="headerlink" href="#terraform-module-sources" title="Permanent link">¶</a></h4>
+<ul>
+<li>The module installer supports installation from a number of different source types, such as local paths, terraform registry, etc.</li>
+<li>Local path references allow for factoring out portions of configuration within a single source repository.</li>
+<li>A local path must begin with either a <code>./</code> or <code>../</code> to indicate it's a local path.</li>
+</ul>
+<h4 id="larger-infrastructure">Larger Infrastructure<a class="headerlink" href="#larger-infrastructure" title="Permanent link">¶</a></h4>
+<ul>
+<li>Cloud providers have certain amounts of rate limiting, meaning only a certain number of resources can be reqiested over a period of time.</li>
+<li>It's recommended that larger configurations are broken into multiple smaller sets that can be independently applied.</li>
+<li>Alternatively, can use the <code>-refresh=false</code> and target flags, though this is not recommended.</li>
+</ul>
+<h4 id="miscellaneous-pointers">Miscellaneous Pointers<a class="headerlink" href="#miscellaneous-pointers" title="Permanent link">¶</a></h4>
+<ul>
+<li>Lookup retrieves the value of a single element from a map <code>lookup(map, key, default)</code></li>
+<li>Various commands refresh the state implicitly, such as <code>plan</code>, <code>apply</code>, and <code>destroy</code>, <code>init</code> and <code>import</code> do not.</li>
+<li>Array data type is not supported by Terraform.</li>
+<li>Various variable definition files can be loaded such as:</li>
+<li><code>terraform.tfvars</code></li>
+<li><code>terraform.tfvars.json</code></li>
+<li>Any files with <code>.auto.tfvars.json</code></li>
+<li>Both implicit and explicit dependencies are stored in <code>terraform.tfstate</code></li>
+<li><code>terraform init -upgrade</code> automatically will upgrade all previously installed plugins to their newest versions.</li>
+<li>The terraform console provides an interactive console for evaluating expressions.</li>
+<li>The declaration of variables differs between terraform 0.11 and 0.12:</li>
+<li>0.11: <code>"${var.varname}"</code></li>
+<li>0.12: <code>var.varname</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

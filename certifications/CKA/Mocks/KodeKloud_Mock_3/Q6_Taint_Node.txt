@@ -1,0 +1,32 @@
+kubectl taint nodes node01 env_type=production:NoSchedule
+
+kubectl run dev-redis --image=redis:alpine
+kubectl get pods -o wide --show-labels
+
+  141  kubectl get pods -o wide
+
+  143  kubectl get pods -o wide
+  146  kubectl run prod-redis --image=redis:alpine --dry-run=client -o yaml > prod-redis.yaml
+  147  vim prod-redis.yaml 
+  148  kubectl create -f prod-redis.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: prod-redis
+  name: prod-redis
+spec:
+  tolerations:
+  - key: "env_type"
+    operator: "Equal"
+    value: "production"
+    effect: "NoSchedule"
+  containers:
+  - image: redis:alpine
+    name: prod-redis
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -1,0 +1,3 @@
+Create deployment with dry run to yaml file first
+Then when running kubectl create command, add --record=true
+Just add --record=true to the set image command

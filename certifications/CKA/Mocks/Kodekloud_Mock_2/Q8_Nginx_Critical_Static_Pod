@@ -1,0 +1,18 @@
+#Create YAML spec for file via kubectl on Master node
+kubectl run nginx-critical --image=nginx --restart=Never --dry-run -o yaml
+
+#ssh into node01 and check kubelet is configured
+ssh node01
+systemctl status kubelet
+
+#identify the config file for kubelet and view it
+--config=/var/lib/kubelet/config.yaml
+
+cat /var/lib/kubelet/config.yaml
+
+#verify the static pod path, denoted by staticPodPath in the file
+#for the purposes of the question, this path is /etc/kubernetes/manifests
+
+copy/paste yaml spec previously created into a yaml file in the staticPodPath
+
+exit the node and run kubectl get pods to verify creation (nginx-critical-node01 should exist)

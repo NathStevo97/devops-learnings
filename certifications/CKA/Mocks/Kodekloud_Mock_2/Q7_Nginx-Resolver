@@ -1,0 +1,11 @@
+#Create the pods
+kubectl run nginx-resolver --image=nginx
+
+#expose the pod as a service
+kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80
+
+#Now need to test nslookup against pod and service names using a busybox pod and record the results in separate files
+
+kubectl run test-nslookup --image=busybox:1.28 --rm -it -- nslookup <pod/service name>
+
+#If the command/lookup is successful, will see output and the pod will be deleted

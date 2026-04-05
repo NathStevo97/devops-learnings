@@ -1,0 +1,11 @@
+#Make sure the etcd version is correct
+ETCDCTL_API=3 etcdctl
+
+#Bring up the etcd manifest
+cat /etc/kubernetes/manifests/etcd.yaml
+
+#Copy and paste the relevant paths into the following command
+ETCDCTL_API=3 etcdctl --endpoints=<advertise-client-urls> --cacert=<--peer-trusted-ca.crt file> --cert=<server.crt path> --key=<server.key path> snapshot save <path to file>
+
+In this case:
+ETCDCTL_API=3 etcdctl --endpoints=<IP>:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /opt/etcd-backup.db

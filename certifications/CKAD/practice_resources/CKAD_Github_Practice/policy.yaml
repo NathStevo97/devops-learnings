@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+    #what pods will the policy apply to
+  podSelector:
+    matchLabels:
+      run: nginx
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    #what pods wil ingress communication be allowed from
+    - podSelector:
+        matchLabels:
+          access: granted

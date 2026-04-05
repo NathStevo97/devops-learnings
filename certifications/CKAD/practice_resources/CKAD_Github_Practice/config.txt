@@ -1,0 +1,2 @@
+foo1=val1
+foo2=val2

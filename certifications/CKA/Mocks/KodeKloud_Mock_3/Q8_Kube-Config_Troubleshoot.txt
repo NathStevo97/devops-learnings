@@ -1,0 +1,3 @@
+Run kubectl cluster-info --kubeconfig=
+Analyse output
+Edit API Server port to 6443
