@@ -12,8 +12,10 @@
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
 site_name = "DevOps Learning and Research"
+site_url = "https://nathstevo97.github.io/devops-learnings"
 repo_url = "https://github.com/NathStevo97/devops-learnings"
 repo_name = "NathStevo97/devops-learnings"
+
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
