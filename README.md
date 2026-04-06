@@ -27,10 +27,6 @@ Repository to house personal notes developed during various technology certifica
 - [Ansible For Beginners (Kodekloud)](./docs/tooling/ansible/kodekloud/ansible-for-beginners/)
 - [Ansible Advanced (Kodekloud)](./docs/tooling/ansible/kodekloud/ansible-advanced/)
 
-### AWS
-
-- [AWS Certified Cloud Practictioner](docs/certifications/aws-cloud-practitioner/)
-
 ### GitOps
 
 - [ArgoCD](/docs/tooling/argocd/)

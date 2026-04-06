@@ -1,9 +1,5 @@
 # Certifications
 
-## AWS
-
-- [AWS Cloud Practitioner](./certifications/aws-cloud-practitioner.md)
-
 ## HashiCorp
 
 ### Terraform

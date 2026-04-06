@@ -12,7 +12,8 @@
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
 site_name = "DevOps Learning and Research"
-
+repo_url = "https://github.com/NathStevo97/devops-learnings"
+repo_name = "NathStevo97/devops-learnings"
 # The site_description is included in the HTML head and should contain a
 # meaningful description of the site content for use by search engines.
 #
@@ -51,6 +52,27 @@ nav = [
   { "About" = "about.md" },
   { "Certifications" = [
     {"Overview" = "certifications/index.md"},
+    {"Certified Kubernetes Administrator (CKA)" = [
+        {"Overview" = "certifications/CKA/index.md"},
+        {"1.0 - Introduction" = "certifications/CKA/01_Course-Introduction.md"},
+        {"2.0 - Core Concepts" = "certifications/CKA/02_Core-Concepts.md"},
+        {"3.0 - Scheduling" = "certifications/CKA/03_Scheduling.md"},
+        {"4.0 - Logging and Monitoring" = "certifications/CKA/04_Logging-and-Monitoring.md"},
+        {"5.0 - Application Lifecycle Management" = "certifications/CKA/05_Application-Lifecycle-Management.md"},
+        {"6.0 - Cluster Maintenance" = "certifications/CKA/06_Cluster-Maintenance.md"},
+        {"7.0 - Security" = "certifications/CKA/07_Security.md"},
+        {"8.0 - Storage" = "certifications/CKA/08_Storage.md"},
+        {"9.0 - Networking" = "certifications/CKA/09_Networking.md"},
+        {"10.0 - Design a Kubernetes Cluster" = "certifications/CKA/10_Design-a-Kubernetes-Cluster.md"},
+        {"11.0 - Install Kubernetes the kubeadm Way" = "certifications/CKA/11_Install-Kubernetes-the-kubeadm-way.md"},
+        {"13.0 - Troubleshooting" = "certifications/CKA/13_Troubleshooting.md"},
+        {"14.0 - JSONPath Introduction" = "certifications/CKA/14_JSONpath-introduction.md"},
+        {"15.0 - Mock Exams" = [
+            {"Overview" = "certifications/CKA/15_Mock_Exams/index.md"},
+            {"Mock Exam 2" = "certifications/CKA/15_Mock_Exams/Kodekloud_Mock_2/01_Mock-Exam-Notes-2.md"},
+            {"Mock Exam 3" = "certifications/CKA/15_Mock_Exams/Kodekloud_Mock_2/01_Mock-Exam-Notes-3.md"}
+        ]},
+    ]},
     {"Certified Kubernetes Application Developer (CKAD)" = [
         {"Overview" = "certifications/CKAD/index.md"},
         {"1.0 - Introduction" = "certifications/CKAD/01_introduction.md"},
@@ -62,11 +84,27 @@ nav = [
         {"7.0 - Services and Networking" = "certifications/CKAD/07_Services-and-Networking.md"},
         {"8.0 - Persistent Volumes" = "certifications/CKAD/08_Persistent-Volumes.md"},
         {"9.0 - 2021 Updates" = "certifications/CKAD/09_2021-Updates.md"},
-        {"13.0 - Mock Exames" = [
+        {"13.0 - Mock Exams" = [
             {"Overview" = "certifications/CKAD/13_Mock-Exams/index.md"},
             {"13.1 - Mock Exam 1" = "certifications/CKAD/13_Mock-Exams/01_Mock-Exam-1.md"},
             {"13.2 - Mock Exam 2" = "certifications/CKAD/13_Mock-Exams/01_Mock-Exam-2.md"},
             {"13.3 - Mock Exam 3" = "certifications/CKAD/13_Mock-Exams/01_Mock-Exam-3.md"},
+        ]}
+    ]},
+    {"Certified Kubernetes Security Specialist (CKS)" = [
+        {"Overview" = "certifications/CKS/index.md"},
+        {"1.0 - Introduction" = "certifications/CKS/01_introduction.md"},
+        {"2.0 - The Kubernetes Attack Surface" = "certifications/CKS/02_The-Kubernetes-Attack-Surface.md"},
+        {"3.0 - Cluster Setup and Hardening" = "certifications/CKS/03_Cluster-Setup-and-Hardening.md"},
+        {"4.0 - System Hardening" = "certifications/CKS/04_System-Hardening.md"},
+        {"5.0 - Minimize Microservice Vulnerabilities" = "certifications/CKS/05_Minimize-Microservice-Vulnerabilities.md"},
+        {"6.0 - Supply Chain Security" = "certifications/CKS/06_Supply-Chain-Security.md"},
+        {"7.0 - Monitoring, Logging, and Runtime Security" = "certifications/CKS/07_Monitoring-Logging-and-Runtime-Security.md"},
+        {"8.0 - Mock Exams" = [
+            {"Overview" = "certifications/CKS/08_Mock-Exams/index.md"},
+            {"8.1 - Mock Exam 1" = "certifications/CKS/08_Mock-Exams/01_Mock-Exam-1.md"},
+            {"8.2 - Mock Exam 2" = "certifications/CKS/08_Mock-Exams/01_Mock-Exam-2.md"},
+            {"8.3 - Mock Exam 3" = "certifications/CKS/08_Mock-Exams/01_Mock-Exam-3.md"},
         ]}
     ]},
     {"Green Software for Practitioners" = [
@@ -221,7 +259,7 @@ features = [
     # This feature turns on navigation elements in the footer that allow the
     # user to navigate to a next or previous page.
     # https://zensical.org/docs/setup/footer/#navigation
-    "navigation.footer",
+    #"navigation.footer",
 
     # When section index pages are enabled, documents can be directly attached
     # to sections, which is particularly useful for providing overview pages.
@@ -349,4 +387,4 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
-link = "https://github.com/NathStevo97/devops-learnings"
+link = "https://github.com/NathStevo97"

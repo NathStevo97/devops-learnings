@@ -1,6 +1,6 @@
 # 14.1 - Introduction to JSONPath
 
-## 14.1.1 - Introduction to YAML
+## 14.1 - Introduction to YAML
 
 - Ansible playbooks format similar to XML and JSON
 - Used to express data
@@ -33,7 +33,7 @@ item:
   - Lists / Arrays = Ordered
   - Comments added via #
 
-## 14.1.2 - Introduction to JSONpath
+## 14.2 - Introduction to JSONpath
 
 - **Yaml vs Json:**
   - Data can be expressed via both
@@ -57,20 +57,20 @@ item:
   - E.g. `$.car.wheels[?(@.location == "rear-right")].model`
     - Only entries that satisfy the citeria "location = rear-right" will be returned.
 
-## 14.1.3 - JSONPath: Wildcard
+## 14.3 - JSONPath: Wildcard
 
 - Denoted by *, meaning "any", can be used to retrieve all/any properties of a
 particular dictionary
 - Can swap *as a value when referencing an array position i.e. [*]
 
-## 14.1.4 - JSONPath: Advanced List Queries
+## 14.4 - JSONPath: Advanced List Queries
 
 - To get all names in an array's particular range, add [x:y], where x is the first
 element's position, y is the end position of the range +1
 - To iterate over a step, insert: [x:y:z], where z is the step rate
 - To get the last item: [-1:0]
 
-## 14.1.5 - Advanced Kubectl Commands: Kubectl and JSONPath
+## 14.5 - Advanced Kubectl Commands: Kubectl and JSONPath
 
 - **Prerequisites:**
   - JSONPath for beginners
