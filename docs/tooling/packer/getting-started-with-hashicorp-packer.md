@@ -119,7 +119,7 @@ build {
 
 ## 2.0 - Adding Configuration, Secrets, and Multi-Platform Functionality
 
-### Provisioners
+### 2.1 Provisioners
 
 - Provisioners are typically used to help configure Packer images to particular needs.
   - This is typically achieved by allowing files to be used, or:
@@ -127,7 +127,7 @@ build {
     - Scripts (Powershell, Bash, etc.) on the image being built or the local system
     - Manage any files to be used by or extracted from the image being built
 
-### Provisioners - File
+#### 2.1.1 Provisioners - File
 
 - Used to upload assets, config files, etc. to the image.
 - Full directories can be uploaded / downloaded, files included.
@@ -270,7 +270,7 @@ provisioner "shell" {
 
 - Unless specified, packer will build all sources in parallel, to specify, use the `-only` flag on the CLI: `packer build -only 'type.name' template.pkr.hcl`
 
-### Post-Processors
+### 2.1.3 Post-Processors
 
 - Commone examples:
   - Compress
@@ -281,4 +281,3 @@ provisioner "shell" {
 
 - For vagrant, one may need to ensure Vagrant is installed to allow the box to be created, steps on this are provided in the documentation.
   - If wanting to keep the input artifact, set `keep_input_artifact=true` in the post_processor block.
-

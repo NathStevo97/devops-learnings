@@ -2,10 +2,8 @@
 
 ## 02.1 - Setup Lab: Install VirtualBox
 
-### Notes
-
 - The labs for this course and project are advised to be done on Virtualbox, the free Virtualisation tool.
-- Whilst this program is free and can be downloaded from [here](https://www.virtualbox.org/), its UI, functionality, and performance pales in comparison to the likes of VMWare, which I'll be using for this.
+- Whilst this program is free and can be downloaded from [virtualbox's site](https://www.virtualbox.org/), its UI, functionality, and performance pales in comparison to the likes of VMWare, which I'll be using for this.
 - In reality, as long as you can run VMs on the tool and can make linked clones, you're good to go.
 - Steps:
   - Create a template VM from a CentOS base machine
@@ -51,4 +49,3 @@ ansible python module location = /usr/lib/python2.7/site-packages/ansible
 executable location = /usr/bin/ansible
 python version = 2.7.5 (default, Oct 14 2020, 14:45:30) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
 ```
-

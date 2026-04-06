@@ -16,7 +16,7 @@
 
 ## 3.2 - Cryptographic Failure
 
-### 
+###
 
 ## 3.3 - Injection
 

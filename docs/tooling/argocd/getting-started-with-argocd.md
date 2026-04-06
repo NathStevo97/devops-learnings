@@ -543,4 +543,3 @@ spec:
 - OpenShift Labs: GitOps Introduction with Argocd
 - OpenShift Labs: Multi Cluster Application Deployment
 - Deploy ArgoCD In Your Own K8s Environment.
-

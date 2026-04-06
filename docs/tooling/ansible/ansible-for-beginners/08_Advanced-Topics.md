@@ -155,4 +155,3 @@ curl http:://localhost # test code
   - On the DB server, supply the IP Address of the web server to ensure it is given sufficient permissions in the MariaDB commands
 - As far as the code goes, the only modification will be to index.php at around line 107 as this contains details regarding the MariaDB connection
 - Repo link kodekloudhub/learning-app-ecommerce
-

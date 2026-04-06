@@ -2,8 +2,6 @@
 
 ## 03.1 - Ansible Inventory
 
-### Introduction
-
 - Ansible can work with one or multiple systems in the system at the same time
   - This requires it to establish connection via SSH (Linux) or Powershell Remoting (Windows)
 - This makes Ansible agentless - no additional packages are required for connection to be established to the target machines, unlike similar tools.
@@ -31,8 +29,6 @@
     - ssh password for linux - NOT RECOMMENDED to do this in plaintext, ssh key-based passwordless authentication should be used, especially in production environments.
 
 ## 03.2 - Demo: Ansible Inventory
-
-### Introduction
 
 - Verify connection between ansible-controller and targets 1-2 via ssh
 - Create an inventory.txt file and add details regarding  ansible-target1 in a format similar to:
@@ -221,8 +217,6 @@ dallas_nodes
 
 ## 3.3 - Inventory Format
 
-### Introduction
-
 - Ansible inventory formats offer differ from scenario to scenario.
 - For small-scale projects, simpler formats are likely required as only a small number of servers are used.
 - For large-scale projects, there are likely resources spread worldwide carrying out a multitude of functions.
@@ -266,14 +260,10 @@ all:
 
 ## 3.4 - Grouping and Parent-Child Relationshops
 
-### Introduction
-
 - It's important to utilise grouping in inventory files for ease of life and reduction of human error.
 - Typically, servers are grouped based on aspects such as location and functionality.
 - In the event of sub-grouping, parent-child relationships can be utilised in Ansible.
 - For example web servers could act as one group, which could be further split into subgroups based on locations.
-
-### Ini Format
 
 - Subgroups are defined by being listed under `[<group name>:children]`
 
@@ -290,8 +280,6 @@ web2_us.example.com
 web1_eu.example.com
 web2_eu.example.com
 ```
-
-### YAML Format
 
 ```yaml
 all:
@@ -311,4 +299,3 @@ all:
             web2_eu.example.com:
               ansible_host: <ip address>
 ```
-

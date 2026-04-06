@@ -2,8 +2,6 @@
 
 ## 2.1 - Introduction to Ansible Configuration Files
 
-### Introduction
-
 ```shell
 [defaults]
 
@@ -54,8 +52,6 @@ enable_plugins = plugin1, plugin2, plugin3, ...
 - To view the current settings and where the settings are set from e.g. environment variables: `ansible-config dump`
 
 ## 04.1 - Introduction to YAML
-
-### Introduction
 
 - All Ansible Playbooks are written in YAML
 - Text or Configuration files
@@ -277,4 +273,3 @@ dictionary2:
       - month: august
         amount: 3400
   ```
-

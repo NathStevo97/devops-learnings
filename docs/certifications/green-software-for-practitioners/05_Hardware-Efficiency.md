@@ -24,7 +24,6 @@ Hardware efficiency principle: Use the least amount of embodied carbon possible
 - For example, suppose it took 4000kg CO2eq to build a server, and we expect it to last four years.
 - Amortization means that we can say the server emits 1000kg CO2eq/year.
 
-
 ## 5.2 - Hardware Efficiency
 
 ### Improving Hardware Efficiency

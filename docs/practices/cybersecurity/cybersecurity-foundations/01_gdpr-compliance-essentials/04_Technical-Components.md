@@ -54,7 +54,7 @@
   - OWners and contact details
 - Security of data processing:
   - Ensure information and processes on IT and security actions appropriate to the risk of the issue are included
-  - I.e. ensure only the relevant information for the specific runbook are included 
+  - I.e. ensure only the relevant information for the specific runbook are included
 
 ##  4.4 - PIAs and DPIAs
 

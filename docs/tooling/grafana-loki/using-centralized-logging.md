@@ -70,4 +70,3 @@ tags:
 
 - Prometheus discovers targets, scrapes and processes the metrics, which can then be viewed in Grafana.
   - Metrics are collected by the various exporters.
-

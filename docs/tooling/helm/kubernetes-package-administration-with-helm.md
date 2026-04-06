@@ -172,7 +172,6 @@ tags:
 
 - Values can be changed at runtime e.g. you may have specific values for Development and Production environments.
 
-
 ## 3.0 - Configuring Helm Repositories
 
 ### 3.1 - Repository Overview
@@ -251,4 +250,3 @@ tags:
   - Run `helm repo add <repo name> <RAW URL>`
 - Search for the repo: `helm search repo <repo name>/<chart name>`
   - The index.yaml has been cached locally and is getting picked up by `helm search`.
-

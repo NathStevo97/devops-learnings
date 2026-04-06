@@ -4,7 +4,6 @@
 
 - Climate Commitments Principle: Understand the Exact Mechanism of Carbon Reduction
 
-
 ## 7.2 - Climate Commitments
 
 ### Carbon Reduction Methodologies

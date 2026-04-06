@@ -2,8 +2,6 @@
 
 ## 7.1 - Ansible Variables
 
-### Introduction
-
 - Variables are used in a very similar manner to other programming / scripting languages.
 - Could be used to allow changeability of username / host details.
 - Ansible inventory files can be the prime point for variables
@@ -15,7 +13,7 @@
 
 ![Variable Example](images/var-example.png)
 
-#### Using Variables
+### Using Variables
 
 - To use variables, enter the variable name in ‘{{}}' i.e.
 
@@ -184,8 +182,6 @@ user:
 
 ## 4.5 - Variable Scoping
 
-### Introduction
-
 - Scope = How accessible a variable's value is.
 - For example, if one host in a particular inventory file has an extra parameter set, that value is not available to the other hosts.
 - Multiple scopes are available in ansible to deal with varying scenarios.
@@ -228,8 +224,6 @@ user:
 
 ## 4.7 - Ansible Facts
 
-### Introduction
-
 - Ansible gathers basic facts about the target machine upon initial connection, such as:
   - basic system information
   - system architecture
@@ -244,4 +238,3 @@ user:
   - Explicit will not gather facts by default, unless specified otherwise at playbook level.
   - Playbook-level configuration always takes precedence.
 - Fact-gathering only applies to hosts defined in inventory files.
-

@@ -1,9 +1,9 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.41.0
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.22.0
     hooks:
-    -   id: markdownlint
-        args: [ --disable=MD013, --disable=MD002,--disable=MD032,--disable=MD005,--disable=MD009 ]
-        language_version: "20.11.0"
+      - id: markdownlint-cli2
+        name: markdownlint
+        args: ['--config', '.markdownlint.json', '--fix']

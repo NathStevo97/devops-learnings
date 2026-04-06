@@ -61,8 +61,6 @@ ansible-playbook <playbook>.yaml
 
 ## 05.2 - Demo: Run Ansible Playbooks
 
-### Notes
-
 ---
 
 - When running ansible playbooks, generally have two options:
@@ -412,7 +410,7 @@ Answer:
 
 ## 08.2 - Coding Exercise: Conditionals
 
-### Q1
+### 8.2.Q1
 
 The given playbook attempts to start mysql service on `all_servers`. Use the `when` condition to run this task if the host (`ansible_host`) is the database server.
 
@@ -428,7 +426,7 @@ Refer to the inventory file to identify the name of the database server.
             when: ansible_host == 'server4.company.com'
 ```
 
-### Q2
+### 8.2.Q2
 
 The playbook has a variable defined - `age`
 . The two tasks attempt to print if I am a child or an Adult. Use the when conditional to print if I am a child or an Adult based on weather my age is `< 18 (child)`
@@ -449,7 +447,7 @@ The playbook has a variable defined - `age`
             when: 'age >= 18'
 ```
 
-### Q3
+### 8.3.Q3
 
 The given playbook attempts to add an entry into the `/etc/resolv.conf` file for `nameserver`.
 
@@ -478,8 +476,6 @@ First, we run a command using the `shell` module to get the contents of `/etc/re
 ```
 
 ## 09.1 - Loops
-
-### Notes
 
 - Loops allow the same command(s) to be ran iteratively to accommodate an ever-changing value(s)
 - A common example is creating users
@@ -510,7 +506,7 @@ First, we run a command using the `shell` module to get the contents of `/etc/re
 
 ## 09.2 - Coding Exercise: Ansible Loops
 
-### Q1
+### 9.2.Q1
 
 The playbook currently runs an echo command to print a fruit name. Apply a loop directive (with_items) to the task to print all fruits defined in the `fruits`
  variable.
@@ -531,7 +527,7 @@ The playbook currently runs an echo command to print a fruit name. Apply a loop 
             with_items: '{{fruits}}'
 ```
 
-### Q2
+### 9.2.Q2
 
 To a more realistic use case. We are attempting to install multiple packages using yum module.The current playbook installs only a single package.
 
@@ -559,4 +555,3 @@ To a more realistic use case. We are attempting to install multiple packages usi
             yum: 'name={{item}} state=present'
             with_items: '{{packages}}'
 ```
-

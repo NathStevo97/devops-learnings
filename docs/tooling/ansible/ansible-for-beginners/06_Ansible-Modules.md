@@ -76,8 +76,6 @@ Example playbook to execute the date command and run the cat command on a desire
 
 ## 6.2 - Introduction to Plugins
 
-### Overview
-
 - Ansible plugins aim to provide additional functionality and customisation options beyond the core features.
 - Plugins extend or modify the core functionality of ansible, such as inventory, modules, and callbacks.
 - Plugins can be found as any of:
@@ -92,8 +90,6 @@ Example playbook to execute the date command and run the cat command on a desire
 
 ## 6.3 - Modules and Plugins Index
 
-### Overview
-
 - The module and plugin index aims to act as a hub for searching plugins and modules to be added to playbooks.
 - Each comes with documentation for usage, examples, and additional supporting documentation.
 - [Index link](https://docs.ansible.com/ansible/latest/collections/all_plugins.html)
@@ -105,9 +101,7 @@ Example playbook to execute the date command and run the cat command on a desire
 
 ## 06.2 - Ansible Modules Coding Exercises
 
-### Notes
-
-#### Q1
+### Q1
 
 Update the playbook with a play to `Execute a script on all web server nodes`. The script is located at `/tmp/install_script.sh`
 
@@ -121,7 +115,7 @@ Use the [Script module](https://docs.ansible.com/ansible/latest/collections/ansi
     script: /tmp/install_script.sh
 ```
 
-#### Q2
+### Q2
 
 Update the playbook to add a new task to `start httpd services` on all web nodes
 
@@ -199,4 +193,3 @@ Use the [user module](https://docs.ansible.com/ansible/latest/collections/ansibl
                 name: httpd
                 state: present
 ```
-
