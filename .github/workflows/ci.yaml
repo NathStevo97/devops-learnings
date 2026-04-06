@@ -47,7 +47,7 @@ jobs:
     steps:
 
     - name: Configure Github Pages
-      uses: actions/configure-pages@v5
+      uses: actions/configure-pages@v6
 
     - name: Checkout the Repo
       uses: actions/checkout@v6
