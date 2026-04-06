@@ -1,6 +1,6 @@
 # 2.0 - Getting Started with Vault
 
-## 2.01 - Overview of HashiCorp Vault
+## 2.1 - Overview of HashiCorp Vault
 
 ### Notes
 
@@ -26,7 +26,7 @@ vault read database/creds/readonly
 - Other functionalities include encryption.
 - In general, once installed, Vault can remove the manual aspect of many secret management tasks, allowing engineers and admins to spend more time on the work they're required for.
 
-## 2.02 - Installation of HashiCorp Vault
+## 2.2 - Installation of HashiCorp Vault
 
 - Vault is available on all major operating systems and can also be installed on platforms such as Kubernetes clusters.
 
@@ -86,7 +86,7 @@ mv <vault binary> $PATH
 
 [https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started)
 
-## 2.03 - Initializing Vault with Dev Server Mode
+## 2.3 - Initializing Vault with Dev Server Mode
 
 - Vault has two modes for operation:
   - Dev
@@ -144,7 +144,7 @@ vault status --address=$VAULT_ADDR
 - Where $VAULT_ADDR is the address of the Vault server provided at Vault initialisation.
 - To stop the server, simply use `CTRL+C` on the terminal where Vault is running. Note that upon restart, the root token will be different.
 
-## 2.04 - Creating a Secret
+## 2.4 - Creating a Secret
 
 - One of Vault's key features is to read and write arbitrary secrets securely.
 - It does so utilising Secrets engines - these are components responsible for the storage, generation, or encryption of data.
@@ -235,7 +235,7 @@ vault kv metadata delete path/to/secret
 
 - Note: `-h` option provides MANY options for use case examples
 
-## 2.05 - Overview of Secrets Engine
+## 2.5 - Overview of Secrets Engine
 
 ### Secret Engine Overview
 
@@ -317,7 +317,7 @@ vault kv put <secret engine path>/<secret name> mykey=myvalue
 
     ![Untitled](img/02_Getting-Started-with-Vault//disable-secret-cli.png)
 
-## 2.06 - Overview of Dynamic Secrets
+## 2.6 - Overview of Dynamic Secrets
 
 ### Dynamic Secrets Overview
 
@@ -342,7 +342,7 @@ vault kv put <secret engine path>/<secret name> mykey=myvalue
   - Lease Duration - How long do the credentials last?
 - Vault will automatically revoke the dynamic credentials upon the completion of the lease duration - alternatively it can be revoked manually by the UI under Access → Leases.
 
-## 2.07 - Generating AWS Credentials Dynamically
+## 2.7 - Generating AWS Credentials Dynamically
 
 ### Example - Generating AWS Credentials Dynamically from Scratch
 
@@ -372,7 +372,7 @@ vault kv put <secret engine path>/<secret name> mykey=myvalue
 
     ![Untitled](./img/02_Getting-Started-with-Vault//vault-aws-user-account.png)
 
-## 2.08 - Managing Leases
+## 2.8 - Managing Leases
 
 ### Overview of Lease
 
@@ -401,7 +401,7 @@ vault lease renew -increment=<time in seconds> path/to/lease
 
 - If a user requests a renewal longer than the maximum TTL, the request will be denied.
 
-## 2.09 - Path-Based Revocation
+## 2.9 - Path-Based Revocation
 
 - When revoking leases in HashiCorp Vault, there are typically two main methods:
 

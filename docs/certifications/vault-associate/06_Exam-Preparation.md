@@ -1,6 +1,6 @@
 # 6.0 - Exam Preparation
 
-## 6.01 - Important Pointers for the Exam
+## 6.1 - Important Pointers for the Exam
 
 ### Official Certification Guide
 

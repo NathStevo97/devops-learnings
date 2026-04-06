@@ -4,23 +4,25 @@
 
 - [AWS Cloud Practitioner](./certifications/aws-cloud-practitioner.md)
 
-## HashiCorp Terraform
+## HashiCorp
+
+### Terraform
 
 - [HashiCorp Certified: Terraform Associate](./certifications/terraform-associate.md)
 
-## HashiCorp Vault
+### Vault
 
-- [HashiCorp Certified: Vault Associate](./certifications/vault-associate.md)
+- [HashiCorp Certified: Vault Associate](./vault-associate/index.md)
 
 ## Kubernetes
 
-- [Certified Kubernetes Application Developer](./certifications/CKAD.md)
+- [Certified Kubernetes Application Developer](./CKAD/index.md)
 - [Certified Kubernetes Administrator](./certifications/CKA.md)
 - [Certified Kubernetes Security Specialist](./certifications/CKS.md)
 
 ## Open Source Best Practice
 
-- [Green Software for Practitioners](./certifications/green-software-for-practitioners.md)
+- [Green Software for Practitioners](./green-software-for-practitioners/index.md)
 
 ## VMware
 

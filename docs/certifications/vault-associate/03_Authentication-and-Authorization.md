@@ -1,6 +1,6 @@
 # 3.0 - Authentication and Authorization
 
-## 3.01 - Authentication in Vault
+## 3.1 - Authentication in Vault
 
 ### Notes
 
@@ -34,7 +34,7 @@ vault login -method=<method path> <parameters>
 - Once authenticated, you will be presented with details regarding the user's access credentials e.g. token, token duration, policies assigned, etc.
 - Note: any tokens displayed will be stored in the `token helper` - this will prevent the need to re-provide the token.
 
-## 3.02 - Overview of Vault Policies
+## 3.2 - Overview of Vault Policies
 
 ### Vault Policies 01
 
@@ -232,7 +232,7 @@ Examples for the latter two:
 
 ![2022-07-16_08h42_19.png](./img/03_Authentication-and-Authorization///2022-07-16_08h42_19.png)
 
-## 3.03 - AppRole Authentication Method
+## 3.3 - AppRole Authentication Method
 
 - Before a client can interact with Vault, it must authenticate against a particular auth method as outlined previously.
 - Auth methods are generally targeted for one of two types of users:
@@ -270,7 +270,7 @@ Examples for the latter two:
 - The AppRole auth method is specifically designed for use by machines and applications.
 - Role and Secret IDs can effectively be viewed as the application's username and passwords
 
-## 3.04 - HTTP APIs in Vault
+## 3.4 - HTTP APIs in Vault
 
 - All of Vault's capabilities are accessible via the HTTP API.
 - Most CLI commands invoke the HTTP API, however, some Vault features can only be accessed via the HTTP API.
@@ -293,7 +293,7 @@ Examples for the latter two:
 
 - Sample requests are well-documented for multiple secret types at the following [link](https://vaultproject.io/api-docs/)
 
-## 3.05 - Token Capabilities
+## 3.5 - Token Capabilities
 
 - Users can check the capabilities of a token for a particular path using the `token capabilities` command
 - Example:
@@ -304,7 +304,7 @@ Examples for the latter two:
 - If no token is provided, the "/sys/capabilities-self" endpoint and permission is used with the locally authenticated token
 - To provide the token as an argument, simply add the token prior to the `<path>`
 
-## 3.06 - Entities and Aliases
+## 3.6 - Entities and Aliases
 
 ### Authentication for Multiple Users
 
@@ -337,7 +337,7 @@ Examples for the latter two:
 - Each client is internally termed as an entity, which can have multiple aliases
 - This engine is mounted by default, and cannot be disabled or moved.
 
-## 3.07 - Identity Groups
+## 3.7 - Identity Groups
 
 ### Identity Groups
 
@@ -363,7 +363,7 @@ Examples for the latter two:
 - Many organizations have groups predefined with their external identity providers, such as Active Directory
 - External groups allows these providers to be linked to Vault via the `external identity` provider (auth provider) such that appropriate policies can be attached to the group
 
-## 3.08 - Tools in Vault
+## 3.8 - Tools in Vault
 
 ### Vault Tools
 
@@ -384,7 +384,7 @@ Examples for the latter two:
   - [Documentation](https://www.vaultproject.io/api-docs/system/tools).
 - Common exam questions are "what does X Call aim to achieve?"
 
-## 3.09 - Vault Auto-Complete
+## 3.9 - Vault Auto-Complete
 
 ### Auto-Completion Overview
 

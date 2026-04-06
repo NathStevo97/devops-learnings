@@ -1,6 +1,6 @@
 # 5.0 - Vault Architecture
 
-## 5.01 - Vault for Production Environments
+## 5.1 - Vault for Production Environments
 
 ### Overview
 
@@ -81,7 +81,7 @@ listener "tcp" {
 
 - **Note:** THE UNSEAL KEYS SHOULD NOT BE STORED WITH ONLY 1 PERSON - THEY SHOULD BE DISTRIBUTED AMONGST TEAM MEMBERS
 
-## 5.02 - Vault UI for Production
+## 5.2 - Vault UI for Production
 
 - By default, the Vault GUI is disabled for production. It can be enabled via the Vault config file however.
 - All that is needed is adding the following to the config file:
@@ -96,7 +96,7 @@ ui = true # boolean
 
 - **Note:** When accessing the UI whilst the Vault is in a sealed state, users are able to provide the unseal keys to unseal the vault.
 
-## 5.03 - Understanding Vault Agent
+## 5.3 - Understanding Vault Agent
 
 ### Challenges
 
@@ -177,7 +177,7 @@ vault {
   - This can be looked up via `vault token lookup <token>`
 - Now, any application wishing to use the token must fetch it from the sink file location. As an example, a Kubernetes secret could be based on this.
 
-## 5.04 - Vault Agent Caching
+## 5.4 - Vault Agent Caching
 
 ### Primary Functionalities of Vault Agent
 
@@ -219,7 +219,7 @@ listener "tcp" {
   - If the request is made again, the same token will be returned rather than a new one generated - this is because the original token was stored in the cache of the agent.
 - In separate users, so long as they have the Vault Agent Address variable set, they will not require a token to run commands as the client token is used.
 
-## 5.05 - Shamirs Secret for Unsealing Process
+## 5.5 - Shamirs Secret for Unsealing Process
 
 - Storage backend in Vault is considered to be untrusted.
 - Any data stored is within the encrypted state.
@@ -248,7 +248,7 @@ seal [name] {
   - Most people tend to use this by default.
 - Alternatives could include HSM or Cloud Key Management Solutions e.g. AWS KMS.
 
-## 5.06 - Vault Auto-Unseal Overview
+## 5.6 - Vault Auto-Unseal Overview
 
 ### Background
 
@@ -272,7 +272,7 @@ seal [name] {
   - HSM
   - GCP Cloud KMS
 
-## 5.07 - Auto-Unseal with AWS KMS
+## 5.7 - Auto-Unseal with AWS KMS
 
 ### Setting up AWS Auto-Unseal From Scratch
 
@@ -303,7 +303,7 @@ seal "awskms" {
   - This will automatically unseal the vault.
   - The keys generated are automatically stored into the kms - they can now be called automatically for future usage of Vault.
 
-## 5.08 - Vault Plugin Mechanism
+## 5.8 - Vault Plugin Mechanism
 
 - Plugins are the building blocks of Vault. All auth and secret backends are considered plugins.
 - This allows Vault to extensible to suit user needs.
@@ -333,7 +333,7 @@ seal "awskms" {
 
 - In production, to use plugins, the following should be added to the config file: `plugin_directory = /path/to/directory"`
 
-## 5.09 - Audit Devices
+## 5.9 - Audit Devices
 
 - Components in Vault that log requests and responses to Vault.
 - As each operation is an API request/response - the audit log includes every authenticated interaction with Vault; including errors.
