@@ -1,4 +1,4 @@
-name: devops-learnings markdownlint
+name: devops-learnings ci
 
 on:
   push:
