@@ -12,7 +12,6 @@
 #
 # Read more: https://zensical.org/docs/setup/basics/#site_name
 site_name = "DevOps Learning and Research"
-site_url = "https://nathstevo97.github.io/devops-learnings"
 repo_url = "https://github.com/NathStevo97/devops-learnings"
 repo_name = "NathStevo97/devops-learnings"
 
@@ -30,7 +29,7 @@ site_author = "Nathan Stephenson"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://nathstevo97.github.io/devops-learnings"
 dev_addr = "127.0.0.1:8001"
 
 # The copyright notice appears in the page footer and can contain an HTML
@@ -118,6 +117,17 @@ nav = [
         {"5.0 - Hardware Efficiency" = "certifications/green-software-for-practitioners/05_Hardware-Efficiency.md"},
         {"6.0 - Measurement" = "certifications/green-software-for-practitioners/06_Measurement.md"},
         {"7.0 - Climate Commitments" = "certifications/green-software-for-practitioners/07_Climate-Commitments.md"}
+    ]},
+    {"Hashicorp Certified: Terraform Associate" = [
+        {"Overview" = "certifications/terraform-associate/index.md"},
+        {"3.0 - Deploying Infrastructure" = "certifications/terraform-associate/03_Deploying-Infrastructure.md"},
+        {"4.0 - Working With Configurations" = "certifications/terraform-associate/04_Working-With-Configurations.md"},
+        {"5.0 - Provisioners" = "certifications/terraform-associate/05_Provisioners.md"},
+        {"6.0 - Modules & Workspaces" = "certifications/terraform-associate/06_Modules-and-Workspaces.md"},
+        {"7.0 - Remote State Management" = "certifications/terraform-associate/07_Remote-State-Management.md"},
+        {"8.0 - Security" = "certifications/terraform-associate/08_Security.md"},
+        {"9.0 - Terraform Cloud & Enterprise" = "certifications/terraform-associate/09_Terraform-Cloud-and-Enterprise.md"},
+        {"11.0 - Exam Preparation" = "certifications/terraform-associate/11_Exam-Preparation.md"}
     ]},
     {"Hashicorp Certified: Vault Associate" = [
         {"Overview" = "certifications/vault-associate/index.md"},
