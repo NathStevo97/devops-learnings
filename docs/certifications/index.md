@@ -4,7 +4,7 @@
 
 ### Terraform
 
-- [HashiCorp Certified: Terraform Associate](./certifications/terraform-associate.md)
+- [HashiCorp Certified: Terraform Associate](./terraform-associate.md)
 
 ### Vault
 
@@ -13,8 +13,8 @@
 ## Kubernetes
 
 - [Certified Kubernetes Application Developer](./CKAD/index.md)
-- [Certified Kubernetes Administrator](./certifications/CKA.md)
-- [Certified Kubernetes Security Specialist](./certifications/CKS.md)
+- [Certified Kubernetes Administrator](./CKA/index.md.md)
+- [Certified Kubernetes Security Specialist](./CKS/index.md)
 
 ## Open Source Best Practice
 
@@ -22,4 +22,4 @@
 
 ## VMware
 
-- [VMware Application Modernization Professional](./certifications/vmware-application-modernization.md)
+- [VMware Application Modernization Professional](./vmware-application-modernization.md)

@@ -47,7 +47,7 @@ item:
 - The top-level dictionary, which isn't named, is denoted by a $
 - A typical query is `$.item.property` etc
 - Any output from a JSONpath query is an array []
-- To query an array/list, use square brackets to reference the position, with positions starting at [0].
+- To query an array/list, use square brackets to reference the position, with positions starting at `[0]`.
   - E.g. 1st element: `$.[0]`
 - For dictionaries in lists, combine the query use for all
 - For criteria: `$.[CRITERIA]` e.g.:
@@ -59,9 +59,9 @@ item:
 
 ## 14.3 - JSONPath: Wildcard
 
-- Denoted by *, meaning "any", can be used to retrieve all/any properties of a
+- Denoted by `*`, meaning "any", can be used to retrieve all/any properties of a
 particular dictionary
-- Can swap *as a value when referencing an array position i.e. [*]
+- Can swap `*` as a value when referencing an array position i.e. `[*]`
 
 ## 14.4 - JSONPath: Advanced List Queries
 
