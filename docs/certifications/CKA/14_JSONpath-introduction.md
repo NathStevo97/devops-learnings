@@ -65,10 +65,10 @@ particular dictionary
 
 ## 14.4 - JSONPath: Advanced List Queries
 
-- To get all names in an array's particular range, add [x:y], where x is the first
-element's position, y is the end position of the range +1
-- To iterate over a step, insert: [x:y:z], where z is the step rate
-- To get the last item: [-1:0]
+- To get all names in an array's particular range, add `[x:y]`, where `x` is the first
+element's position, `y` is the end position of the range `+1`
+- To iterate over a step, insert: `[x:y:z]`, where z is the step rate
+- To get the last item: `[-1:0]`
 
 ## 14.5 - Advanced Kubectl Commands: Kubectl and JSONPath
 

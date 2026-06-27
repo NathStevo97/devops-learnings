@@ -15,4 +15,4 @@ Repo to host notes, documentation, exercise solutions associated with the Certif
 - [5.0 - Minimize Microservice Vulnerabilities](./05_Minimize-Microservice-Vulnerabilities.md)
 - [6.0 - Supply Chain Security](./06_Supply-Chain-Security.md)
 - [7.0 - Monitoring, Logging, and Runtime Security](./07_Monitoring-Logging-and-Runtime-Security.md)
-- [8.0 - Mock Exams](./08_Mocks/index.md)
+- [8.0 - Mock Exams](./08_Mock-Exams/index.md)

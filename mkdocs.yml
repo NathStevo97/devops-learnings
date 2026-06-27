@@ -26,9 +26,6 @@ nav:
   - About: about.md
   - Certifications:
     - certifications.md
-    - AWS Certified Cloud Practitioner:
-      - certifications/aws-cloud-practitioner.md
-      - certifications/aws-cloud-practitioner/course-notes/*
     - Certified Kubernetes Application Developer (CKAD):
       - certifications/CKAD.md
       - certifications/CKAD/*
