@@ -24,7 +24,7 @@ jobs:
     steps:
     - name: Checkout the Repo
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
+    # TODO: Use matrix to run markdownlint across multiple directories iteratively instead of duplicating the steps for each directory.
     - uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24
       name: markdown-lint - Certifications
       with:
