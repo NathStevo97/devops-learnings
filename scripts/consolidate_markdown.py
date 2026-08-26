@@ -1,6 +1,7 @@
 import os
 import glob
 
+
 def consolidate_markdown(input_dir, output_file):
     """
     Consolidate markdown files in a directory into a single file,
@@ -19,6 +20,7 @@ def consolidate_markdown(input_dir, output_file):
                     else:
                         outfile.write(line)
                 outfile.write("\n")  # Add a newline between files for separation
+
 
 # Directory containing markdown files and output file
 input_directory = "./docs/tooling/grafana-loki/"
