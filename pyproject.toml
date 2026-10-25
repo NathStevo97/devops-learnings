@@ -3,9 +3,9 @@ name = "devops-learnings"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.14,<3.15"
 dependencies = [
-    "zensical>=0.0.31",
+    "zensical>=0.0.72",
 ]
 
 [dependency-groups]
